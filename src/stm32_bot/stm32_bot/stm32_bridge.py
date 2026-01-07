@@ -4,7 +4,7 @@
 # @brief Nœud passerelle (Bridge) entre ROS2 et le microcontrôleur STM32.
 # @details Ce nœud assure deux fonctions principales :
 #          1. Subscriber : Écoute /cmd_vel, convertit les unités (m/s -> mm/s) et envoie les consignes au STM32.
-#          2. Publisher : Lit le port série, décode la trame binaire IMU, et publie sur /imu/data.
+#          2. Publisher : Lit le port série, décode la trame binaire IMU, et publie sur /imu/data et /speed.
 # @author SCHWAGER Jérôme
 # @date 2025
 
@@ -12,6 +12,7 @@ import rclpy
 from rclpy.node import Node
 from geometry_msgs.msg import Twist
 from sensor_msgs.msg import Imu
+from std_msgs.msg import Float32
 import serial
 import struct
 import time
@@ -41,6 +42,7 @@ class STM32Bridge(Node):
                  - La connexion Série (/dev/ttyACM0 par défaut).
                  - Le Subscriber cmd_vel.
                  - Le Publisher imu.
+                 - Le Publisher speed.
                  - Le Timer de lecture (50Hz).
         """
         super().__init__('stm32_bridge')
@@ -71,6 +73,8 @@ class STM32Bridge(Node):
         # --- PUBLISHER ---
         ## Publication des données de la centrale inertielle
         self.pub_imu = self.create_publisher(Imu, '/imu/data', 10)
+        ## Publication des données de vitesse
+        self.pub_speedometer = self.create_publisher(Float32, '/speed', 10)
 
         # --- TIMER DE LECTURE ---
         # Appel la boucle de lecture toutes les 0.02s (50Hz)
@@ -78,8 +82,8 @@ class STM32Bridge(Node):
 
         ## Buffer de réception pour accumuler les octets
         self.rx_buffer = bytearray()
-        ## Taille attendue de la trame IMU : Header(2) + TypeLen(2) + Time(4) + Acc(12) + Gyro(12) + CRC(1)
-        self.imu_frame_size = 33
+        ## Taille attendue de la trame IMU : Header(2) + TypeLen(2) + Time(4) + Acc(12) + Gyro(12) + Speed(4) + CRC(1)
+        self.imu_frame_size = 37
 
     def crc8_atm(self, data):
         """
@@ -104,7 +108,9 @@ class STM32Bridge(Node):
         @param addr Adresse du registre (0x00 ou 0x01).
         @param value_int Valeur entière signée (int16).
         """
-        if not self.ser: return
+        if not self.ser:
+            self.get_logger().warn("send_register: port série non initialisé, frame non envoyée")
+            return
 
         # Header: Write (bit7=0) | addr
         hdr = 0x00 | (addr & 0x7F)
@@ -120,6 +126,8 @@ class STM32Bridge(Node):
         frame = bytearray(payload + [crc])
         
         try:
+            # Loggable hex dump to help debugging (promoted to INFO so visible sans DEBUG global)
+            self.get_logger().info(f"Envoi registre addr=0x{addr:02X} value={value_int} frame={frame.hex()}")
             self.ser.write(frame)
         except Exception as e:
             self.get_logger().warn(f"Erreur écriture série: {e}")
@@ -139,6 +147,8 @@ class STM32Bridge(Node):
         steering_deg = int(msg.angular.z * 20.0)
         steering_deg = max(min(steering_deg, int(MAX_STEERING_ANGLE)), int(-MAX_STEERING_ANGLE))
 
+        # Debug: log conversions avant envoi
+        self.get_logger().info(f"cmd_vel reçue: linear.x={msg.linear.x:.3f} m/s -> {speed_mms} mm/s, angular.z={msg.angular.z:.3f} -> {steering_deg} deg")
         self.send_register(REG_MOTOR, speed_mms)
         self.send_register(REG_SERVO, steering_deg)
 
@@ -182,12 +192,15 @@ class STM32Bridge(Node):
             # B=U8 (AA), B=U8 (55), B=Type, B=Len, I=Time(U32)
             # f=float(AccX), f=float(AccY), f=float(AccZ)
             # f=float(GyroX), f=float(GyroY), f=float(GyroZ)
+            # f=float(Speed)
             # B=CRC
-            unpacked = struct.unpack('<BBBBIf f f f f f B', packet)
+            unpacked = struct.unpack('<BBBBIf f f f f f f B', packet)
             
             imu_msg = Imu()
             imu_msg.header.stamp = self.get_clock().now().to_msg()
             imu_msg.header.frame_id = "base_link" # Repère du robot
+
+            speed = Float32()
 
             # Conversion Accel: STM32 envoie mm/s², ROS veut m/s²
             imu_msg.linear_acceleration.x = unpacked[5] / 1000.0
@@ -199,10 +212,14 @@ class STM32Bridge(Node):
             imu_msg.angular_velocity.y = unpacked[9]
             imu_msg.angular_velocity.z = unpacked[10]
 
+            # Vitesse Speedometer : STM32 envoie m/s, ROS veut ? (Pas de changement)
+            speed.data = unpacked[11]
+
             # Note: L'orientation (Quaternion) n'est pas remplie ici.
             # Elle sera calculée par l'EKF (robot_localization) via fusion Gyro/Accel.
 
             self.pub_imu.publish(imu_msg)
+            self.pub_speedometer.publish(speed)
 
         except Exception as e:
             self.get_logger().warn(f"Erreur décodage structure: {e}")
