@@ -126,8 +126,8 @@ class STM32Bridge(Node):
         frame = bytearray(payload + [crc])
         
         try:
-            # Loggable hex dump to help debugging (promoted to INFO so visible sans DEBUG global)
-            self.get_logger().info(f"Envoi registre addr=0x{addr:02X} value={value_int} frame={frame.hex()}")
+            ## Loggable hex dump to help debugging (promoted to INFO so visible sans DEBUG global)
+            #self.get_logger().info(f"Envoi registre addr=0x{addr:02X} value={value_int} frame={frame.hex()}")
             self.ser.write(frame)
         except Exception as e:
             self.get_logger().warn(f"Erreur écriture série: {e}")
@@ -147,8 +147,8 @@ class STM32Bridge(Node):
         steering_deg = int(msg.angular.z * 20.0)
         steering_deg = max(min(steering_deg, int(MAX_STEERING_ANGLE)), int(-MAX_STEERING_ANGLE))
 
-        # Debug: log conversions avant envoi
-        self.get_logger().info(f"cmd_vel reçue: linear.x={msg.linear.x:.3f} m/s -> {speed_mms} mm/s, angular.z={msg.angular.z:.3f} -> {steering_deg} deg")
+        ## Debug: log conversions avant envoi
+        #self.get_logger().info(f"cmd_vel reçue: linear.x={msg.linear.x:.3f} m/s -> {speed_mms} mm/s, angular.z={msg.angular.z:.3f} -> {steering_deg} deg")
         self.send_register(REG_MOTOR, speed_mms)
         self.send_register(REG_SERVO, steering_deg)
 
