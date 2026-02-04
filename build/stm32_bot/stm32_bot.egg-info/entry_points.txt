@@ -1,0 +1,3 @@
+[console_scripts]
+stm32_bridge = stm32_bot.stm32_bridge:main
+stm32_teleop = stm32_bot.stm32_teleop:main
