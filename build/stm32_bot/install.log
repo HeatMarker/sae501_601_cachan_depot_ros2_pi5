@@ -6,6 +6,8 @@
 /home/spinetti/ros2_ws/install/stm32_bot/lib/python3.12/site-packages/stm32_bot/__pycache__/stm32_teleop.cpython-312.pyc
 /home/spinetti/ros2_ws/install/stm32_bot/share/ament_index/resource_index/packages/stm32_bot
 /home/spinetti/ros2_ws/install/stm32_bot/share/stm32_bot/package.xml
+/home/spinetti/ros2_ws/install/stm32_bot/share/stm32_bot/launch/robot_bringup.launch.py
+/home/spinetti/ros2_ws/install/stm32_bot/share/stm32_bot/config/ekf_config.yaml
 /home/spinetti/ros2_ws/install/stm32_bot/lib/python3.12/site-packages/stm32_bot-0.0.0-py3.12.egg-info/SOURCES.txt
 /home/spinetti/ros2_ws/install/stm32_bot/lib/python3.12/site-packages/stm32_bot-0.0.0-py3.12.egg-info/PKG-INFO
 /home/spinetti/ros2_ws/install/stm32_bot/lib/python3.12/site-packages/stm32_bot-0.0.0-py3.12.egg-info/requires.txt

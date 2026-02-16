@@ -1,0 +1,73 @@
+[1.327s] Invoking command in '/home/spinetti/ros2_ws/build/tm_imu': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/spinetti/ros2_ws/install/stm32_bot:/home/spinetti/ros2_ws/install/spinetti_bringup:/home/spinetti/install/stm32_bot:/opt/ros/jazzy DEBUGINFOD_URLS=https://debuginfod.ubuntu.com /usr/bin/cmake /home/spinetti/ros2_ws/src/tm210_driver -DAMENT_CMAKE_SYMLINK_INSTALL=1 -DCMAKE_INSTALL_PREFIX=/home/spinetti/ros2_ws/install/tm_imu
+[1.969s] -- The C compiler identification is GNU 13.3.0
+[2.374s] -- The CXX compiler identification is GNU 13.3.0
+[2.437s] -- Detecting C compiler ABI info
+[2.757s] -- Detecting C compiler ABI info - done
+[2.794s] -- Check for working C compiler: /usr/bin/cc - skipped
+[2.813s] -- Detecting C compile features
+[2.833s] -- Detecting C compile features - done
+[2.858s] -- Detecting CXX compiler ABI info
+[3.170s] -- Detecting CXX compiler ABI info - done
+[3.216s] -- Check for working CXX compiler: /usr/bin/c++ - skipped
+[3.220s] -- Detecting CXX compile features
+[3.227s] -- Detecting CXX compile features - done
+[3.261s] -- Found ament_cmake: 2.5.4 (/opt/ros/jazzy/share/ament_cmake/cmake)
+[4.047s] -- Found Python3: /usr/bin/python3 (found version "3.12.3") found components: Interpreter 
+[4.929s] -- Override CMake install command with custom implementation using symlinks instead of copying resources
+[5.318s] -- Found rclcpp: 28.1.13 (/opt/ros/jazzy/share/rclcpp/cmake)
+[5.641s] -- Found rosidl_generator_c: 4.6.6 (/opt/ros/jazzy/share/rosidl_generator_c/cmake)
+[5.764s] -- Found rosidl_generator_cpp: 4.6.6 (/opt/ros/jazzy/share/rosidl_generator_cpp/cmake)
+[5.928s] -- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c
+[6.069s] -- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp
+[6.546s] -- Found rmw_implementation_cmake: 7.3.2 (/opt/ros/jazzy/share/rmw_implementation_cmake/cmake)
+[6.572s] -- Found rmw_fastrtps_cpp: 8.4.3 (/opt/ros/jazzy/share/rmw_fastrtps_cpp/cmake)
+[7.281s] -- Found OpenSSL: /usr/lib/aarch64-linux-gnu/libcrypto.so (found version "3.0.13")  
+[7.464s] -- Found FastRTPS: /opt/ros/jazzy/include (Required is at least version "2.13") 
+[7.624s] -- Using RMW implementation 'rmw_fastrtps_cpp' as default
+[8.310s] -- Found std_msgs: 5.3.6 (/opt/ros/jazzy/share/std_msgs/cmake)
+[8.439s] -- Found sensor_msgs: 5.3.6 (/opt/ros/jazzy/share/sensor_msgs/cmake)
+[8.790s] -- Found tf2: 0.36.16 (/opt/ros/jazzy/share/tf2/cmake)
+[8.844s] -- Found tf2_ros: 0.36.16 (/opt/ros/jazzy/share/tf2_ros/cmake)
+[10.713s] -- Configuring done (9.3s)
+[10.801s] -- Generating done (0.0s)
+[10.826s] -- Build files have been written to: /home/spinetti/ros2_ws/build/tm_imu
+[10.908s] Invoked command in '/home/spinetti/ros2_ws/build/tm_imu' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/spinetti/ros2_ws/install/stm32_bot:/home/spinetti/ros2_ws/install/spinetti_bringup:/home/spinetti/install/stm32_bot:/opt/ros/jazzy DEBUGINFOD_URLS=https://debuginfod.ubuntu.com /usr/bin/cmake /home/spinetti/ros2_ws/src/tm210_driver -DAMENT_CMAKE_SYMLINK_INSTALL=1 -DCMAKE_INSTALL_PREFIX=/home/spinetti/ros2_ws/install/tm_imu
+[10.910s] Invoking command in '/home/spinetti/ros2_ws/build/tm_imu': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/spinetti/ros2_ws/install/stm32_bot:/home/spinetti/ros2_ws/install/spinetti_bringup:/home/spinetti/install/stm32_bot:/opt/ros/jazzy DEBUGINFOD_URLS=https://debuginfod.ubuntu.com /usr/bin/cmake --build /home/spinetti/ros2_ws/build/tm_imu -- -j4 -l4
+[11.101s] [ 16%] [32mBuilding CXX object CMakeFiles/transducer_m_imu.dir/external/EasyProfile/EasyObjectDictionary.cpp.o[0m
+[11.102s] [ 33%] [32mBuilding CXX object CMakeFiles/transducer_m_imu.dir/src/tm_imu_node.cpp.o[0m
+[11.125s] [ 50%] [32mBuilding CXX object CMakeFiles/transducer_m_imu.dir/external/EasyProfile/EasyProfile.cpp.o[0m
+[11.127s] [ 66%] [32mBuilding CXX object CMakeFiles/transducer_m_imu.dir/external/serialib/serialib.cpp.o[0m
+[11.568s] [ 83%] [32mBuilding CXX object CMakeFiles/transducer_m_imu.dir/external/EasyProfile/EasyProtocol.cpp.o[0m
+[12.801s] [01m[K/home/spinetti/ros2_ws/src/tm210_driver/external/serialib/serialib.cpp:[m[K In member function ‘[01m[Kint serialib::[01;32m[KreadStringNoTimeOut[m[K(char*, char, unsigned int)[m[K’:
+[12.802s] [01m[K/home/spinetti/ros2_ws/src/tm210_driver/external/serialib/serialib.cpp:576:21:[m[K [01;35m[Kwarning: [m[Kcomparison is always false due to limited range of data type [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wtype-limits-Wtype-limits]8;;[m[K]
+[12.802s]   576 |         if ([01;35m[KcharRead<0[m[K) return charRead;
+[12.802s]       |             [01;35m[K~~~~~~~~^~[m[K
+[12.802s] [01m[K/home/spinetti/ros2_ws/src/tm210_driver/external/serialib/serialib.cpp:[m[K In member function ‘[01m[Kint serialib::[01;32m[KreadString[m[K(char*, char, unsigned int, unsigned int)[m[K’:
+[12.802s] [01m[K/home/spinetti/ros2_ws/src/tm210_driver/external/serialib/serialib.cpp:639:25:[m[K [01;35m[Kwarning: [m[Kcomparison is always false due to limited range of data type [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wtype-limits-Wtype-limits]8;;[m[K]
+[12.802s]   639 |             if ([01;35m[KcharRead<0[m[K) return charRead;
+[12.802s]       |                 [01;35m[K~~~~~~~~^~[m[K
+[26.560s] [100%] [32m[1mLinking CXX executable transducer_m_imu[0m
+[27.388s] [100%] Built target transducer_m_imu
+[27.411s] Invoked command in '/home/spinetti/ros2_ws/build/tm_imu' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/spinetti/ros2_ws/install/stm32_bot:/home/spinetti/ros2_ws/install/spinetti_bringup:/home/spinetti/install/stm32_bot:/opt/ros/jazzy DEBUGINFOD_URLS=https://debuginfod.ubuntu.com /usr/bin/cmake --build /home/spinetti/ros2_ws/build/tm_imu -- -j4 -l4
+[27.414s] Invoking command in '/home/spinetti/ros2_ws/build/tm_imu': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/spinetti/ros2_ws/install/stm32_bot:/home/spinetti/ros2_ws/install/spinetti_bringup:/home/spinetti/install/stm32_bot:/opt/ros/jazzy DEBUGINFOD_URLS=https://debuginfod.ubuntu.com /usr/bin/cmake --install /home/spinetti/ros2_ws/build/tm_imu
+[27.431s] -- Install configuration: ""
+[27.431s] -- Execute custom install script
+[27.432s] -- Symlinking: /home/spinetti/ros2_ws/install/tm_imu/lib/tm_imu/transducer_m_imu
+[27.452s] -- Symlinking: /home/spinetti/ros2_ws/install/tm_imu/share/tm_imu//launch/imu.launch.py
+[27.479s] -- Symlinking: /home/spinetti/ros2_ws/install/tm_imu/share/tm_imu//config/params.yaml
+[27.499s] -- Symlinking: /home/spinetti/ros2_ws/install/tm_imu/share/ament_index/resource_index/package_run_dependencies/tm_imu
+[27.519s] -- Symlinking: /home/spinetti/ros2_ws/install/tm_imu/share/ament_index/resource_index/parent_prefix_path/tm_imu
+[27.539s] -- Symlinking: /home/spinetti/ros2_ws/install/tm_imu/share/tm_imu/environment/ament_prefix_path.sh
+[27.558s] -- Symlinking: /home/spinetti/ros2_ws/install/tm_imu/share/tm_imu/environment/ament_prefix_path.dsv
+[27.585s] -- Symlinking: /home/spinetti/ros2_ws/install/tm_imu/share/tm_imu/environment/path.sh
+[27.604s] -- Symlinking: /home/spinetti/ros2_ws/install/tm_imu/share/tm_imu/environment/path.dsv
+[27.624s] -- Symlinking: /home/spinetti/ros2_ws/install/tm_imu/share/tm_imu/local_setup.bash
+[27.644s] -- Symlinking: /home/spinetti/ros2_ws/install/tm_imu/share/tm_imu/local_setup.sh
+[27.670s] -- Symlinking: /home/spinetti/ros2_ws/install/tm_imu/share/tm_imu/local_setup.zsh
+[27.690s] -- Symlinking: /home/spinetti/ros2_ws/install/tm_imu/share/tm_imu/local_setup.dsv
+[27.710s] -- Symlinking: /home/spinetti/ros2_ws/install/tm_imu/share/tm_imu/package.dsv
+[27.729s] -- Symlinking: /home/spinetti/ros2_ws/install/tm_imu/share/ament_index/resource_index/packages/tm_imu
+[27.753s] -- Symlinking: /home/spinetti/ros2_ws/install/tm_imu/share/tm_imu/cmake/tm_imuConfig.cmake
+[27.781s] -- Symlinking: /home/spinetti/ros2_ws/install/tm_imu/share/tm_imu/cmake/tm_imuConfig-version.cmake
+[27.800s] -- Symlinking: /home/spinetti/ros2_ws/install/tm_imu/share/tm_imu/package.xml
+[27.824s] Invoked command in '/home/spinetti/ros2_ws/build/tm_imu' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/spinetti/ros2_ws/install/stm32_bot:/home/spinetti/ros2_ws/install/spinetti_bringup:/home/spinetti/install/stm32_bot:/opt/ros/jazzy DEBUGINFOD_URLS=https://debuginfod.ubuntu.com /usr/bin/cmake --install /home/spinetti/ros2_ws/build/tm_imu

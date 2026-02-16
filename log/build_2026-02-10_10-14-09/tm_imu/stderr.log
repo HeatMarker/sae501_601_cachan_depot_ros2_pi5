@@ -1,0 +1,8 @@
+[01m[K/home/spinetti/ros2_ws/src/tm210_driver/external/serialib/serialib.cpp:[m[K In member function ‘[01m[Kint serialib::[01;32m[KreadStringNoTimeOut[m[K(char*, char, unsigned int)[m[K’:
+[01m[K/home/spinetti/ros2_ws/src/tm210_driver/external/serialib/serialib.cpp:576:21:[m[K [01;35m[Kwarning: [m[Kcomparison is always false due to limited range of data type [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wtype-limits-Wtype-limits]8;;[m[K]
+  576 |         if ([01;35m[KcharRead<0[m[K) return charRead;
+      |             [01;35m[K~~~~~~~~^~[m[K
+[01m[K/home/spinetti/ros2_ws/src/tm210_driver/external/serialib/serialib.cpp:[m[K In member function ‘[01m[Kint serialib::[01;32m[KreadString[m[K(char*, char, unsigned int, unsigned int)[m[K’:
+[01m[K/home/spinetti/ros2_ws/src/tm210_driver/external/serialib/serialib.cpp:639:25:[m[K [01;35m[Kwarning: [m[Kcomparison is always false due to limited range of data type [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wtype-limits-Wtype-limits]8;;[m[K]
+  639 |             if ([01;35m[KcharRead<0[m[K) return charRead;
+      |                 [01;35m[K~~~~~~~~^~[m[K

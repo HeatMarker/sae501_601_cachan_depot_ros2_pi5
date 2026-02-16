@@ -1,0 +1,18 @@
+running develop
+running egg_info
+writing stm32_bot.egg-info/PKG-INFO
+writing dependency_links to stm32_bot.egg-info/dependency_links.txt
+writing entry points to stm32_bot.egg-info/entry_points.txt
+writing requirements to stm32_bot.egg-info/requires.txt
+writing top-level names to stm32_bot.egg-info/top_level.txt
+reading manifest file 'stm32_bot.egg-info/SOURCES.txt'
+writing manifest file 'stm32_bot.egg-info/SOURCES.txt'
+running build_ext
+Creating /home/spinetti/ros2_ws/install/stm32_bot/lib/python3.12/site-packages/stm32-bot.egg-link (link to .)
+Installing stm32_bridge script to /home/spinetti/ros2_ws/install/stm32_bot/lib/stm32_bot
+Installing stm32_teleop script to /home/spinetti/ros2_ws/install/stm32_bot/lib/stm32_bot
+
+Installed /home/spinetti/ros2_ws/build/stm32_bot
+running symlink_data
+symbolically linking /home/spinetti/ros2_ws/build/stm32_bot/resource/stm32_bot -> /home/spinetti/ros2_ws/install/stm32_bot/share/ament_index/resource_index/packages
+symbolically linking /home/spinetti/ros2_ws/build/stm32_bot/package.xml -> /home/spinetti/ros2_ws/install/stm32_bot/share/stm32_bot

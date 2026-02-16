@@ -1,0 +1,17 @@
+[2.417s] Invoking command in '/home/spinetti/ros2_ws/build/spinetti_bringup': DEBUGINFOD_URLS=https://debuginfod.ubuntu.com PYTHONPATH=/home/spinetti/ros2_ws/build/spinetti_bringup/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/spinetti/ros2_ws/install/spinetti_bringup/lib/python3.12/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py develop --editable --build-directory /home/spinetti/ros2_ws/build/spinetti_bringup/build --no-deps symlink_data
+[2.965s] running develop
+[3.268s] running egg_info
+[3.296s] writing spinetti_bringup.egg-info/PKG-INFO
+[3.296s] writing dependency_links to spinetti_bringup.egg-info/dependency_links.txt
+[3.297s] writing entry points to spinetti_bringup.egg-info/entry_points.txt
+[3.297s] writing requirements to spinetti_bringup.egg-info/requires.txt
+[3.297s] writing top-level names to spinetti_bringup.egg-info/top_level.txt
+[3.355s] reading manifest file 'spinetti_bringup.egg-info/SOURCES.txt'
+[3.356s] writing manifest file 'spinetti_bringup.egg-info/SOURCES.txt'
+[3.395s] running build_ext
+[3.395s] Creating /home/spinetti/ros2_ws/install/spinetti_bringup/lib/python3.12/site-packages/spinetti-bringup.egg-link (link to .)
+[3.395s] Installing odom_converter script to /home/spinetti/ros2_ws/install/spinetti_bringup/lib/spinetti_bringup
+[3.395s] 
+[3.395s] Installed /home/spinetti/ros2_ws/build/spinetti_bringup
+[3.396s] running symlink_data
+[3.542s] Invoked command in '/home/spinetti/ros2_ws/build/spinetti_bringup' returned '0': DEBUGINFOD_URLS=https://debuginfod.ubuntu.com PYTHONPATH=/home/spinetti/ros2_ws/build/spinetti_bringup/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/spinetti/ros2_ws/install/spinetti_bringup/lib/python3.12/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py develop --editable --build-directory /home/spinetti/ros2_ws/build/spinetti_bringup/build --no-deps symlink_data

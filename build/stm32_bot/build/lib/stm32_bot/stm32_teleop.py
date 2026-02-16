@@ -1,107 +1,109 @@
 #!/usr/bin/env python3
-##
-# @file stm32_teleop.py
-# @brief Téléopération clavier SIMPLE.
-# @details Plus d'affichage dynamique, juste le contrôle.
-# @author SCHWAGER Jérôme
-# @date 2025
-
 import rclpy
 from rclpy.node import Node
 from geometry_msgs.msg import Twist
 import sys, select, termios, tty
 
-# --- CONFIGURATION CONSTANTES ---
-SPEED_STEP = 0.05    # +50 mm/s
-TURN_STEP = 0.3      # ~4 degrés
-MAX_SPEED = 1.0      # 1000 mm/s
-MAX_TURN = 1.0       # ~20 degrés
+# --- PARAMÈTRES ---
+MAX_SPEED = 3.0      # m/s
+MAX_TURN  = 1.0      # rad/s (~57 deg/s)
+STEP_SPEED = 0.2     # Incrément vitesse
+STEP_TURN  = 0.1     # Incrément virage
 
-## Menu d'affichage fixe
 msg = """
---------------------------------
-CONTROLE STM32 (KEEP-ALIVE)
---------------------------------
-z : Vitesse +50 mm/s
-s : Vitesse -50 mm/s
-q : Braquage +6 deg (Gauche)
-d : Braquage -6 deg (Droite)
+---------------------------
+PILOTAGE ROBOT STM32 (Fluide)
+---------------------------
+   Flèche HAUT   : Accélérer
+   Flèche BAS    : Ralentir / Reculer
+   Flèche GAUCHE : Braquer GAUCHE
+   Flèche DROITE : Braquer DROITE
 
-ESPACE : ARRET TOTAL (0)
-CTRL-C : Quitter
---------------------------------
-(Pas d'affichage de la vitesse en temps réel pour garder le terminal propre)
+   ESPACE        : STOP D'URGENCE (Recommandé)
+   CTRL-C        : Quitter
+---------------------------
 """
 
 class CustomTeleop(Node):
     def __init__(self):
-        super().__init__('stm32_teleop')
-        self.publisher_ = self.create_publisher(Twist, '/cmd_vel', 10)
-        self.speed = 0.0
-        self.turn = 0.0
+        super().__init__('custom_teleop')
+        self.pub = self.create_publisher(Twist, '/cmd_vel', 10)
+        self.target_speed = 0.0
+        self.target_turn = 0.0
+        # Sauvegarde des paramètres du terminal d'origine
         self.settings = termios.tcgetattr(sys.stdin)
 
-    def get_key(self):
-        """Lecture clavier non bloquante"""
-        tty.setraw(sys.stdin.fileno())
-        rlist, _, _ = select.select([sys.stdin], [], [], 0.1)
+    def getKey(self):
+        # Cette fonction ne bloque pas, elle regarde s'il y a une touche
+        # Si pas de touche en 0.05s, elle renvoie rien.
+        rlist, _, _ = select.select([sys.stdin], [], [], 0.05)
         if rlist:
             key = sys.stdin.read(1)
-        else:
-            key = ''
-        termios.tcsetattr(sys.stdin, termios.TCSADRAIN, self.settings)
-        return key
+            if key == '\x1b': # Si c'est une séquence d'échappement (flèches)
+                key += sys.stdin.read(2)
+            return key
+        return None
 
-    def pub_twist(self):
-        """Publie la commande ROS (Silencieux)"""
-        twist = Twist()
-        twist.linear.x = self.speed
-        twist.angular.z = self.turn
-        self.publisher_.publish(twist)
-        
-        # J'ai supprimé les print ici pour éviter le spam
+    def constrain(self, val, min_val, max_val):
+        return max(min(val, max_val), min_val)
 
     def run(self):
-        print(msg) # On affiche le menu une fois au début
+        print(msg)
         try:
+            # ON PASSE EN MODE RAW UNE SEULE FOIS ICI
+            tty.setraw(sys.stdin.fileno())
+            
             while True:
-                key = self.get_key()
+                key = self.getKey()
                 
-                # --- LOGIQUE ---
-                if key == 'z':
-                    self.speed = min(self.speed + SPEED_STEP, MAX_SPEED)
-                elif key == 's':
-                    self.speed = max(self.speed - SPEED_STEP, -MAX_SPEED)
-                elif key == 'd':
-                    self.turn = min(self.turn + TURN_STEP, MAX_TURN)
-                elif key == 'q':
-                    self.turn = max(self.turn - TURN_STEP, -MAX_TURN)
-                elif key == ' ':
-                    self.speed = 0.0
-                    self.turn = 0.0
-                elif key == '\x03': # CTRL+C
+                # --- LOGIQUE DE CONTRÔLE ---
+                if key == '\x1b[A':   # HAUT
+                    self.target_speed += STEP_SPEED
+                elif key == '\x1b[B': # BAS
+                    self.target_speed -= STEP_SPEED
+                elif key == '\x1b[D': # GAUCHE
+                    self.target_turn -= STEP_TURN
+                elif key == '\x1b[C': # DROITE
+                    self.target_turn += STEP_TURN
+                elif key == ' ':      # ESPACE
+                    self.target_speed = 0.0
+                    self.target_turn = 0.0
+                elif key == '\x03':   # CTRL-C
                     break
 
-                # --- MISE A JOUR ---
-                self.pub_twist()
+                # --- BORNES ---
+                self.target_speed = self.constrain(self.target_speed, -MAX_SPEED, MAX_SPEED)
+                self.target_turn  = self.constrain(self.target_turn, -MAX_TURN, MAX_TURN)
+
+                # --- PUBLICATION ---
+                twist = Twist()
+                twist.linear.x = float(self.target_speed)
+                twist.angular.z = float(self.target_turn)
+                self.pub.publish(twist)
+
+                # --- AFFICHAGE PROPRE ---
+                # \r ramène le curseur au début de la ligne sans sauter de ligne
+                sys.stdout.write(f"\rVitesse: {self.target_speed:.2f} m/s | Braquage: {self.target_turn:.2f}     ")
+                sys.stdout.flush()
 
         except Exception as e:
             print(e)
 
         finally:
-            # Stop propre
+            # ON STOPPE LE ROBOT AVANT DE QUITTER
             twist = Twist()
-            twist.linear.x = 0.0
-            twist.angular.z = 0.0
-            self.publisher_.publish(twist)
+            twist.linear.x = 0.0; twist.angular.z = 0.0
+            self.pub.publish(twist)
+            
+            # ON RESTAURE LE TERMINAL NORMALEMENT
             termios.tcsetattr(sys.stdin, termios.TCSADRAIN, self.settings)
-            print("\n")
+            print("\nSortie propre.")
 
 def main(args=None):
     rclpy.init(args=args)
-    node = CustomTeleop()
-    node.run()
-    node.destroy_node()
+    teleop = CustomTeleop()
+    teleop.run()
+    teleop.destroy_node()
     rclpy.shutdown()
 
 if __name__ == '__main__':

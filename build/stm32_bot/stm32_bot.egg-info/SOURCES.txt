@@ -8,6 +8,8 @@ setup.py
 ../../build/stm32_bot/stm32_bot.egg-info/requires.txt
 ../../build/stm32_bot/stm32_bot.egg-info/top_level.txt
 ../../build/stm32_bot/stm32_bot.egg-info/zip-safe
+config/ekf_config.yaml
+launch/robot_bringup.launch.py
 resource/stm32_bot
 stm32_bot/__init__.py
 stm32_bot/stm32_bridge.py

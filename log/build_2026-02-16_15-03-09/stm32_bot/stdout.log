@@ -1,0 +1,43 @@
+running egg_info
+creating ../../build/stm32_bot/stm32_bot.egg-info
+writing ../../build/stm32_bot/stm32_bot.egg-info/PKG-INFO
+writing dependency_links to ../../build/stm32_bot/stm32_bot.egg-info/dependency_links.txt
+writing entry points to ../../build/stm32_bot/stm32_bot.egg-info/entry_points.txt
+writing requirements to ../../build/stm32_bot/stm32_bot.egg-info/requires.txt
+writing top-level names to ../../build/stm32_bot/stm32_bot.egg-info/top_level.txt
+writing manifest file '../../build/stm32_bot/stm32_bot.egg-info/SOURCES.txt'
+reading manifest file '../../build/stm32_bot/stm32_bot.egg-info/SOURCES.txt'
+writing manifest file '../../build/stm32_bot/stm32_bot.egg-info/SOURCES.txt'
+running build
+running build_py
+creating /home/spinetti/ros2_ws/build/stm32_bot/build
+creating /home/spinetti/ros2_ws/build/stm32_bot/build/lib
+creating /home/spinetti/ros2_ws/build/stm32_bot/build/lib/stm32_bot
+copying stm32_bot/__init__.py -> /home/spinetti/ros2_ws/build/stm32_bot/build/lib/stm32_bot
+copying stm32_bot/stm32_bridge.py -> /home/spinetti/ros2_ws/build/stm32_bot/build/lib/stm32_bot
+copying stm32_bot/stm32_teleop.py -> /home/spinetti/ros2_ws/build/stm32_bot/build/lib/stm32_bot
+running install
+running install_lib
+creating /home/spinetti/ros2_ws/install/stm32_bot/lib/python3.12/site-packages/stm32_bot
+copying /home/spinetti/ros2_ws/build/stm32_bot/build/lib/stm32_bot/__init__.py -> /home/spinetti/ros2_ws/install/stm32_bot/lib/python3.12/site-packages/stm32_bot
+copying /home/spinetti/ros2_ws/build/stm32_bot/build/lib/stm32_bot/stm32_bridge.py -> /home/spinetti/ros2_ws/install/stm32_bot/lib/python3.12/site-packages/stm32_bot
+copying /home/spinetti/ros2_ws/build/stm32_bot/build/lib/stm32_bot/stm32_teleop.py -> /home/spinetti/ros2_ws/install/stm32_bot/lib/python3.12/site-packages/stm32_bot
+byte-compiling /home/spinetti/ros2_ws/install/stm32_bot/lib/python3.12/site-packages/stm32_bot/__init__.py to __init__.cpython-312.pyc
+byte-compiling /home/spinetti/ros2_ws/install/stm32_bot/lib/python3.12/site-packages/stm32_bot/stm32_bridge.py to stm32_bridge.cpython-312.pyc
+byte-compiling /home/spinetti/ros2_ws/install/stm32_bot/lib/python3.12/site-packages/stm32_bot/stm32_teleop.py to stm32_teleop.cpython-312.pyc
+running install_data
+creating /home/spinetti/ros2_ws/install/stm32_bot/share/ament_index
+creating /home/spinetti/ros2_ws/install/stm32_bot/share/ament_index/resource_index
+creating /home/spinetti/ros2_ws/install/stm32_bot/share/ament_index/resource_index/packages
+copying resource/stm32_bot -> /home/spinetti/ros2_ws/install/stm32_bot/share/ament_index/resource_index/packages
+copying package.xml -> /home/spinetti/ros2_ws/install/stm32_bot/share/stm32_bot
+creating /home/spinetti/ros2_ws/install/stm32_bot/share/stm32_bot/launch
+copying launch/robot_bringup.launch.py -> /home/spinetti/ros2_ws/install/stm32_bot/share/stm32_bot/launch
+creating /home/spinetti/ros2_ws/install/stm32_bot/share/stm32_bot/config
+copying config/ekf_config.yaml -> /home/spinetti/ros2_ws/install/stm32_bot/share/stm32_bot/config
+running install_egg_info
+Copying ../../build/stm32_bot/stm32_bot.egg-info to /home/spinetti/ros2_ws/install/stm32_bot/lib/python3.12/site-packages/stm32_bot-0.0.0-py3.12.egg-info
+running install_scripts
+Installing stm32_bridge script to /home/spinetti/ros2_ws/install/stm32_bot/lib/stm32_bot
+Installing stm32_teleop script to /home/spinetti/ros2_ws/install/stm32_bot/lib/stm32_bot
+writing list of installed files to '/home/spinetti/ros2_ws/build/stm32_bot/install.log'

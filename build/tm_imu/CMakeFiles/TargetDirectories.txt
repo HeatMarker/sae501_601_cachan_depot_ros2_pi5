@@ -1,0 +1,10 @@
+/home/spinetti/ros2_ws/build/tm_imu/CMakeFiles/uninstall.dir
+/home/spinetti/ros2_ws/build/tm_imu/CMakeFiles/tm_imu_uninstall.dir
+/home/spinetti/ros2_ws/build/tm_imu/CMakeFiles/transducer_m_imu.dir
+/home/spinetti/ros2_ws/build/tm_imu/CMakeFiles/test.dir
+/home/spinetti/ros2_ws/build/tm_imu/CMakeFiles/edit_cache.dir
+/home/spinetti/ros2_ws/build/tm_imu/CMakeFiles/rebuild_cache.dir
+/home/spinetti/ros2_ws/build/tm_imu/CMakeFiles/list_install_components.dir
+/home/spinetti/ros2_ws/build/tm_imu/CMakeFiles/install.dir
+/home/spinetti/ros2_ws/build/tm_imu/CMakeFiles/install/local.dir
+/home/spinetti/ros2_ws/build/tm_imu/CMakeFiles/install/strip.dir
