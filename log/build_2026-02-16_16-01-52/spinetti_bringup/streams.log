@@ -1,0 +1,21 @@
+[2.466s] Invoking command in '/home/spinetti/ros2_ws/src/spinetti_bringup': DEBUGINFOD_URLS=https://debuginfod.ubuntu.com PYTHONPATH=/home/spinetti/ros2_ws/build/spinetti_bringup/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/spinetti/ros2_ws/install/spinetti_bringup/lib/python3.12/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base ../../build/spinetti_bringup build --build-base /home/spinetti/ros2_ws/build/spinetti_bringup/build install --record /home/spinetti/ros2_ws/build/spinetti_bringup/install.log --single-version-externally-managed install_data
+[2.921s] running egg_info
+[2.955s] writing ../../build/spinetti_bringup/spinetti_bringup.egg-info/PKG-INFO
+[2.955s] writing dependency_links to ../../build/spinetti_bringup/spinetti_bringup.egg-info/dependency_links.txt
+[2.955s] writing entry points to ../../build/spinetti_bringup/spinetti_bringup.egg-info/entry_points.txt
+[2.955s] writing requirements to ../../build/spinetti_bringup/spinetti_bringup.egg-info/requires.txt
+[2.955s] writing top-level names to ../../build/spinetti_bringup/spinetti_bringup.egg-info/top_level.txt
+[3.014s] reading manifest file '../../build/spinetti_bringup/spinetti_bringup.egg-info/SOURCES.txt'
+[3.015s] writing manifest file '../../build/spinetti_bringup/spinetti_bringup.egg-info/SOURCES.txt'
+[3.016s] running build
+[3.016s] running build_py
+[3.016s] running install
+[3.027s] running install_lib
+[3.057s] running install_data
+[3.058s] running install_egg_info
+[3.089s] removing '/home/spinetti/ros2_ws/install/spinetti_bringup/lib/python3.12/site-packages/spinetti_bringup-0.0.0-py3.12.egg-info' (and everything under it)
+[3.090s] Copying ../../build/spinetti_bringup/spinetti_bringup.egg-info to /home/spinetti/ros2_ws/install/spinetti_bringup/lib/python3.12/site-packages/spinetti_bringup-0.0.0-py3.12.egg-info
+[3.093s] running install_scripts
+[3.299s] Installing odom_converter script to /home/spinetti/ros2_ws/install/spinetti_bringup/lib/spinetti_bringup
+[3.299s] writing list of installed files to '/home/spinetti/ros2_ws/build/spinetti_bringup/install.log'
+[3.402s] Invoked command in '/home/spinetti/ros2_ws/src/spinetti_bringup' returned '0': DEBUGINFOD_URLS=https://debuginfod.ubuntu.com PYTHONPATH=/home/spinetti/ros2_ws/build/spinetti_bringup/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/spinetti/ros2_ws/install/spinetti_bringup/lib/python3.12/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base ../../build/spinetti_bringup build --build-base /home/spinetti/ros2_ws/build/spinetti_bringup/build install --record /home/spinetti/ros2_ws/build/spinetti_bringup/install.log --single-version-externally-managed install_data

@@ -1,0 +1,50 @@
+slam_toolbox:
+  ros__parameters:
+    # --- BASIQUES ---
+    solver_plugin: solver_plugins::CeresSolver
+    ceres_linear_solver: SPARSE_NORMAL_CHOLESKY
+    ceres_preconditioner: SCHUR_JACOBI
+    ceres_trust_strategy: LEVENBERG_MARQUARDT
+    ceres_dogleg_type: TRADITIONAL_DOGLEG
+    use_map_saver: true
+    mode: mapping # Mode cartographie
+
+    # --- REGLAGES ROBOT ---
+    odom_frame: odom
+    map_frame: map
+    base_frame: base_link
+    scan_topic: /scan
+
+    # --- OPTIMISATION PERFORMANCE (Piste Rapide) ---
+    transform_publish_period: 0.05 # 20Hz update map -> odom
+    map_update_interval: 1.0       # Mise à jour de la carte toutes les secondes
+    resolution: 0.05               # 5cm par pixel (Suffisant pour une piste)
+    max_laser_range: 12.0          # Portée utile du LD06
+    minimum_time_interval: 0.1     # Ne pas traiter les scans trop proches (gain CPU)
+    transform_timeout: 0.5         # Tolérance aux lags
+
+    # --- GESTION DE LA "MAUVAISE ODOMETRIE" ---
+    # C'est ici qu'on aide l'EKF qui dérive
+    minimum_travel_distance: 0.1
+    minimum_travel_heading: 0.1
+
+    # SCAN MATCHING (Le cœur du système)
+    # Si ton odométrie dit que tu as avancé de 1m mais que tu as glissé,
+    # ces paramètres permettent au SLAM de chercher les murs un peu plus loin.
+    correlation_search_space_dimension: 0.5  # Cherche à +/- 0.5m autour de l'estimé
+    correlation_search_space_resolution: 0.01
+    correlation_search_space_smear_deviation: 0.1
+
+    # --- LOOP CLOSURE (Fermeture de boucle) ---
+    # Pour recoller le début et la fin de la piste
+    do_loop_closing: true
+    loop_search_space_dimension: 8.0 # Cherche large quand on repasse au début
+    loop_search_space_resolution: 0.05
+    loop_match_minimum_chain_size: 10
+    loop_match_maximum_variance_coarse: 3.0
+    loop_match_minimum_response_coarse: 0.35
+    loop_match_minimum_response_fine: 0.45
+
+    qos_overrides:
+      /scan:
+        reliability: "best_effort"

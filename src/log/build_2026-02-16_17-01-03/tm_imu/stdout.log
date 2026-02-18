@@ -1,0 +1,62 @@
+-- The C compiler identification is GNU 13.3.0
+-- The CXX compiler identification is GNU 13.3.0
+-- Detecting C compiler ABI info
+-- Detecting C compiler ABI info - done
+-- Check for working C compiler: /usr/bin/cc - skipped
+-- Detecting C compile features
+-- Detecting C compile features - done
+-- Detecting CXX compiler ABI info
+-- Detecting CXX compiler ABI info - done
+-- Check for working CXX compiler: /usr/bin/c++ - skipped
+-- Detecting CXX compile features
+-- Detecting CXX compile features - done
+-- Found ament_cmake: 2.5.5 (/opt/ros/jazzy/share/ament_cmake/cmake)
+-- Found Python3: /usr/bin/python3 (found version "3.12.3") found components: Interpreter 
+-- Found rclcpp: 28.1.16 (/opt/ros/jazzy/share/rclcpp/cmake)
+-- Found rosidl_generator_c: 4.6.7 (/opt/ros/jazzy/share/rosidl_generator_c/cmake)
+-- Found rosidl_generator_cpp: 4.6.7 (/opt/ros/jazzy/share/rosidl_generator_cpp/cmake)
+-- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c
+-- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp
+-- Found rmw_implementation_cmake: 7.3.3 (/opt/ros/jazzy/share/rmw_implementation_cmake/cmake)
+-- Found rmw_fastrtps_cpp: 8.4.3 (/opt/ros/jazzy/share/rmw_fastrtps_cpp/cmake)
+-- Found OpenSSL: /usr/lib/aarch64-linux-gnu/libcrypto.so (found version "3.0.13")  
+-- Found FastRTPS: /opt/ros/jazzy/include (Required is at least version "2.13") 
+-- Using RMW implementation 'rmw_fastrtps_cpp' as default
+-- Found std_msgs: 5.3.6 (/opt/ros/jazzy/share/std_msgs/cmake)
+-- Found sensor_msgs: 5.3.6 (/opt/ros/jazzy/share/sensor_msgs/cmake)
+-- Found tf2: 0.36.19 (/opt/ros/jazzy/share/tf2/cmake)
+-- Found tf2_ros: 0.36.19 (/opt/ros/jazzy/share/tf2_ros/cmake)
+-- Configuring done (3.9s)
+-- Generating done (0.1s)
+-- Build files have been written to: /home/spinetti/ros2_ws/src/build/tm_imu
+[ 33%] [32mBuilding CXX object CMakeFiles/transducer_m_imu.dir/src/tm_imu_node.cpp.o[0m
+[ 33%] [32mBuilding CXX object CMakeFiles/transducer_m_imu.dir/external/serialib/serialib.cpp.o[0m
+[ 50%] [32mBuilding CXX object CMakeFiles/transducer_m_imu.dir/external/EasyProfile/EasyObjectDictionary.cpp.o[0m
+[ 66%] [32mBuilding CXX object CMakeFiles/transducer_m_imu.dir/external/EasyProfile/EasyProfile.cpp.o[0m
+[ 83%] [32mBuilding CXX object CMakeFiles/transducer_m_imu.dir/external/EasyProfile/EasyProtocol.cpp.o[0m
+[100%] [32m[1mLinking CXX executable transducer_m_imu[0m
+[100%] Built target transducer_m_imu
+-- Install configuration: ""
+-- Installing: /home/spinetti/ros2_ws/src/install/tm_imu/lib/tm_imu/transducer_m_imu
+-- Set non-toolchain portion of runtime path of "/home/spinetti/ros2_ws/src/install/tm_imu/lib/tm_imu/transducer_m_imu" to ""
+-- Installing: /home/spinetti/ros2_ws/src/install/tm_imu/share/tm_imu//launch
+-- Installing: /home/spinetti/ros2_ws/src/install/tm_imu/share/tm_imu//launch/imu.launch.py
+-- Installing: /home/spinetti/ros2_ws/src/install/tm_imu/share/tm_imu//launch/__pycache__
+-- Installing: /home/spinetti/ros2_ws/src/install/tm_imu/share/tm_imu//launch/__pycache__/imu.launch.cpython-312.pyc
+-- Installing: /home/spinetti/ros2_ws/src/install/tm_imu/share/tm_imu//config
+-- Installing: /home/spinetti/ros2_ws/src/install/tm_imu/share/tm_imu//config/params.yaml
+-- Installing: /home/spinetti/ros2_ws/src/install/tm_imu/share/ament_index/resource_index/package_run_dependencies/tm_imu
+-- Installing: /home/spinetti/ros2_ws/src/install/tm_imu/share/ament_index/resource_index/parent_prefix_path/tm_imu
+-- Installing: /home/spinetti/ros2_ws/src/install/tm_imu/share/tm_imu/environment/ament_prefix_path.sh
+-- Installing: /home/spinetti/ros2_ws/src/install/tm_imu/share/tm_imu/environment/ament_prefix_path.dsv
+-- Installing: /home/spinetti/ros2_ws/src/install/tm_imu/share/tm_imu/environment/path.sh
+-- Installing: /home/spinetti/ros2_ws/src/install/tm_imu/share/tm_imu/environment/path.dsv
+-- Installing: /home/spinetti/ros2_ws/src/install/tm_imu/share/tm_imu/local_setup.bash
+-- Installing: /home/spinetti/ros2_ws/src/install/tm_imu/share/tm_imu/local_setup.sh
+-- Installing: /home/spinetti/ros2_ws/src/install/tm_imu/share/tm_imu/local_setup.zsh
+-- Installing: /home/spinetti/ros2_ws/src/install/tm_imu/share/tm_imu/local_setup.dsv
+-- Installing: /home/spinetti/ros2_ws/src/install/tm_imu/share/tm_imu/package.dsv
+-- Installing: /home/spinetti/ros2_ws/src/install/tm_imu/share/ament_index/resource_index/packages/tm_imu
+-- Installing: /home/spinetti/ros2_ws/src/install/tm_imu/share/tm_imu/cmake/tm_imuConfig.cmake
+-- Installing: /home/spinetti/ros2_ws/src/install/tm_imu/share/tm_imu/cmake/tm_imuConfig-version.cmake
+-- Installing: /home/spinetti/ros2_ws/src/install/tm_imu/share/tm_imu/package.xml

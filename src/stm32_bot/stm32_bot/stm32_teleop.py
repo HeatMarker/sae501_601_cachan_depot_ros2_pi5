@@ -2,106 +2,137 @@
 import rclpy
 from rclpy.node import Node
 from geometry_msgs.msg import Twist
-import sys, select, termios, tty
+import sys, select, termios, tty, time
 
-# --- PARAMÈTRES ---
-MAX_SPEED = 3.0      # m/s
-MAX_TURN  = 1.0      # rad/s (~57 deg/s)
-STEP_SPEED = 0.2     # Incrément vitesse
-STEP_TURN  = 0.1     # Incrément virage
+# --- RÉGLAGES PHYSIQUES ---
+MAX_SPEED = 3.0       # m/s
+MAX_TURN  = 1.0       # rad/s
+ACCEL_RATE = 0.01     # Plus nerveux à l'accélération
+DECEL_RATE = 0.01     # Frein moteur
+TURN_RATE  = 0.01     # Vitesse de braquage
+RETURN_RATE = 0.01    # Retour au centre rapide
+
+LOOP_HZ = 50          
+KEY_TIMEOUT = 0.6     # Pour la détection de touche enfoncée
+STOP_TIMEOUT = 3.0    # Temps avant décélération automatique (inactivité totale)
 
 msg = """
----------------------------
-PILOTAGE ROBOT STM32 (Fluide)
----------------------------
-   Flèche HAUT   : Accélérer
-   Flèche BAS    : Ralentir / Reculer
-   Flèche GAUCHE : Braquer GAUCHE
-   Flèche DROITE : Braquer DROITE
+-----------------------------------------
+PILOTAGE ARCADE FIXÉ (Mode Régulateur)
+-----------------------------------------
+   Maintenir HAUT   : Accélérer
+   Maintenir BAS    : Reculer / Freiner
+   Maintenir GAUCHE : Braquer GAUCHE
+   Maintenir DROITE : Braquer DROITE
 
-   ESPACE        : STOP D'URGENCE (Recommandé)
-   CTRL-C        : Quitter
----------------------------
+   LÂCHER TOUT      : Maintient la vitesse pendant 3s
+   ESPACE           : STOP D'URGENCE (Vitesse -> 0)
+   CTRL-C           : Quitter
+-----------------------------------------
 """
 
-class CustomTeleop(Node):
+class TrackmaniaTeleop(Node):
     def __init__(self):
-        super().__init__('custom_teleop')
+        super().__init__('trackmania_teleop')
         self.pub = self.create_publisher(Twist, '/cmd_vel', 10)
-        self.target_speed = 0.0
-        self.target_turn = 0.0
-        # Sauvegarde des paramètres du terminal d'origine
+        self.current_speed = 0.0
+        self.current_turn = 0.0
         self.settings = termios.tcgetattr(sys.stdin)
+        self.last_key_time = time.time()
+        self.active_key = None
 
     def getKey(self):
-        # Cette fonction ne bloque pas, elle regarde s'il y a une touche
-        # Si pas de touche en 0.05s, elle renvoie rien.
-        rlist, _, _ = select.select([sys.stdin], [], [], 0.05)
-        if rlist:
-            key = sys.stdin.read(1)
-            if key == '\x1b': # Si c'est une séquence d'échappement (flèches)
-                key += sys.stdin.read(2)
-            return key
-        return None
+        key = None
+        while True:
+            rlist, _, _ = select.select([sys.stdin], [], [], 0.0)
+            if rlist:
+                s = sys.stdin.read(1)
+                if s == '\x1b':
+                    s += sys.stdin.read(2)
+                key = s
+            else:
+                break
+        return key
 
-    def constrain(self, val, min_val, max_val):
-        return max(min(val, max_val), min_val)
+    def approach(self, current, target, rate):
+        if current < target:
+            return min(current + rate, target)
+        elif current > target:
+            return max(current - rate, target)
+        return target
 
     def run(self):
         print(msg)
         try:
-            # ON PASSE EN MODE RAW UNE SEULE FOIS ICI
             tty.setraw(sys.stdin.fileno())
             
-            while True:
+            while rclpy.ok():
                 key = self.getKey()
-                
-                # --- LOGIQUE DE CONTRÔLE ---
-                if key == '\x1b[A':   # HAUT
-                    self.target_speed += STEP_SPEED
-                elif key == '\x1b[B': # BAS
-                    self.target_speed -= STEP_SPEED
-                elif key == '\x1b[D': # GAUCHE
-                    self.target_turn -= STEP_TURN
-                elif key == '\x1b[C': # DROITE
-                    self.target_turn += STEP_TURN
-                elif key == ' ':      # ESPACE
-                    self.target_speed = 0.0
-                    self.target_turn = 0.0
-                elif key == '\x03':   # CTRL-C
-                    break
+                now = time.time()
 
-                # --- BORNES ---
-                self.target_speed = self.constrain(self.target_speed, -MAX_SPEED, MAX_SPEED)
-                self.target_turn  = self.constrain(self.target_turn, -MAX_TURN, MAX_TURN)
+                if key:
+                    if key == '\x03': break 
+                    self.active_key = key
+                    self.last_key_time = now # On réinitialise le chrono à chaque appui
+                
+                # Touche active (enjambe la latence clavier)
+                is_pressed = (now - self.last_key_time) < KEY_TIMEOUT
+                key_to_process = self.active_key if is_pressed else None
+
+                # --- GESTION VITESSE (LOGIQUE MODIFIÉE) ---
+                if key_to_process == '\x1b[A':   # HAUT
+                    self.current_speed = self.approach(self.current_speed, MAX_SPEED, ACCEL_RATE)
+                elif key_to_process == '\x1b[B': # BAS
+                    self.current_speed = self.approach(self.current_speed, -MAX_SPEED, ACCEL_RATE)
+                else:
+                    # Si aucune touche n'est pressée, on vérifie le délai d'inactivité totale
+                    if (now - self.last_key_time) > STOP_TIMEOUT:
+                        # Plus de 3s sans rien toucher : on décélère vers 0
+                        self.current_speed = self.approach(self.current_speed, 0.0, DECEL_RATE)
+                    else:
+                        # Entre 0.6s et 3s : on maintient la vitesse actuelle
+                        pass
+
+                # --- GESTION DIRECTION (CONSERVÉE) ---
+                if key_to_process == '\x1b[D':   # GAUCHE
+                    self.current_turn = self.approach(self.current_turn, -MAX_TURN, TURN_RATE)
+                elif key_to_process == '\x1b[C': # DROITE
+                    self.current_turn = self.approach(self.current_turn, +MAX_TURN, TURN_RATE)
+                else:
+                    # La direction revient toujours au centre quand on lâche
+                    self.current_turn = self.approach(self.current_turn, 0.0, RETURN_RATE)
+
+                # --- SÉCURITÉ ESPACE ---
+                if key == ' ':
+                    self.current_speed = 0.0
+                    self.current_turn = 0.0
 
                 # --- PUBLICATION ---
                 twist = Twist()
-                twist.linear.x = float(self.target_speed)
-                twist.angular.z = float(self.target_turn)
+                twist.linear.x = float(self.current_speed)
+                twist.angular.z = float(self.current_turn)
                 self.pub.publish(twist)
 
-                # --- AFFICHAGE PROPRE ---
-                # \r ramène le curseur au début de la ligne sans sauter de ligne
-                sys.stdout.write(f"\rVitesse: {self.target_speed:.2f} m/s | Braquage: {self.target_turn:.2f}     ")
+                sys.stdout.write(f"\rVitesse: {self.current_speed:+0.2f} | Direction: {self.current_turn:+0.2f}   ")
                 sys.stdout.flush()
 
-        except Exception as e:
-            print(e)
+                time.sleep(1/LOOP_HZ)
 
+        except Exception as e:
+            print(f"\nErreur: {e}")
         finally:
-            # ON STOPPE LE ROBOT AVANT DE QUITTER
-            twist = Twist()
-            twist.linear.x = 0.0; twist.angular.z = 0.0
-            self.pub.publish(twist)
-            
-            # ON RESTAURE LE TERMINAL NORMALEMENT
-            termios.tcsetattr(sys.stdin, termios.TCSADRAIN, self.settings)
-            print("\nSortie propre.")
+            self.stop_robot()
+
+    def stop_robot(self):
+        twist = Twist()
+        twist.linear.x = 0.0; twist.angular.z = 0.0
+        self.pub.publish(twist)
+        termios.tcsetattr(sys.stdin, termios.TCSADRAIN, self.settings)
+        print("\nSortie propre.")
 
 def main(args=None):
     rclpy.init(args=args)
-    teleop = CustomTeleop()
+    teleop = TrackmaniaTeleop()
     teleop.run()
     teleop.destroy_node()
     rclpy.shutdown()

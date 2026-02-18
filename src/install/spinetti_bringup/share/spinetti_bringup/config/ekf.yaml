@@ -1,0 +1,30 @@
+ekf_filter_node:
+  ros__parameters:
+    frequency: 30.0
+    sensor_timeout: 0.1
+    two_d_mode: true
+    publish_tf: true
+
+    map_frame: map
+    odom_frame: odom
+    base_link_frame: base_link
+    world_frame: odom
+
+    publish_tf: true
+
+    # On utilise notre nouveau message Twist
+    twist0: /velocity/ackermann
+    twist0_config: [false, false, false, # x, y, z
+                  false, false, false, # roll, pitch, yaw
+                  true,  false, false, # vx, vy, vz (on prend vx)
+                  false, false, true,  # vroll, vpitch, vyaw
+                  false, false, false] # ax, ay, az
+
+    imu0: /imu/data
+    imu0_config: [false, false, false, # x, y, z
+                  false, false, false, # roll, pitch, yaw
+                  false,  false, false, # vx, vy, vz (on prend vx)
+                  false, false, true,  # vroll, vpitch, vyaw (on prend vyaw)
+                  false, false, false] # ax, ay, az
+    
+    imu0_remove_gravitationnal_acceleration: true

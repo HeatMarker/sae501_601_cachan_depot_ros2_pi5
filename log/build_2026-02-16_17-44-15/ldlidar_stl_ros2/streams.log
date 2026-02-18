@@ -1,0 +1,31 @@
+[0.097s] Invoking command in '/home/spinetti/ros2_ws/build/ldlidar_stl_ros2': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/spinetti/ros2_ws/install/stm32_bot:/home/spinetti/ros2_ws/install/spinetti_bringup:/home/spinetti/install/stm32_bot:/opt/ros/jazzy DEBUGINFOD_URLS=https://debuginfod.ubuntu.com /usr/bin/cmake --build /home/spinetti/ros2_ws/build/ldlidar_stl_ros2 -- -j4 -l4
+[2.345s] [100%] Built target ldlidar_stl_ros2_node
+[2.363s] Invoked command in '/home/spinetti/ros2_ws/build/ldlidar_stl_ros2' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/spinetti/ros2_ws/install/stm32_bot:/home/spinetti/ros2_ws/install/spinetti_bringup:/home/spinetti/install/stm32_bot:/opt/ros/jazzy DEBUGINFOD_URLS=https://debuginfod.ubuntu.com /usr/bin/cmake --build /home/spinetti/ros2_ws/build/ldlidar_stl_ros2 -- -j4 -l4
+[2.404s] Invoking command in '/home/spinetti/ros2_ws/build/ldlidar_stl_ros2': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/spinetti/ros2_ws/install/stm32_bot:/home/spinetti/ros2_ws/install/spinetti_bringup:/home/spinetti/install/stm32_bot:/opt/ros/jazzy DEBUGINFOD_URLS=https://debuginfod.ubuntu.com /usr/bin/cmake --install /home/spinetti/ros2_ws/build/ldlidar_stl_ros2
+[2.444s] -- Install configuration: ""
+[2.451s] -- Up-to-date: /home/spinetti/ros2_ws/install/ldlidar_stl_ros2/lib/ldlidar_stl_ros2/ldlidar_stl_ros2_node
+[2.452s] -- Up-to-date: /home/spinetti/ros2_ws/install/ldlidar_stl_ros2/share/ldlidar_stl_ros2//launch
+[2.452s] -- Up-to-date: /home/spinetti/ros2_ws/install/ldlidar_stl_ros2/share/ldlidar_stl_ros2//launch/stl27l.launch.py
+[2.455s] -- Up-to-date: /home/spinetti/ros2_ws/install/ldlidar_stl_ros2/share/ldlidar_stl_ros2//launch/viewer_ld06.launch.py
+[2.456s] -- Up-to-date: /home/spinetti/ros2_ws/install/ldlidar_stl_ros2/share/ldlidar_stl_ros2//launch/ld06.launch.py
+[2.456s] -- Up-to-date: /home/spinetti/ros2_ws/install/ldlidar_stl_ros2/share/ldlidar_stl_ros2//launch/ld19.launch.py
+[2.456s] -- Up-to-date: /home/spinetti/ros2_ws/install/ldlidar_stl_ros2/share/ldlidar_stl_ros2//launch/viewer_ld19.launch.py
+[2.456s] -- Up-to-date: /home/spinetti/ros2_ws/install/ldlidar_stl_ros2/share/ldlidar_stl_ros2//launch/viewer_stl27l.launch.py
+[2.456s] -- Up-to-date: /home/spinetti/ros2_ws/install/ldlidar_stl_ros2/share/ldlidar_stl_ros2//rviz2
+[2.456s] -- Up-to-date: /home/spinetti/ros2_ws/install/ldlidar_stl_ros2/share/ldlidar_stl_ros2//rviz2/ldlidar.rviz
+[2.457s] -- Up-to-date: /home/spinetti/ros2_ws/install/ldlidar_stl_ros2/share/ament_index/resource_index/package_run_dependencies/ldlidar_stl_ros2
+[2.457s] -- Up-to-date: /home/spinetti/ros2_ws/install/ldlidar_stl_ros2/share/ament_index/resource_index/parent_prefix_path/ldlidar_stl_ros2
+[2.457s] -- Up-to-date: /home/spinetti/ros2_ws/install/ldlidar_stl_ros2/share/ldlidar_stl_ros2/environment/ament_prefix_path.sh
+[2.457s] -- Up-to-date: /home/spinetti/ros2_ws/install/ldlidar_stl_ros2/share/ldlidar_stl_ros2/environment/ament_prefix_path.dsv
+[2.457s] -- Up-to-date: /home/spinetti/ros2_ws/install/ldlidar_stl_ros2/share/ldlidar_stl_ros2/environment/path.sh
+[2.458s] -- Up-to-date: /home/spinetti/ros2_ws/install/ldlidar_stl_ros2/share/ldlidar_stl_ros2/environment/path.dsv
+[2.459s] -- Up-to-date: /home/spinetti/ros2_ws/install/ldlidar_stl_ros2/share/ldlidar_stl_ros2/local_setup.bash
+[2.459s] -- Up-to-date: /home/spinetti/ros2_ws/install/ldlidar_stl_ros2/share/ldlidar_stl_ros2/local_setup.sh
+[2.459s] -- Up-to-date: /home/spinetti/ros2_ws/install/ldlidar_stl_ros2/share/ldlidar_stl_ros2/local_setup.zsh
+[2.459s] -- Up-to-date: /home/spinetti/ros2_ws/install/ldlidar_stl_ros2/share/ldlidar_stl_ros2/local_setup.dsv
+[2.459s] -- Installing: /home/spinetti/ros2_ws/install/ldlidar_stl_ros2/share/ldlidar_stl_ros2/package.dsv
+[2.459s] -- Up-to-date: /home/spinetti/ros2_ws/install/ldlidar_stl_ros2/share/ament_index/resource_index/packages/ldlidar_stl_ros2
+[2.460s] -- Up-to-date: /home/spinetti/ros2_ws/install/ldlidar_stl_ros2/share/ldlidar_stl_ros2/cmake/ldlidar_stl_ros2Config.cmake
+[2.460s] -- Up-to-date: /home/spinetti/ros2_ws/install/ldlidar_stl_ros2/share/ldlidar_stl_ros2/cmake/ldlidar_stl_ros2Config-version.cmake
+[2.466s] -- Up-to-date: /home/spinetti/ros2_ws/install/ldlidar_stl_ros2/share/ldlidar_stl_ros2/package.xml
+[2.478s] Invoked command in '/home/spinetti/ros2_ws/build/ldlidar_stl_ros2' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/spinetti/ros2_ws/install/stm32_bot:/home/spinetti/ros2_ws/install/spinetti_bringup:/home/spinetti/install/stm32_bot:/opt/ros/jazzy DEBUGINFOD_URLS=https://debuginfod.ubuntu.com /usr/bin/cmake --install /home/spinetti/ros2_ws/build/ldlidar_stl_ros2

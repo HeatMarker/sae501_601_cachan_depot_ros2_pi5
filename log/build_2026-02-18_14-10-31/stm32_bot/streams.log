@@ -1,0 +1,25 @@
+[1.199s] Invoking command in '/home/spinetti/ros2_ws/src/stm32_bot': DEBUGINFOD_URLS=https://debuginfod.ubuntu.com PYTHONPATH=/home/spinetti/ros2_ws/build/stm32_bot/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/spinetti/ros2_ws/install/stm32_bot/lib/python3.12/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base ../../build/stm32_bot build --build-base /home/spinetti/ros2_ws/build/stm32_bot/build install --record /home/spinetti/ros2_ws/build/stm32_bot/install.log --single-version-externally-managed install_data
+[1.567s] running egg_info
+[1.594s] writing ../../build/stm32_bot/stm32_bot.egg-info/PKG-INFO
+[1.595s] writing dependency_links to ../../build/stm32_bot/stm32_bot.egg-info/dependency_links.txt
+[1.595s] writing entry points to ../../build/stm32_bot/stm32_bot.egg-info/entry_points.txt
+[1.595s] writing requirements to ../../build/stm32_bot/stm32_bot.egg-info/requires.txt
+[1.595s] writing top-level names to ../../build/stm32_bot/stm32_bot.egg-info/top_level.txt
+[1.650s] reading manifest file '../../build/stm32_bot/stm32_bot.egg-info/SOURCES.txt'
+[1.651s] writing manifest file '../../build/stm32_bot/stm32_bot.egg-info/SOURCES.txt'
+[1.651s] running build
+[1.652s] running build_py
+[1.652s] running install
+[1.661s] running install_lib
+[1.689s] running install_data
+[1.689s] creating /home/spinetti/ros2_ws/install/stm32_bot/share/stm32_bot/maps
+[1.689s] copying maps/my_track.yaml -> /home/spinetti/ros2_ws/install/stm32_bot/share/stm32_bot/maps
+[1.690s] copying maps/my_track.pgm -> /home/spinetti/ros2_ws/install/stm32_bot/share/stm32_bot/maps
+[1.690s] running install_egg_info
+[1.719s] removing '/home/spinetti/ros2_ws/install/stm32_bot/lib/python3.12/site-packages/stm32_bot-0.0.0-py3.12.egg-info' (and everything under it)
+[1.719s] Copying ../../build/stm32_bot/stm32_bot.egg-info to /home/spinetti/ros2_ws/install/stm32_bot/lib/python3.12/site-packages/stm32_bot-0.0.0-py3.12.egg-info
+[1.720s] running install_scripts
+[1.907s] Installing stm32_bridge script to /home/spinetti/ros2_ws/install/stm32_bot/lib/stm32_bot
+[1.907s] Installing stm32_teleop script to /home/spinetti/ros2_ws/install/stm32_bot/lib/stm32_bot
+[1.907s] writing list of installed files to '/home/spinetti/ros2_ws/build/stm32_bot/install.log'
+[1.983s] Invoked command in '/home/spinetti/ros2_ws/src/stm32_bot' returned '0': DEBUGINFOD_URLS=https://debuginfod.ubuntu.com PYTHONPATH=/home/spinetti/ros2_ws/build/stm32_bot/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/spinetti/ros2_ws/install/stm32_bot/lib/python3.12/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base ../../build/stm32_bot build --build-base /home/spinetti/ros2_ws/build/stm32_bot/build install --record /home/spinetti/ros2_ws/build/stm32_bot/install.log --single-version-externally-managed install_data

@@ -1,0 +1,503 @@
+[0.000000] (-) TimerEvent: {}
+[0.000368] (-) JobUnselected: {'identifier': 'ldlidar_stl_ros2'}
+[0.000412] (-) JobUnselected: {'identifier': 'spinetti_bringup'}
+[0.000434] (-) JobUnselected: {'identifier': 'stm32_bot'}
+[0.000453] (-) JobUnselected: {'identifier': 'tm_imu'}
+[0.000475] (rf2o_laser_odometry) JobQueued: {'identifier': 'rf2o_laser_odometry', 'dependencies': OrderedDict()}
+[0.002241] (rf2o_laser_odometry) JobStarted: {'identifier': 'rf2o_laser_odometry'}
+[0.031766] (rf2o_laser_odometry) JobProgress: {'identifier': 'rf2o_laser_odometry', 'progress': 'cmake'}
+[0.033024] (rf2o_laser_odometry) Command: {'cmd': ['/usr/bin/cmake', '/home/spinetti/ros2_ws/src/rf2o_laser_odometry', '-DCMAKE_INSTALL_PREFIX=/home/spinetti/ros2_ws/install/rf2o_laser_odometry'], 'cwd': '/home/spinetti/ros2_ws/build/rf2o_laser_odometry', 'env': OrderedDict({'GJS_DEBUG_TOPICS': 'JS ERROR;JS LOG', 'XDG_ACTIVATION_TOKEN': 'gnome-shell/Terminator/1570-0-spinetti-desktop_TIME1933886', 'LESSOPEN': '| /usr/bin/lesspipe %s', 'USER': 'spinetti', 'GZ_CONFIG_PATH': '/opt/ros/jazzy/opt/gz_sim_vendor/share/gz:/opt/ros/jazzy/opt/sdformat_vendor/share/gz:/opt/ros/jazzy/opt/gz_gui_vendor/share/gz:/opt/ros/jazzy/opt/gz_transport_vendor/share/gz:/opt/ros/jazzy/opt/gz_rendering_vendor/share/gz:/opt/ros/jazzy/opt/gz_plugin_vendor/share/gz:/opt/ros/jazzy/opt/gz_fuel_tools_vendor/share/gz:/opt/ros/jazzy/opt/gz_msgs_vendor/share/gz:/opt/ros/jazzy/opt/gz_common_vendor/share/gz', 'XDG_SESSION_TYPE': 'wayland', 'CLUTTER_DISABLE_MIPMAPPED_TEXT': '1', 'SHLVL': '1', 'LD_LIBRARY_PATH': '/opt/ros/jazzy/opt/gz_sim_vendor/lib:/opt/ros/jazzy/opt/gz_sensors_vendor/lib:/opt/ros/jazzy/opt/gz_physics_vendor/lib:/opt/ros/jazzy/opt/sdformat_vendor/lib:/opt/ros/jazzy/opt/rviz_ogre_vendor/lib:/opt/ros/jazzy/lib/aarch64-linux-gnu:/opt/ros/jazzy/opt/gz_gui_vendor/lib:/opt/ros/jazzy/opt/gz_transport_vendor/lib:/opt/ros/jazzy/opt/gz_rendering_vendor/lib:/opt/ros/jazzy/opt/gz_plugin_vendor/lib:/opt/ros/jazzy/opt/gz_fuel_tools_vendor/lib:/opt/ros/jazzy/opt/gz_msgs_vendor/lib:/opt/ros/jazzy/opt/gz_common_vendor/lib:/opt/ros/jazzy/opt/gz_math_vendor/lib:/opt/ros/jazzy/opt/gz_utils_vendor/lib:/opt/ros/jazzy/opt/gz_tools_vendor/lib:/opt/ros/jazzy/opt/gz_ogre_next_vendor/lib:/opt/ros/jazzy/opt/gz_dartsim_vendor/lib:/opt/ros/jazzy/opt/gz_cmake_vendor/lib:/opt/ros/jazzy/lib', 'HOME': '/home/spinetti', 'OLDPWD': '/home/spinetti/ros2_ws', 'DESKTOP_SESSION': 'ubuntu', 'GIO_LAUNCHED_DESKTOP_FILE': '/usr/share/applications/terminator.desktop', 'ROS_PYTHON_VERSION': '3', 'GNOME_SHELL_SESSION_MODE': 'ubuntu', 'GTK_MODULES': 'gail:atk-bridge', 'MANAGERPID': '1361', 'SYSTEMD_EXEC_PID': '1570', 'GSM_SKIP_SSH_AGENT_WORKAROUND': 'true', 'DBUS_SESSION_BUS_ADDRESS': 'unix:path=/run/user/1000/bus', 'COLORTERM': 'truecolor', 'TERMINATOR_DBUS_NAME': 'net.tenshu.Terminator25ef4b219e3b005583550f2b0f9f990c3', 'GIO_LAUNCHED_DESKTOP_FILE_PID': '5728', 'DEBUGINFOD_URLS': 'https://debuginfod.ubuntu.com', 'IM_CONFIG_PHASE': '1', 'WAYLAND_DISPLAY': 'wayland-0', 'COLCON_PREFIX_PATH': '/home/spinetti/ros2_ws/install:/home/spinetti/install', 'ROS_DISTRO': 'jazzy', 'LOGNAME': 'spinetti', 'JOURNAL_STREAM': '8:14180', '_': '/usr/bin/colcon', 'ROS_VERSION': '2', 'MEMORY_PRESSURE_WATCH': '/sys/fs/cgroup/user.slice/user-1000.slice/user@1000.service/session.slice/org.gnome.Shell@wayland.service/memory.pressure', 'XDG_SESSION_CLASS': 'user', 'USERNAME': 'spinetti', 'TERM': 'xterm-256color', 'GNOME_DESKTOP_SESSION_ID': 'this-is-deprecated', 'PATH': '/opt/ros/jazzy/opt/gz_msgs_vendor/bin:/opt/ros/jazzy/opt/gz_tools_vendor/bin:/opt/ros/jazzy/opt/gz_ogre_next_vendor/bin:/opt/ros/jazzy/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/snap/bin', 'SESSION_MANAGER': 'local/spinetti-desktop:@/tmp/.ICE-unix/1535,unix/spinetti-desktop:/tmp/.ICE-unix/1535', 'INVOCATION_ID': '6d72e5a509814bfeb1b0019db9a0f61f', 'XDG_MENU_PREFIX': 'gnome-', 'GNOME_SETUP_DISPLAY': ':1', 'XDG_RUNTIME_DIR': '/run/user/1000', 'DISPLAY': ':0', 'TERMINATOR_DBUS_PATH': '/net/tenshu/Terminator2', 'LANG': 'en_US.UTF-8', 'XDG_CURRENT_DESKTOP': 'ubuntu:GNOME', 'XMODIFIERS': '@im=ibus', 'XDG_SESSION_DESKTOP': 'ubuntu', 'XAUTHORITY': '/run/user/1000/.mutter-Xwaylandauth.DC4XK3', 'LS_COLORS': 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=00:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.avif=01;35:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.webp=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:*~=00;90:*#=00;90:*.bak=00;90:*.crdownload=00;90:*.dpkg-dist=00;90:*.dpkg-new=00;90:*.dpkg-old=00;90:*.dpkg-tmp=00;90:*.old=00;90:*.orig=00;90:*.part=00;90:*.rej=00;90:*.rpmnew=00;90:*.rpmorig=00;90:*.rpmsave=00;90:*.swp=00;90:*.tmp=00;90:*.ucf-dist=00;90:*.ucf-new=00;90:*.ucf-old=00;90:', 'SSH_AUTH_SOCK': '/run/user/1000/keyring/ssh', 'AMENT_PREFIX_PATH': '/home/spinetti/ros2_ws/install/tm_imu:/home/spinetti/ros2_ws/install/stm32_bot:/home/spinetti/ros2_ws/install/spinetti_bringup:/home/spinetti/ros2_ws/install/ldlidar_stl_ros2:/home/spinetti/install/stm32_bot:/opt/ros/jazzy', 'SHELL': '/bin/bash', 'TERMINATOR_UUID': 'urn:uuid:2b2fc811-21ea-4335-ab94-94cc000400e3', 'QT_ACCESSIBILITY': '1', 'GDMSESSION': 'ubuntu', 'LESSCLOSE': '/usr/bin/lesspipe %s %s', 'GJS_DEBUG_OUTPUT': 'stderr', 'ROS_AUTOMATIC_DISCOVERY_RANGE': 'SUBNET', 'QT_IM_MODULE': 'ibus', 'PWD': '/home/spinetti/ros2_ws/build/rf2o_laser_odometry', 'LC_ALL': 'en_US.UTF-8', 'XDG_CONFIG_DIRS': '/etc/xdg/xdg-ubuntu:/etc/xdg', 'XDG_DATA_DIRS': '/usr/share/ubuntu:/usr/share/gnome:/usr/local/share/:/usr/share/:/var/lib/snapd/desktop', 'PYTHONPATH': '/home/spinetti/ros2_ws/install/stm32_bot/lib/python3.12/site-packages:/home/spinetti/ros2_ws/install/spinetti_bringup/lib/python3.12/site-packages:/home/spinetti/install/stm32_bot/lib/python3.12/site-packages:/opt/ros/jazzy/lib/python3.12/site-packages', 'COLCON': '1', 'MEMORY_PRESSURE_WRITE': 'c29tZSAyMDAwMDAgMjAwMDAwMAA=', 'VTE_VERSION': '7600', 'CMAKE_PREFIX_PATH': '/home/spinetti/ros2_ws/install/tm_imu:/home/spinetti/ros2_ws/install/ldlidar_stl_ros2:/opt/ros/jazzy/opt/gz_sim_vendor:/opt/ros/jazzy/opt/gz_sensors_vendor:/opt/ros/jazzy/opt/gz_physics_vendor:/opt/ros/jazzy/opt/sdformat_vendor:/opt/ros/jazzy/opt/gz_gui_vendor:/opt/ros/jazzy/opt/gz_transport_vendor:/opt/ros/jazzy/opt/gz_rendering_vendor:/opt/ros/jazzy/opt/gz_plugin_vendor:/opt/ros/jazzy/opt/gz_fuel_tools_vendor:/opt/ros/jazzy/opt/gz_msgs_vendor:/opt/ros/jazzy/opt/gz_common_vendor:/opt/ros/jazzy/opt/gz_math_vendor:/opt/ros/jazzy/opt/gz_utils_vendor:/opt/ros/jazzy/opt/gz_tools_vendor:/opt/ros/jazzy/opt/gz_ogre_next_vendor:/opt/ros/jazzy/opt/gz_dartsim_vendor:/opt/ros/jazzy/opt/gz_cmake_vendor:/home/spinetti/ros2_ws/install/stm32_bot:/home/spinetti/ros2_ws/install/spinetti_bringup:/home/spinetti/install/stm32_bot:/opt/ros/jazzy'}), 'shell': False}
+[0.099780] (-) TimerEvent: {}
+[0.200474] (-) TimerEvent: {}
+[0.215721] (rf2o_laser_odometry) StdoutLine: {'line': b'-- The C compiler identification is GNU 13.3.0\n'}
+[0.300650] (-) TimerEvent: {}
+[0.330825] (rf2o_laser_odometry) StdoutLine: {'line': b'-- The CXX compiler identification is GNU 13.3.0\n'}
+[0.363498] (rf2o_laser_odometry) StdoutLine: {'line': b'-- Detecting C compiler ABI info\n'}
+[0.400753] (-) TimerEvent: {}
+[0.501124] (-) TimerEvent: {}
+[0.565367] (rf2o_laser_odometry) StdoutLine: {'line': b'-- Detecting C compiler ABI info - done\n'}
+[0.580420] (rf2o_laser_odometry) StdoutLine: {'line': b'-- Check for working C compiler: /usr/bin/cc - skipped\n'}
+[0.581187] (rf2o_laser_odometry) StdoutLine: {'line': b'-- Detecting C compile features\n'}
+[0.581936] (rf2o_laser_odometry) StdoutLine: {'line': b'-- Detecting C compile features - done\n'}
+[0.598840] (rf2o_laser_odometry) StdoutLine: {'line': b'-- Detecting CXX compiler ABI info\n'}
+[0.601296] (-) TimerEvent: {}
+[0.701787] (-) TimerEvent: {}
+[0.802151] (-) TimerEvent: {}
+[0.819599] (rf2o_laser_odometry) StdoutLine: {'line': b'-- Detecting CXX compiler ABI info - done\n'}
+[0.835349] (rf2o_laser_odometry) StdoutLine: {'line': b'-- Check for working CXX compiler: /usr/bin/c++ - skipped\n'}
+[0.835756] (rf2o_laser_odometry) StdoutLine: {'line': b'-- Detecting CXX compile features\n'}
+[0.836423] (rf2o_laser_odometry) StdoutLine: {'line': b'-- Detecting CXX compile features - done\n'}
+[0.846856] (rf2o_laser_odometry) StdoutLine: {'line': b'-- Found ament_cmake: 2.5.5 (/opt/ros/jazzy/share/ament_cmake/cmake)\n'}
+[0.902224] (-) TimerEvent: {}
+[1.002512] (-) TimerEvent: {}
+[1.102821] (-) TimerEvent: {}
+[1.140117] (rf2o_laser_odometry) StdoutLine: {'line': b'-- Found Python3: /usr/bin/python3 (found version "3.12.3") found components: Interpreter \n'}
+[1.202953] (-) TimerEvent: {}
+[1.303278] (-) TimerEvent: {}
+[1.402161] (rf2o_laser_odometry) StdoutLine: {'line': b'-- Found rclcpp: 28.1.16 (/opt/ros/jazzy/share/rclcpp/cmake)\n'}
+[1.403368] (-) TimerEvent: {}
+[1.503631] (-) TimerEvent: {}
+[1.520159] (rf2o_laser_odometry) StdoutLine: {'line': b'-- Found rosidl_generator_c: 4.6.7 (/opt/ros/jazzy/share/rosidl_generator_c/cmake)\n'}
+[1.555315] (rf2o_laser_odometry) StdoutLine: {'line': b'-- Found rosidl_generator_cpp: 4.6.7 (/opt/ros/jazzy/share/rosidl_generator_cpp/cmake)\n'}
+[1.595022] (rf2o_laser_odometry) StdoutLine: {'line': b'-- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c\n'}
+[1.603722] (-) TimerEvent: {}
+[1.643329] (rf2o_laser_odometry) StdoutLine: {'line': b'-- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp\n'}
+[1.703841] (-) TimerEvent: {}
+[1.804168] (-) TimerEvent: {}
+[1.812503] (rf2o_laser_odometry) StdoutLine: {'line': b'-- Found rmw_implementation_cmake: 7.3.3 (/opt/ros/jazzy/share/rmw_implementation_cmake/cmake)\n'}
+[1.825322] (rf2o_laser_odometry) StdoutLine: {'line': b'-- Found rmw_fastrtps_cpp: 8.4.3 (/opt/ros/jazzy/share/rmw_fastrtps_cpp/cmake)\n'}
+[1.904293] (-) TimerEvent: {}
+[2.004665] (-) TimerEvent: {}
+[2.029457] (rf2o_laser_odometry) StdoutLine: {'line': b'-- Found OpenSSL: /usr/lib/aarch64-linux-gnu/libcrypto.so (found version "3.0.13")  \n'}
+[2.067442] (rf2o_laser_odometry) StdoutLine: {'line': b'-- Found FastRTPS: /opt/ros/jazzy/include (Required is at least version "2.13") \n'}
+[2.104783] (-) TimerEvent: {}
+[2.111014] (rf2o_laser_odometry) StdoutLine: {'line': b"-- Using RMW implementation 'rmw_fastrtps_cpp' as default\n"}
+[2.204920] (-) TimerEvent: {}
+[2.264288] (rf2o_laser_odometry) StdoutLine: {'line': b'-- Found std_msgs: 5.3.6 (/opt/ros/jazzy/share/std_msgs/cmake)\n'}
+[2.291390] (rf2o_laser_odometry) StdoutLine: {'line': b'-- Found geometry_msgs: 5.3.6 (/opt/ros/jazzy/share/geometry_msgs/cmake)\n'}
+[2.304984] (-) TimerEvent: {}
+[2.329587] (rf2o_laser_odometry) StdoutLine: {'line': b'-- Found tf2_geometry_msgs: 0.36.19 (/opt/ros/jazzy/share/tf2_geometry_msgs/cmake)\n'}
+[2.371562] (rf2o_laser_odometry) StdoutLine: {'line': b'-- Found eigen3_cmake_module: 0.3.0 (/opt/ros/jazzy/share/eigen3_cmake_module/cmake)\n'}
+[2.374290] (rf2o_laser_odometry) StdoutLine: {'line': b'-- Found Eigen3: TRUE (found version "3.4.0") \n'}
+[2.374591] (rf2o_laser_odometry) StdoutLine: {'line': b'-- Ensuring Eigen3 include directory is part of orocos-kdl CMake target\n'}
+[2.405101] (-) TimerEvent: {}
+[2.505417] (-) TimerEvent: {}
+[2.605728] (-) TimerEvent: {}
+[2.662992] (rf2o_laser_odometry) StdoutLine: {'line': b'-- Found sensor_msgs: 5.3.6 (/opt/ros/jazzy/share/sensor_msgs/cmake)\n'}
+[2.702736] (rf2o_laser_odometry) StdoutLine: {'line': b'-- Found nav_msgs: 5.3.6 (/opt/ros/jazzy/share/nav_msgs/cmake)\n'}
+[2.705798] (-) TimerEvent: {}
+[2.768115] (rf2o_laser_odometry) StdoutLine: {'line': b'-- Found Boost: /usr/lib/aarch64-linux-gnu/cmake/Boost-1.83.0/BoostConfig.cmake (found version "1.83.0")  \n'}
+[2.778378] (rf2o_laser_odometry) StdoutLine: {'line': b'-- Found PkgConfig: /usr/bin/pkg-config (found version "1.8.1") \n'}
+[2.779759] (rf2o_laser_odometry) StdoutLine: {'line': b"-- Checking for module 'gsl'\n"}
+[2.805944] (-) TimerEvent: {}
+[2.812854] (rf2o_laser_odometry) StdoutLine: {'line': b'--   Found gsl, version 2.7.1\n'}
+[2.906048] (-) TimerEvent: {}
+[3.006364] (-) TimerEvent: {}
+[3.073275] (rf2o_laser_odometry) StdoutLine: {'line': b'-- Configuring done (3.0s)\n'}
+[3.100506] (rf2o_laser_odometry) StdoutLine: {'line': b'-- Generating done (0.0s)\n'}
+[3.106446] (-) TimerEvent: {}
+[3.109249] (rf2o_laser_odometry) StdoutLine: {'line': b'-- Build files have been written to: /home/spinetti/ros2_ws/build/rf2o_laser_odometry\n'}
+[3.140768] (rf2o_laser_odometry) CommandEnded: {'returncode': 0}
+[3.141554] (rf2o_laser_odometry) JobProgress: {'identifier': 'rf2o_laser_odometry', 'progress': 'build'}
+[3.143333] (rf2o_laser_odometry) Command: {'cmd': ['/usr/bin/cmake', '--build', '/home/spinetti/ros2_ws/build/rf2o_laser_odometry', '--', '-j4', '-l4'], 'cwd': '/home/spinetti/ros2_ws/build/rf2o_laser_odometry', 'env': OrderedDict({'GJS_DEBUG_TOPICS': 'JS ERROR;JS LOG', 'XDG_ACTIVATION_TOKEN': 'gnome-shell/Terminator/1570-0-spinetti-desktop_TIME1933886', 'LESSOPEN': '| /usr/bin/lesspipe %s', 'USER': 'spinetti', 'GZ_CONFIG_PATH': '/opt/ros/jazzy/opt/gz_sim_vendor/share/gz:/opt/ros/jazzy/opt/sdformat_vendor/share/gz:/opt/ros/jazzy/opt/gz_gui_vendor/share/gz:/opt/ros/jazzy/opt/gz_transport_vendor/share/gz:/opt/ros/jazzy/opt/gz_rendering_vendor/share/gz:/opt/ros/jazzy/opt/gz_plugin_vendor/share/gz:/opt/ros/jazzy/opt/gz_fuel_tools_vendor/share/gz:/opt/ros/jazzy/opt/gz_msgs_vendor/share/gz:/opt/ros/jazzy/opt/gz_common_vendor/share/gz', 'XDG_SESSION_TYPE': 'wayland', 'CLUTTER_DISABLE_MIPMAPPED_TEXT': '1', 'SHLVL': '1', 'LD_LIBRARY_PATH': '/opt/ros/jazzy/opt/gz_sim_vendor/lib:/opt/ros/jazzy/opt/gz_sensors_vendor/lib:/opt/ros/jazzy/opt/gz_physics_vendor/lib:/opt/ros/jazzy/opt/sdformat_vendor/lib:/opt/ros/jazzy/opt/rviz_ogre_vendor/lib:/opt/ros/jazzy/lib/aarch64-linux-gnu:/opt/ros/jazzy/opt/gz_gui_vendor/lib:/opt/ros/jazzy/opt/gz_transport_vendor/lib:/opt/ros/jazzy/opt/gz_rendering_vendor/lib:/opt/ros/jazzy/opt/gz_plugin_vendor/lib:/opt/ros/jazzy/opt/gz_fuel_tools_vendor/lib:/opt/ros/jazzy/opt/gz_msgs_vendor/lib:/opt/ros/jazzy/opt/gz_common_vendor/lib:/opt/ros/jazzy/opt/gz_math_vendor/lib:/opt/ros/jazzy/opt/gz_utils_vendor/lib:/opt/ros/jazzy/opt/gz_tools_vendor/lib:/opt/ros/jazzy/opt/gz_ogre_next_vendor/lib:/opt/ros/jazzy/opt/gz_dartsim_vendor/lib:/opt/ros/jazzy/opt/gz_cmake_vendor/lib:/opt/ros/jazzy/lib', 'HOME': '/home/spinetti', 'OLDPWD': '/home/spinetti/ros2_ws', 'DESKTOP_SESSION': 'ubuntu', 'GIO_LAUNCHED_DESKTOP_FILE': '/usr/share/applications/terminator.desktop', 'ROS_PYTHON_VERSION': '3', 'GNOME_SHELL_SESSION_MODE': 'ubuntu', 'GTK_MODULES': 'gail:atk-bridge', 'MANAGERPID': '1361', 'SYSTEMD_EXEC_PID': '1570', 'GSM_SKIP_SSH_AGENT_WORKAROUND': 'true', 'DBUS_SESSION_BUS_ADDRESS': 'unix:path=/run/user/1000/bus', 'COLORTERM': 'truecolor', 'TERMINATOR_DBUS_NAME': 'net.tenshu.Terminator25ef4b219e3b005583550f2b0f9f990c3', 'GIO_LAUNCHED_DESKTOP_FILE_PID': '5728', 'DEBUGINFOD_URLS': 'https://debuginfod.ubuntu.com', 'IM_CONFIG_PHASE': '1', 'WAYLAND_DISPLAY': 'wayland-0', 'COLCON_PREFIX_PATH': '/home/spinetti/ros2_ws/install:/home/spinetti/install', 'ROS_DISTRO': 'jazzy', 'LOGNAME': 'spinetti', 'JOURNAL_STREAM': '8:14180', '_': '/usr/bin/colcon', 'ROS_VERSION': '2', 'MEMORY_PRESSURE_WATCH': '/sys/fs/cgroup/user.slice/user-1000.slice/user@1000.service/session.slice/org.gnome.Shell@wayland.service/memory.pressure', 'XDG_SESSION_CLASS': 'user', 'USERNAME': 'spinetti', 'TERM': 'xterm-256color', 'GNOME_DESKTOP_SESSION_ID': 'this-is-deprecated', 'PATH': '/opt/ros/jazzy/opt/gz_msgs_vendor/bin:/opt/ros/jazzy/opt/gz_tools_vendor/bin:/opt/ros/jazzy/opt/gz_ogre_next_vendor/bin:/opt/ros/jazzy/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/snap/bin', 'SESSION_MANAGER': 'local/spinetti-desktop:@/tmp/.ICE-unix/1535,unix/spinetti-desktop:/tmp/.ICE-unix/1535', 'INVOCATION_ID': '6d72e5a509814bfeb1b0019db9a0f61f', 'XDG_MENU_PREFIX': 'gnome-', 'GNOME_SETUP_DISPLAY': ':1', 'XDG_RUNTIME_DIR': '/run/user/1000', 'DISPLAY': ':0', 'TERMINATOR_DBUS_PATH': '/net/tenshu/Terminator2', 'LANG': 'en_US.UTF-8', 'XDG_CURRENT_DESKTOP': 'ubuntu:GNOME', 'XMODIFIERS': '@im=ibus', 'XDG_SESSION_DESKTOP': 'ubuntu', 'XAUTHORITY': '/run/user/1000/.mutter-Xwaylandauth.DC4XK3', 'LS_COLORS': 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=00:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.avif=01;35:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.webp=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:*~=00;90:*#=00;90:*.bak=00;90:*.crdownload=00;90:*.dpkg-dist=00;90:*.dpkg-new=00;90:*.dpkg-old=00;90:*.dpkg-tmp=00;90:*.old=00;90:*.orig=00;90:*.part=00;90:*.rej=00;90:*.rpmnew=00;90:*.rpmorig=00;90:*.rpmsave=00;90:*.swp=00;90:*.tmp=00;90:*.ucf-dist=00;90:*.ucf-new=00;90:*.ucf-old=00;90:', 'SSH_AUTH_SOCK': '/run/user/1000/keyring/ssh', 'AMENT_PREFIX_PATH': '/home/spinetti/ros2_ws/install/tm_imu:/home/spinetti/ros2_ws/install/stm32_bot:/home/spinetti/ros2_ws/install/spinetti_bringup:/home/spinetti/ros2_ws/install/ldlidar_stl_ros2:/home/spinetti/install/stm32_bot:/opt/ros/jazzy', 'SHELL': '/bin/bash', 'TERMINATOR_UUID': 'urn:uuid:2b2fc811-21ea-4335-ab94-94cc000400e3', 'QT_ACCESSIBILITY': '1', 'GDMSESSION': 'ubuntu', 'LESSCLOSE': '/usr/bin/lesspipe %s %s', 'GJS_DEBUG_OUTPUT': 'stderr', 'ROS_AUTOMATIC_DISCOVERY_RANGE': 'SUBNET', 'QT_IM_MODULE': 'ibus', 'PWD': '/home/spinetti/ros2_ws/build/rf2o_laser_odometry', 'LC_ALL': 'en_US.UTF-8', 'XDG_CONFIG_DIRS': '/etc/xdg/xdg-ubuntu:/etc/xdg', 'XDG_DATA_DIRS': '/usr/share/ubuntu:/usr/share/gnome:/usr/local/share/:/usr/share/:/var/lib/snapd/desktop', 'PYTHONPATH': '/home/spinetti/ros2_ws/install/stm32_bot/lib/python3.12/site-packages:/home/spinetti/ros2_ws/install/spinetti_bringup/lib/python3.12/site-packages:/home/spinetti/install/stm32_bot/lib/python3.12/site-packages:/opt/ros/jazzy/lib/python3.12/site-packages', 'COLCON': '1', 'MEMORY_PRESSURE_WRITE': 'c29tZSAyMDAwMDAgMjAwMDAwMAA=', 'VTE_VERSION': '7600', 'CMAKE_PREFIX_PATH': '/home/spinetti/ros2_ws/install/tm_imu:/home/spinetti/ros2_ws/install/ldlidar_stl_ros2:/opt/ros/jazzy/opt/gz_sim_vendor:/opt/ros/jazzy/opt/gz_sensors_vendor:/opt/ros/jazzy/opt/gz_physics_vendor:/opt/ros/jazzy/opt/sdformat_vendor:/opt/ros/jazzy/opt/gz_gui_vendor:/opt/ros/jazzy/opt/gz_transport_vendor:/opt/ros/jazzy/opt/gz_rendering_vendor:/opt/ros/jazzy/opt/gz_plugin_vendor:/opt/ros/jazzy/opt/gz_fuel_tools_vendor:/opt/ros/jazzy/opt/gz_msgs_vendor:/opt/ros/jazzy/opt/gz_common_vendor:/opt/ros/jazzy/opt/gz_math_vendor:/opt/ros/jazzy/opt/gz_utils_vendor:/opt/ros/jazzy/opt/gz_tools_vendor:/opt/ros/jazzy/opt/gz_ogre_next_vendor:/opt/ros/jazzy/opt/gz_dartsim_vendor:/opt/ros/jazzy/opt/gz_cmake_vendor:/home/spinetti/ros2_ws/install/stm32_bot:/home/spinetti/ros2_ws/install/spinetti_bringup:/home/spinetti/install/stm32_bot:/opt/ros/jazzy'}), 'shell': False}
+[3.206571] (-) TimerEvent: {}
+[3.260932] (rf2o_laser_odometry) StdoutLine: {'line': b'[ 66%] \x1b[32mBuilding CXX object CMakeFiles/rf2o_laser_odometry_node.dir/src/CLaserOdometry2D.cpp.o\x1b[0m\n'}
+[3.261260] (rf2o_laser_odometry) StdoutLine: {'line': b'[ 66%] \x1b[32mBuilding CXX object CMakeFiles/rf2o_laser_odometry_node.dir/src/CLaserOdometry2DNode.cpp.o\x1b[0m\n'}
+[3.306688] (-) TimerEvent: {}
+[3.407000] (-) TimerEvent: {}
+[3.507355] (-) TimerEvent: {}
+[3.608771] (-) TimerEvent: {}
+[3.709380] (-) TimerEvent: {}
+[3.809767] (-) TimerEvent: {}
+[3.910225] (-) TimerEvent: {}
+[4.010737] (-) TimerEvent: {}
+[4.115578] (-) TimerEvent: {}
+[4.219624] (-) TimerEvent: {}
+[4.323598] (-) TimerEvent: {}
+[4.425229] (-) TimerEvent: {}
+[4.528783] (-) TimerEvent: {}
+[4.629346] (-) TimerEvent: {}
+[4.729860] (-) TimerEvent: {}
+[4.831115] (-) TimerEvent: {}
+[4.931657] (-) TimerEvent: {}
+[5.032027] (-) TimerEvent: {}
+[5.132430] (-) TimerEvent: {}
+[5.232814] (-) TimerEvent: {}
+[5.333243] (-) TimerEvent: {}
+[5.433633] (-) TimerEvent: {}
+[5.534011] (-) TimerEvent: {}
+[5.634341] (-) TimerEvent: {}
+[5.734690] (-) TimerEvent: {}
+[5.839317] (-) TimerEvent: {}
+[5.939795] (-) TimerEvent: {}
+[6.040712] (-) TimerEvent: {}
+[6.142084] (-) TimerEvent: {}
+[6.243277] (-) TimerEvent: {}
+[6.344150] (-) TimerEvent: {}
+[6.448801] (-) TimerEvent: {}
+[6.549609] (-) TimerEvent: {}
+[6.652048] (-) TimerEvent: {}
+[6.752419] (-) TimerEvent: {}
+[6.858791] (-) TimerEvent: {}
+[6.959299] (-) TimerEvent: {}
+[7.059850] (-) TimerEvent: {}
+[7.160815] (-) TimerEvent: {}
+[7.261282] (-) TimerEvent: {}
+[7.361646] (-) TimerEvent: {}
+[7.462058] (-) TimerEvent: {}
+[7.565844] (-) TimerEvent: {}
+[7.666374] (-) TimerEvent: {}
+[7.766763] (-) TimerEvent: {}
+[7.867211] (-) TimerEvent: {}
+[7.967607] (-) TimerEvent: {}
+[8.067997] (-) TimerEvent: {}
+[8.168366] (-) TimerEvent: {}
+[8.268742] (-) TimerEvent: {}
+[8.369124] (-) TimerEvent: {}
+[8.469504] (-) TimerEvent: {}
+[8.569981] (-) TimerEvent: {}
+[8.670349] (-) TimerEvent: {}
+[8.770712] (-) TimerEvent: {}
+[8.871097] (-) TimerEvent: {}
+[8.971478] (-) TimerEvent: {}
+[9.071844] (-) TimerEvent: {}
+[9.172240] (-) TimerEvent: {}
+[9.272620] (-) TimerEvent: {}
+[9.373006] (-) TimerEvent: {}
+[9.473404] (-) TimerEvent: {}
+[9.573822] (-) TimerEvent: {}
+[9.674195] (-) TimerEvent: {}
+[9.774564] (-) TimerEvent: {}
+[9.874954] (-) TimerEvent: {}
+[9.975366] (-) TimerEvent: {}
+[10.075779] (-) TimerEvent: {}
+[10.176191] (-) TimerEvent: {}
+[10.276558] (-) TimerEvent: {}
+[10.376933] (-) TimerEvent: {}
+[10.477314] (-) TimerEvent: {}
+[10.577703] (-) TimerEvent: {}
+[10.678101] (-) TimerEvent: {}
+[10.778480] (-) TimerEvent: {}
+[10.878852] (-) TimerEvent: {}
+[10.979258] (-) TimerEvent: {}
+[11.079638] (-) TimerEvent: {}
+[11.180021] (-) TimerEvent: {}
+[11.280395] (-) TimerEvent: {}
+[11.380789] (-) TimerEvent: {}
+[11.481178] (-) TimerEvent: {}
+[11.581554] (-) TimerEvent: {}
+[11.681949] (-) TimerEvent: {}
+[11.782366] (-) TimerEvent: {}
+[11.882743] (-) TimerEvent: {}
+[11.983145] (-) TimerEvent: {}
+[12.083532] (-) TimerEvent: {}
+[12.183926] (-) TimerEvent: {}
+[12.284352] (-) TimerEvent: {}
+[12.384720] (-) TimerEvent: {}
+[12.485109] (-) TimerEvent: {}
+[12.587003] (-) TimerEvent: {}
+[12.687359] (-) TimerEvent: {}
+[12.787712] (-) TimerEvent: {}
+[12.888108] (-) TimerEvent: {}
+[12.988512] (-) TimerEvent: {}
+[13.088899] (-) TimerEvent: {}
+[13.189299] (-) TimerEvent: {}
+[13.289668] (-) TimerEvent: {}
+[13.390099] (-) TimerEvent: {}
+[13.490475] (-) TimerEvent: {}
+[13.590846] (-) TimerEvent: {}
+[13.691226] (-) TimerEvent: {}
+[13.791602] (-) TimerEvent: {}
+[13.891977] (-) TimerEvent: {}
+[13.992344] (-) TimerEvent: {}
+[14.092738] (-) TimerEvent: {}
+[14.193115] (-) TimerEvent: {}
+[14.293493] (-) TimerEvent: {}
+[14.393875] (-) TimerEvent: {}
+[14.494302] (-) TimerEvent: {}
+[14.595203] (-) TimerEvent: {}
+[14.695561] (-) TimerEvent: {}
+[14.795949] (-) TimerEvent: {}
+[14.896324] (-) TimerEvent: {}
+[14.996680] (-) TimerEvent: {}
+[15.097062] (-) TimerEvent: {}
+[15.197413] (-) TimerEvent: {}
+[15.297782] (-) TimerEvent: {}
+[15.398144] (-) TimerEvent: {}
+[15.498493] (-) TimerEvent: {}
+[15.598896] (-) TimerEvent: {}
+[15.699404] (-) TimerEvent: {}
+[15.799903] (-) TimerEvent: {}
+[15.900412] (-) TimerEvent: {}
+[16.000962] (-) TimerEvent: {}
+[16.101530] (-) TimerEvent: {}
+[16.201941] (-) TimerEvent: {}
+[16.302380] (-) TimerEvent: {}
+[16.402852] (-) TimerEvent: {}
+[16.503432] (-) TimerEvent: {}
+[16.603818] (-) TimerEvent: {}
+[16.704211] (-) TimerEvent: {}
+[16.804708] (-) TimerEvent: {}
+[16.905103] (-) TimerEvent: {}
+[17.005496] (-) TimerEvent: {}
+[17.105859] (-) TimerEvent: {}
+[17.206232] (-) TimerEvent: {}
+[17.306593] (-) TimerEvent: {}
+[17.406991] (-) TimerEvent: {}
+[17.507361] (-) TimerEvent: {}
+[17.607719] (-) TimerEvent: {}
+[17.708100] (-) TimerEvent: {}
+[17.808472] (-) TimerEvent: {}
+[17.908845] (-) TimerEvent: {}
+[18.009267] (-) TimerEvent: {}
+[18.109627] (-) TimerEvent: {}
+[18.210042] (-) TimerEvent: {}
+[18.310541] (-) TimerEvent: {}
+[18.410968] (-) TimerEvent: {}
+[18.511327] (-) TimerEvent: {}
+[18.611688] (-) TimerEvent: {}
+[18.712059] (-) TimerEvent: {}
+[18.812420] (-) TimerEvent: {}
+[18.912779] (-) TimerEvent: {}
+[19.013155] (-) TimerEvent: {}
+[19.113542] (-) TimerEvent: {}
+[19.213926] (-) TimerEvent: {}
+[19.314291] (-) TimerEvent: {}
+[19.414649] (-) TimerEvent: {}
+[19.515028] (-) TimerEvent: {}
+[19.615409] (-) TimerEvent: {}
+[19.715784] (-) TimerEvent: {}
+[19.816183] (-) TimerEvent: {}
+[19.916564] (-) TimerEvent: {}
+[20.016928] (-) TimerEvent: {}
+[20.117270] (-) TimerEvent: {}
+[20.217613] (-) TimerEvent: {}
+[20.317984] (-) TimerEvent: {}
+[20.418344] (-) TimerEvent: {}
+[20.518694] (-) TimerEvent: {}
+[20.619059] (-) TimerEvent: {}
+[20.719425] (-) TimerEvent: {}
+[20.819783] (-) TimerEvent: {}
+[20.920207] (-) TimerEvent: {}
+[21.020714] (-) TimerEvent: {}
+[21.121223] (-) TimerEvent: {}
+[21.221583] (-) TimerEvent: {}
+[21.322075] (-) TimerEvent: {}
+[21.422676] (-) TimerEvent: {}
+[21.523121] (-) TimerEvent: {}
+[21.623565] (-) TimerEvent: {}
+[21.724031] (-) TimerEvent: {}
+[21.824588] (-) TimerEvent: {}
+[21.924974] (-) TimerEvent: {}
+[22.025338] (-) TimerEvent: {}
+[22.125756] (-) TimerEvent: {}
+[22.226284] (-) TimerEvent: {}
+[22.326781] (-) TimerEvent: {}
+[22.427145] (-) TimerEvent: {}
+[22.527496] (-) TimerEvent: {}
+[22.627854] (-) TimerEvent: {}
+[22.729106] (-) TimerEvent: {}
+[22.829473] (-) TimerEvent: {}
+[22.929832] (-) TimerEvent: {}
+[23.030205] (-) TimerEvent: {}
+[23.130579] (-) TimerEvent: {}
+[23.233302] (-) TimerEvent: {}
+[23.333748] (-) TimerEvent: {}
+[23.434354] (-) TimerEvent: {}
+[23.534710] (-) TimerEvent: {}
+[23.635077] (-) TimerEvent: {}
+[23.735445] (-) TimerEvent: {}
+[23.835796] (-) TimerEvent: {}
+[23.936166] (-) TimerEvent: {}
+[24.036524] (-) TimerEvent: {}
+[24.136942] (-) TimerEvent: {}
+[24.237385] (-) TimerEvent: {}
+[24.337736] (-) TimerEvent: {}
+[24.438168] (-) TimerEvent: {}
+[24.538524] (-) TimerEvent: {}
+[24.639001] (-) TimerEvent: {}
+[24.739466] (-) TimerEvent: {}
+[24.839830] (-) TimerEvent: {}
+[24.940293] (-) TimerEvent: {}
+[25.040939] (-) TimerEvent: {}
+[25.141482] (-) TimerEvent: {}
+[25.242022] (-) TimerEvent: {}
+[25.342524] (-) TimerEvent: {}
+[25.443050] (-) TimerEvent: {}
+[25.543673] (-) TimerEvent: {}
+[25.644098] (-) TimerEvent: {}
+[25.744716] (-) TimerEvent: {}
+[25.845109] (-) TimerEvent: {}
+[25.945478] (-) TimerEvent: {}
+[26.045828] (-) TimerEvent: {}
+[26.146210] (-) TimerEvent: {}
+[26.246569] (-) TimerEvent: {}
+[26.346962] (-) TimerEvent: {}
+[26.447316] (-) TimerEvent: {}
+[26.547688] (-) TimerEvent: {}
+[26.648090] (-) TimerEvent: {}
+[26.748611] (-) TimerEvent: {}
+[26.849236] (-) TimerEvent: {}
+[26.949614] (-) TimerEvent: {}
+[27.050085] (-) TimerEvent: {}
+[27.150969] (-) TimerEvent: {}
+[27.251387] (-) TimerEvent: {}
+[27.351773] (-) TimerEvent: {}
+[27.452193] (-) TimerEvent: {}
+[27.552713] (-) TimerEvent: {}
+[27.653325] (-) TimerEvent: {}
+[27.753693] (-) TimerEvent: {}
+[27.854054] (-) TimerEvent: {}
+[27.954416] (-) TimerEvent: {}
+[28.054770] (-) TimerEvent: {}
+[28.155151] (-) TimerEvent: {}
+[28.255515] (-) TimerEvent: {}
+[28.355878] (-) TimerEvent: {}
+[28.456272] (-) TimerEvent: {}
+[28.556769] (-) TimerEvent: {}
+[28.657420] (-) TimerEvent: {}
+[28.757861] (-) TimerEvent: {}
+[28.858260] (-) TimerEvent: {}
+[28.958697] (-) TimerEvent: {}
+[29.059207] (-) TimerEvent: {}
+[29.159585] (-) TimerEvent: {}
+[29.259991] (-) TimerEvent: {}
+[29.360328] (-) TimerEvent: {}
+[29.460662] (-) TimerEvent: {}
+[29.560998] (-) TimerEvent: {}
+[29.661343] (-) TimerEvent: {}
+[29.761687] (-) TimerEvent: {}
+[29.862026] (-) TimerEvent: {}
+[29.962352] (-) TimerEvent: {}
+[30.062679] (-) TimerEvent: {}
+[30.163003] (-) TimerEvent: {}
+[30.263323] (-) TimerEvent: {}
+[30.363665] (-) TimerEvent: {}
+[30.464022] (-) TimerEvent: {}
+[30.564381] (-) TimerEvent: {}
+[30.664733] (-) TimerEvent: {}
+[30.765158] (-) TimerEvent: {}
+[30.865483] (-) TimerEvent: {}
+[30.965799] (-) TimerEvent: {}
+[31.066140] (-) TimerEvent: {}
+[31.166456] (-) TimerEvent: {}
+[31.266780] (-) TimerEvent: {}
+[31.367115] (-) TimerEvent: {}
+[31.467441] (-) TimerEvent: {}
+[31.567761] (-) TimerEvent: {}
+[31.668100] (-) TimerEvent: {}
+[31.768413] (-) TimerEvent: {}
+[31.868798] (-) TimerEvent: {}
+[31.969184] (-) TimerEvent: {}
+[32.069499] (-) TimerEvent: {}
+[32.169819] (-) TimerEvent: {}
+[32.270151] (-) TimerEvent: {}
+[32.370472] (-) TimerEvent: {}
+[32.470788] (-) TimerEvent: {}
+[32.571124] (-) TimerEvent: {}
+[32.671435] (-) TimerEvent: {}
+[32.771743] (-) TimerEvent: {}
+[32.872102] (-) TimerEvent: {}
+[32.972428] (-) TimerEvent: {}
+[33.072746] (-) TimerEvent: {}
+[33.173083] (-) TimerEvent: {}
+[33.273397] (-) TimerEvent: {}
+[33.373714] (-) TimerEvent: {}
+[33.474045] (-) TimerEvent: {}
+[33.574373] (-) TimerEvent: {}
+[33.674689] (-) TimerEvent: {}
+[33.775015] (-) TimerEvent: {}
+[33.875356] (-) TimerEvent: {}
+[33.975670] (-) TimerEvent: {}
+[34.075981] (-) TimerEvent: {}
+[34.176295] (-) TimerEvent: {}
+[34.276610] (-) TimerEvent: {}
+[34.376945] (-) TimerEvent: {}
+[34.477261] (-) TimerEvent: {}
+[34.577586] (-) TimerEvent: {}
+[34.677898] (-) TimerEvent: {}
+[34.778227] (-) TimerEvent: {}
+[34.878533] (-) TimerEvent: {}
+[34.978848] (-) TimerEvent: {}
+[35.079178] (-) TimerEvent: {}
+[35.179488] (-) TimerEvent: {}
+[35.279805] (-) TimerEvent: {}
+[35.380136] (-) TimerEvent: {}
+[35.480450] (-) TimerEvent: {}
+[35.580766] (-) TimerEvent: {}
+[35.681100] (-) TimerEvent: {}
+[35.781414] (-) TimerEvent: {}
+[35.881741] (-) TimerEvent: {}
+[35.982073] (-) TimerEvent: {}
+[36.082400] (-) TimerEvent: {}
+[36.182739] (-) TimerEvent: {}
+[36.283087] (-) TimerEvent: {}
+[36.383405] (-) TimerEvent: {}
+[36.483724] (-) TimerEvent: {}
+[36.584042] (-) TimerEvent: {}
+[36.684347] (-) TimerEvent: {}
+[36.784659] (-) TimerEvent: {}
+[36.884976] (-) TimerEvent: {}
+[36.985286] (-) TimerEvent: {}
+[37.085596] (-) TimerEvent: {}
+[37.185907] (-) TimerEvent: {}
+[37.286250] (-) TimerEvent: {}
+[37.386608] (-) TimerEvent: {}
+[37.487148] (-) TimerEvent: {}
+[37.587538] (-) TimerEvent: {}
+[37.687943] (-) TimerEvent: {}
+[37.788291] (-) TimerEvent: {}
+[37.888636] (-) TimerEvent: {}
+[37.988988] (-) TimerEvent: {}
+[38.089395] (-) TimerEvent: {}
+[38.189772] (-) TimerEvent: {}
+[38.290166] (-) TimerEvent: {}
+[38.390522] (-) TimerEvent: {}
+[38.490871] (-) TimerEvent: {}
+[38.591273] (-) TimerEvent: {}
+[38.691708] (-) TimerEvent: {}
+[38.792193] (-) TimerEvent: {}
+[38.892539] (-) TimerEvent: {}
+[38.992949] (-) TimerEvent: {}
+[39.093324] (-) TimerEvent: {}
+[39.193706] (-) TimerEvent: {}
+[39.247521] (rf2o_laser_odometry) StdoutLine: {'line': b'[100%] \x1b[32m\x1b[1mLinking CXX executable rf2o_laser_odometry_node\x1b[0m\n'}
+[39.293848] (-) TimerEvent: {}
+[39.394480] (-) TimerEvent: {}
+[39.494886] (-) TimerEvent: {}
+[39.595423] (-) TimerEvent: {}
+[39.696185] (-) TimerEvent: {}
+[39.796614] (-) TimerEvent: {}
+[39.897186] (-) TimerEvent: {}
+[39.997873] (-) TimerEvent: {}
+[40.098372] (-) TimerEvent: {}
+[40.198877] (-) TimerEvent: {}
+[40.299733] (-) TimerEvent: {}
+[40.400514] (-) TimerEvent: {}
+[40.500997] (-) TimerEvent: {}
+[40.601596] (-) TimerEvent: {}
+[40.702395] (-) TimerEvent: {}
+[40.802847] (-) TimerEvent: {}
+[40.903362] (-) TimerEvent: {}
+[41.003844] (-) TimerEvent: {}
+[41.104349] (-) TimerEvent: {}
+[41.204749] (-) TimerEvent: {}
+[41.305240] (-) TimerEvent: {}
+[41.405744] (-) TimerEvent: {}
+[41.506278] (-) TimerEvent: {}
+[41.606664] (-) TimerEvent: {}
+[41.707091] (-) TimerEvent: {}
+[41.807650] (-) TimerEvent: {}
+[41.907988] (-) TimerEvent: {}
+[42.008368] (-) TimerEvent: {}
+[42.109214] (-) TimerEvent: {}
+[42.209574] (-) TimerEvent: {}
+[42.309945] (-) TimerEvent: {}
+[42.330144] (rf2o_laser_odometry) StdoutLine: {'line': b'[100%] Built target rf2o_laser_odometry_node\n'}
+[42.353529] (rf2o_laser_odometry) CommandEnded: {'returncode': 0}
+[42.354308] (rf2o_laser_odometry) JobProgress: {'identifier': 'rf2o_laser_odometry', 'progress': 'install'}
+[42.373523] (rf2o_laser_odometry) Command: {'cmd': ['/usr/bin/cmake', '--install', '/home/spinetti/ros2_ws/build/rf2o_laser_odometry'], 'cwd': '/home/spinetti/ros2_ws/build/rf2o_laser_odometry', 'env': OrderedDict({'GJS_DEBUG_TOPICS': 'JS ERROR;JS LOG', 'XDG_ACTIVATION_TOKEN': 'gnome-shell/Terminator/1570-0-spinetti-desktop_TIME1933886', 'LESSOPEN': '| /usr/bin/lesspipe %s', 'USER': 'spinetti', 'GZ_CONFIG_PATH': '/opt/ros/jazzy/opt/gz_sim_vendor/share/gz:/opt/ros/jazzy/opt/sdformat_vendor/share/gz:/opt/ros/jazzy/opt/gz_gui_vendor/share/gz:/opt/ros/jazzy/opt/gz_transport_vendor/share/gz:/opt/ros/jazzy/opt/gz_rendering_vendor/share/gz:/opt/ros/jazzy/opt/gz_plugin_vendor/share/gz:/opt/ros/jazzy/opt/gz_fuel_tools_vendor/share/gz:/opt/ros/jazzy/opt/gz_msgs_vendor/share/gz:/opt/ros/jazzy/opt/gz_common_vendor/share/gz', 'XDG_SESSION_TYPE': 'wayland', 'CLUTTER_DISABLE_MIPMAPPED_TEXT': '1', 'SHLVL': '1', 'LD_LIBRARY_PATH': '/opt/ros/jazzy/opt/gz_sim_vendor/lib:/opt/ros/jazzy/opt/gz_sensors_vendor/lib:/opt/ros/jazzy/opt/gz_physics_vendor/lib:/opt/ros/jazzy/opt/sdformat_vendor/lib:/opt/ros/jazzy/opt/rviz_ogre_vendor/lib:/opt/ros/jazzy/lib/aarch64-linux-gnu:/opt/ros/jazzy/opt/gz_gui_vendor/lib:/opt/ros/jazzy/opt/gz_transport_vendor/lib:/opt/ros/jazzy/opt/gz_rendering_vendor/lib:/opt/ros/jazzy/opt/gz_plugin_vendor/lib:/opt/ros/jazzy/opt/gz_fuel_tools_vendor/lib:/opt/ros/jazzy/opt/gz_msgs_vendor/lib:/opt/ros/jazzy/opt/gz_common_vendor/lib:/opt/ros/jazzy/opt/gz_math_vendor/lib:/opt/ros/jazzy/opt/gz_utils_vendor/lib:/opt/ros/jazzy/opt/gz_tools_vendor/lib:/opt/ros/jazzy/opt/gz_ogre_next_vendor/lib:/opt/ros/jazzy/opt/gz_dartsim_vendor/lib:/opt/ros/jazzy/opt/gz_cmake_vendor/lib:/opt/ros/jazzy/lib', 'HOME': '/home/spinetti', 'OLDPWD': '/home/spinetti/ros2_ws', 'DESKTOP_SESSION': 'ubuntu', 'GIO_LAUNCHED_DESKTOP_FILE': '/usr/share/applications/terminator.desktop', 'ROS_PYTHON_VERSION': '3', 'GNOME_SHELL_SESSION_MODE': 'ubuntu', 'GTK_MODULES': 'gail:atk-bridge', 'MANAGERPID': '1361', 'SYSTEMD_EXEC_PID': '1570', 'GSM_SKIP_SSH_AGENT_WORKAROUND': 'true', 'DBUS_SESSION_BUS_ADDRESS': 'unix:path=/run/user/1000/bus', 'COLORTERM': 'truecolor', 'TERMINATOR_DBUS_NAME': 'net.tenshu.Terminator25ef4b219e3b005583550f2b0f9f990c3', 'GIO_LAUNCHED_DESKTOP_FILE_PID': '5728', 'DEBUGINFOD_URLS': 'https://debuginfod.ubuntu.com', 'IM_CONFIG_PHASE': '1', 'WAYLAND_DISPLAY': 'wayland-0', 'COLCON_PREFIX_PATH': '/home/spinetti/ros2_ws/install:/home/spinetti/install', 'ROS_DISTRO': 'jazzy', 'LOGNAME': 'spinetti', 'JOURNAL_STREAM': '8:14180', '_': '/usr/bin/colcon', 'ROS_VERSION': '2', 'MEMORY_PRESSURE_WATCH': '/sys/fs/cgroup/user.slice/user-1000.slice/user@1000.service/session.slice/org.gnome.Shell@wayland.service/memory.pressure', 'XDG_SESSION_CLASS': 'user', 'USERNAME': 'spinetti', 'TERM': 'xterm-256color', 'GNOME_DESKTOP_SESSION_ID': 'this-is-deprecated', 'PATH': '/opt/ros/jazzy/opt/gz_msgs_vendor/bin:/opt/ros/jazzy/opt/gz_tools_vendor/bin:/opt/ros/jazzy/opt/gz_ogre_next_vendor/bin:/opt/ros/jazzy/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/snap/bin', 'SESSION_MANAGER': 'local/spinetti-desktop:@/tmp/.ICE-unix/1535,unix/spinetti-desktop:/tmp/.ICE-unix/1535', 'INVOCATION_ID': '6d72e5a509814bfeb1b0019db9a0f61f', 'XDG_MENU_PREFIX': 'gnome-', 'GNOME_SETUP_DISPLAY': ':1', 'XDG_RUNTIME_DIR': '/run/user/1000', 'DISPLAY': ':0', 'TERMINATOR_DBUS_PATH': '/net/tenshu/Terminator2', 'LANG': 'en_US.UTF-8', 'XDG_CURRENT_DESKTOP': 'ubuntu:GNOME', 'XMODIFIERS': '@im=ibus', 'XDG_SESSION_DESKTOP': 'ubuntu', 'XAUTHORITY': '/run/user/1000/.mutter-Xwaylandauth.DC4XK3', 'LS_COLORS': 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=00:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.avif=01;35:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.webp=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:*~=00;90:*#=00;90:*.bak=00;90:*.crdownload=00;90:*.dpkg-dist=00;90:*.dpkg-new=00;90:*.dpkg-old=00;90:*.dpkg-tmp=00;90:*.old=00;90:*.orig=00;90:*.part=00;90:*.rej=00;90:*.rpmnew=00;90:*.rpmorig=00;90:*.rpmsave=00;90:*.swp=00;90:*.tmp=00;90:*.ucf-dist=00;90:*.ucf-new=00;90:*.ucf-old=00;90:', 'SSH_AUTH_SOCK': '/run/user/1000/keyring/ssh', 'AMENT_PREFIX_PATH': '/home/spinetti/ros2_ws/install/tm_imu:/home/spinetti/ros2_ws/install/stm32_bot:/home/spinetti/ros2_ws/install/spinetti_bringup:/home/spinetti/ros2_ws/install/ldlidar_stl_ros2:/home/spinetti/install/stm32_bot:/opt/ros/jazzy', 'SHELL': '/bin/bash', 'TERMINATOR_UUID': 'urn:uuid:2b2fc811-21ea-4335-ab94-94cc000400e3', 'QT_ACCESSIBILITY': '1', 'GDMSESSION': 'ubuntu', 'LESSCLOSE': '/usr/bin/lesspipe %s %s', 'GJS_DEBUG_OUTPUT': 'stderr', 'ROS_AUTOMATIC_DISCOVERY_RANGE': 'SUBNET', 'QT_IM_MODULE': 'ibus', 'PWD': '/home/spinetti/ros2_ws/build/rf2o_laser_odometry', 'LC_ALL': 'en_US.UTF-8', 'XDG_CONFIG_DIRS': '/etc/xdg/xdg-ubuntu:/etc/xdg', 'XDG_DATA_DIRS': '/usr/share/ubuntu:/usr/share/gnome:/usr/local/share/:/usr/share/:/var/lib/snapd/desktop', 'PYTHONPATH': '/home/spinetti/ros2_ws/install/stm32_bot/lib/python3.12/site-packages:/home/spinetti/ros2_ws/install/spinetti_bringup/lib/python3.12/site-packages:/home/spinetti/install/stm32_bot/lib/python3.12/site-packages:/opt/ros/jazzy/lib/python3.12/site-packages', 'COLCON': '1', 'MEMORY_PRESSURE_WRITE': 'c29tZSAyMDAwMDAgMjAwMDAwMAA=', 'VTE_VERSION': '7600', 'CMAKE_PREFIX_PATH': '/home/spinetti/ros2_ws/install/tm_imu:/home/spinetti/ros2_ws/install/ldlidar_stl_ros2:/opt/ros/jazzy/opt/gz_sim_vendor:/opt/ros/jazzy/opt/gz_sensors_vendor:/opt/ros/jazzy/opt/gz_physics_vendor:/opt/ros/jazzy/opt/sdformat_vendor:/opt/ros/jazzy/opt/gz_gui_vendor:/opt/ros/jazzy/opt/gz_transport_vendor:/opt/ros/jazzy/opt/gz_rendering_vendor:/opt/ros/jazzy/opt/gz_plugin_vendor:/opt/ros/jazzy/opt/gz_fuel_tools_vendor:/opt/ros/jazzy/opt/gz_msgs_vendor:/opt/ros/jazzy/opt/gz_common_vendor:/opt/ros/jazzy/opt/gz_math_vendor:/opt/ros/jazzy/opt/gz_utils_vendor:/opt/ros/jazzy/opt/gz_tools_vendor:/opt/ros/jazzy/opt/gz_ogre_next_vendor:/opt/ros/jazzy/opt/gz_dartsim_vendor:/opt/ros/jazzy/opt/gz_cmake_vendor:/home/spinetti/ros2_ws/install/stm32_bot:/home/spinetti/ros2_ws/install/spinetti_bringup:/home/spinetti/install/stm32_bot:/opt/ros/jazzy'}), 'shell': False}
+[42.390321] (rf2o_laser_odometry) StdoutLine: {'line': b'-- Install configuration: ""\n'}
+[42.391019] (rf2o_laser_odometry) StdoutLine: {'line': b'-- Installing: /home/spinetti/ros2_ws/install/rf2o_laser_odometry/lib/rf2o_laser_odometry/rf2o_laser_odometry_node\n'}
+[42.410010] (-) TimerEvent: {}
+[42.427794] (rf2o_laser_odometry) StdoutLine: {'line': b'-- Set non-toolchain portion of runtime path of "/home/spinetti/ros2_ws/install/rf2o_laser_odometry/lib/rf2o_laser_odometry/rf2o_laser_odometry_node" to ""\n'}
+[42.428176] (rf2o_laser_odometry) StdoutLine: {'line': b'-- Installing: /home/spinetti/ros2_ws/install/rf2o_laser_odometry/share/rf2o_laser_odometry/launch\n'}
+[42.428290] (rf2o_laser_odometry) StdoutLine: {'line': b'-- Installing: /home/spinetti/ros2_ws/install/rf2o_laser_odometry/share/rf2o_laser_odometry/launch/rf2o_laser_odometry.launch.py\n'}
+[42.428508] (rf2o_laser_odometry) StdoutLine: {'line': b'-- Installing: /home/spinetti/ros2_ws/install/rf2o_laser_odometry/share/ament_index/resource_index/package_run_dependencies/rf2o_laser_odometry\n'}
+[42.428741] (rf2o_laser_odometry) StdoutLine: {'line': b'-- Installing: /home/spinetti/ros2_ws/install/rf2o_laser_odometry/share/ament_index/resource_index/parent_prefix_path/rf2o_laser_odometry\n'}
+[42.428988] (rf2o_laser_odometry) StdoutLine: {'line': b'-- Installing: /home/spinetti/ros2_ws/install/rf2o_laser_odometry/share/rf2o_laser_odometry/environment/ament_prefix_path.sh\n'}
+[42.429157] (rf2o_laser_odometry) StdoutLine: {'line': b'-- Installing: /home/spinetti/ros2_ws/install/rf2o_laser_odometry/share/rf2o_laser_odometry/environment/ament_prefix_path.dsv\n'}
+[42.429324] (rf2o_laser_odometry) StdoutLine: {'line': b'-- Installing: /home/spinetti/ros2_ws/install/rf2o_laser_odometry/share/rf2o_laser_odometry/environment/path.sh\n'}
+[42.429482] (rf2o_laser_odometry) StdoutLine: {'line': b'-- Installing: /home/spinetti/ros2_ws/install/rf2o_laser_odometry/share/rf2o_laser_odometry/environment/path.dsv\n'}
+[42.429652] (rf2o_laser_odometry) StdoutLine: {'line': b'-- Installing: /home/spinetti/ros2_ws/install/rf2o_laser_odometry/share/rf2o_laser_odometry/local_setup.bash\n'}
+[42.429818] (rf2o_laser_odometry) StdoutLine: {'line': b'-- Installing: /home/spinetti/ros2_ws/install/rf2o_laser_odometry/share/rf2o_laser_odometry/local_setup.sh\n'}
+[42.430006] (rf2o_laser_odometry) StdoutLine: {'line': b'-- Installing: /home/spinetti/ros2_ws/install/rf2o_laser_odometry/share/rf2o_laser_odometry/local_setup.zsh\n'}
+[42.430167] (rf2o_laser_odometry) StdoutLine: {'line': b'-- Installing: /home/spinetti/ros2_ws/install/rf2o_laser_odometry/share/rf2o_laser_odometry/local_setup.dsv\n'}
+[42.430322] (rf2o_laser_odometry) StdoutLine: {'line': b'-- Installing: /home/spinetti/ros2_ws/install/rf2o_laser_odometry/share/rf2o_laser_odometry/package.dsv\n'}
+[42.430536] (rf2o_laser_odometry) StdoutLine: {'line': b'-- Installing: /home/spinetti/ros2_ws/install/rf2o_laser_odometry/share/ament_index/resource_index/packages/rf2o_laser_odometry\n'}
+[42.430753] (rf2o_laser_odometry) StdoutLine: {'line': b'-- Installing: /home/spinetti/ros2_ws/install/rf2o_laser_odometry/share/rf2o_laser_odometry/cmake/rf2o_laser_odometryConfig.cmake\n'}
+[42.430886] (rf2o_laser_odometry) StdoutLine: {'line': b'-- Installing: /home/spinetti/ros2_ws/install/rf2o_laser_odometry/share/rf2o_laser_odometry/cmake/rf2o_laser_odometryConfig-version.cmake\n'}
+[42.431077] (rf2o_laser_odometry) StdoutLine: {'line': b'-- Installing: /home/spinetti/ros2_ws/install/rf2o_laser_odometry/share/rf2o_laser_odometry/package.xml\n'}
+[42.434004] (rf2o_laser_odometry) CommandEnded: {'returncode': 0}
+[42.453214] (rf2o_laser_odometry) JobEnded: {'identifier': 'rf2o_laser_odometry', 'rc': 0}
+[42.454040] (-) EventReactorShutdown: {}

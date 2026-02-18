@@ -1,0 +1,28 @@
+[0.803s] Invoking command in '/home/spinetti/ros2_ws/src/build/tm_imu': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/spinetti/ros2_ws/install/stm32_bot:/home/spinetti/ros2_ws/install/spinetti_bringup:/home/spinetti/install/stm32_bot:/opt/ros/jazzy DEBUGINFOD_URLS=https://debuginfod.ubuntu.com /usr/bin/cmake --build /home/spinetti/ros2_ws/src/build/tm_imu -- -j4 -l4
+[0.941s] [100%] Built target transducer_m_imu
+[0.971s] Invoked command in '/home/spinetti/ros2_ws/src/build/tm_imu' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/spinetti/ros2_ws/install/stm32_bot:/home/spinetti/ros2_ws/install/spinetti_bringup:/home/spinetti/install/stm32_bot:/opt/ros/jazzy DEBUGINFOD_URLS=https://debuginfod.ubuntu.com /usr/bin/cmake --build /home/spinetti/ros2_ws/src/build/tm_imu -- -j4 -l4
+[0.972s] Invoking command in '/home/spinetti/ros2_ws/src/build/tm_imu': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/spinetti/ros2_ws/install/stm32_bot:/home/spinetti/ros2_ws/install/spinetti_bringup:/home/spinetti/install/stm32_bot:/opt/ros/jazzy DEBUGINFOD_URLS=https://debuginfod.ubuntu.com /usr/bin/cmake --install /home/spinetti/ros2_ws/src/build/tm_imu
+[0.996s] -- Install configuration: ""
+[0.996s] -- Up-to-date: /home/spinetti/ros2_ws/src/install/tm_imu/lib/tm_imu/transducer_m_imu
+[0.997s] -- Up-to-date: /home/spinetti/ros2_ws/src/install/tm_imu/share/tm_imu//launch
+[0.997s] -- Up-to-date: /home/spinetti/ros2_ws/src/install/tm_imu/share/tm_imu//launch/imu.launch.py
+[0.997s] -- Up-to-date: /home/spinetti/ros2_ws/src/install/tm_imu/share/tm_imu//launch/__pycache__
+[0.997s] -- Up-to-date: /home/spinetti/ros2_ws/src/install/tm_imu/share/tm_imu//launch/__pycache__/imu.launch.cpython-312.pyc
+[0.997s] -- Up-to-date: /home/spinetti/ros2_ws/src/install/tm_imu/share/tm_imu//config
+[0.998s] -- Up-to-date: /home/spinetti/ros2_ws/src/install/tm_imu/share/tm_imu//config/params.yaml
+[0.998s] -- Up-to-date: /home/spinetti/ros2_ws/src/install/tm_imu/share/ament_index/resource_index/package_run_dependencies/tm_imu
+[0.998s] -- Up-to-date: /home/spinetti/ros2_ws/src/install/tm_imu/share/ament_index/resource_index/parent_prefix_path/tm_imu
+[0.998s] -- Up-to-date: /home/spinetti/ros2_ws/src/install/tm_imu/share/tm_imu/environment/ament_prefix_path.sh
+[0.998s] -- Up-to-date: /home/spinetti/ros2_ws/src/install/tm_imu/share/tm_imu/environment/ament_prefix_path.dsv
+[0.998s] -- Up-to-date: /home/spinetti/ros2_ws/src/install/tm_imu/share/tm_imu/environment/path.sh
+[0.998s] -- Up-to-date: /home/spinetti/ros2_ws/src/install/tm_imu/share/tm_imu/environment/path.dsv
+[0.998s] -- Up-to-date: /home/spinetti/ros2_ws/src/install/tm_imu/share/tm_imu/local_setup.bash
+[0.998s] -- Up-to-date: /home/spinetti/ros2_ws/src/install/tm_imu/share/tm_imu/local_setup.sh
+[0.998s] -- Up-to-date: /home/spinetti/ros2_ws/src/install/tm_imu/share/tm_imu/local_setup.zsh
+[0.999s] -- Up-to-date: /home/spinetti/ros2_ws/src/install/tm_imu/share/tm_imu/local_setup.dsv
+[0.999s] -- Installing: /home/spinetti/ros2_ws/src/install/tm_imu/share/tm_imu/package.dsv
+[0.999s] -- Up-to-date: /home/spinetti/ros2_ws/src/install/tm_imu/share/ament_index/resource_index/packages/tm_imu
+[0.999s] -- Up-to-date: /home/spinetti/ros2_ws/src/install/tm_imu/share/tm_imu/cmake/tm_imuConfig.cmake
+[0.999s] -- Up-to-date: /home/spinetti/ros2_ws/src/install/tm_imu/share/tm_imu/cmake/tm_imuConfig-version.cmake
+[0.999s] -- Up-to-date: /home/spinetti/ros2_ws/src/install/tm_imu/share/tm_imu/package.xml
+[1.004s] Invoked command in '/home/spinetti/ros2_ws/src/build/tm_imu' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/spinetti/ros2_ws/install/stm32_bot:/home/spinetti/ros2_ws/install/spinetti_bringup:/home/spinetti/install/stm32_bot:/opt/ros/jazzy DEBUGINFOD_URLS=https://debuginfod.ubuntu.com /usr/bin/cmake --install /home/spinetti/ros2_ws/src/build/tm_imu

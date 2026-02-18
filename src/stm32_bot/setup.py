@@ -9,16 +9,14 @@ setup(
     version='0.0.0',
     packages=find_packages(exclude=['test']),
     data_files=[
-        ('share/ament_index/resource_index/packages',
-            ['resource/' + package_name]),
-        ('share/' + package_name, ['package.xml']),
-        
-        # --- AJOUTS IMPORTANTS ---
-        # 1. Installe tous les fichiers de lancement (.launch.py)
-        (os.path.join('share', package_name, 'launch'), glob('launch/*.launch.py')),
-        
-        # 2. Installe tous les fichiers de configuration (.yaml)
-        (os.path.join('share', package_name, 'config'), glob('config/*.yaml')),
+    	('share/ament_index/resource_index/packages',
+        ['resource/' + package_name]),
+    	('share/' + package_name, ['package.xml']),
+    	# Ajoute ces lignes pour les launch files, config ET maps :
+    	(os.path.join('share', package_name, 'launch'), glob('launch/*.launch.py')),
+    	(os.path.join('share', package_name, 'config'), glob('config/*.yaml')),
+    	# LA LIGNE MAGIQUE POUR LA CARTE :
+    	(os.path.join('share', package_name, 'maps'), glob('maps/*')),
     ],
     install_requires=['setuptools'],
     zip_safe=True,
