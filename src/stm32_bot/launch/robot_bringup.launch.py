@@ -51,17 +51,26 @@ def generate_launch_description():
         # --- STATIC TRANSFORMS (GEOMETRIE) ---
         
         # IMU: 4.5cm de haut, Tourné de 90° (1.57 rad) pour avoir X devant
+        # NOUVELLE SYNTAXE ROS 2
         Node(
             package='tf2_ros',
             executable='static_transform_publisher',
-            # On change le dernier mot 'imu_link' en 'imu'
-            arguments=['0', '0', '0.045', '-1.57', '0', '0', 'base_link', 'imu']
+            arguments=[
+                '--x', '0', '--y', '0', '--z', '0.045', 
+                '--yaw', '-1.57', '--pitch', '0', '--roll', '0', 
+                '--frame-id', 'base_link', '--child-frame-id', 'imu'
+            ]
         ),
 
         # LIDAR: 18cm devant, 9.5cm de haut (45mm + 50mm)
+        # NOUVELLE SYNTAXE ROS 2
         Node(
             package='tf2_ros',
             executable='static_transform_publisher',
-            arguments=['0.18', '0', '0.095', '-1.57', '0', '0', 'base_link', 'base_laser']
+            arguments=[
+                '--x', '0.18', '--y', '0', '--z', '0.095', 
+                '--yaw', '-1.57', '--pitch', '0', '--roll', '0', 
+                '--frame-id', 'base_link', '--child-frame-id', 'base_laser'
+            ]
         ),
     ])

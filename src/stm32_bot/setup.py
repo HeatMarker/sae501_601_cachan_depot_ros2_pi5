@@ -9,26 +9,29 @@ setup(
     version='0.0.0',
     packages=find_packages(exclude=['test']),
     data_files=[
-    	('share/ament_index/resource_index/packages',
-        ['resource/' + package_name]),
-    	('share/' + package_name, ['package.xml']),
-    	# Ajoute ces lignes pour les launch files, config ET maps :
-    	(os.path.join('share', package_name, 'launch'), glob('launch/*.launch.py')),
-    	(os.path.join('share', package_name, 'config'), glob('config/*.yaml')),
-    	# LA LIGNE MAGIQUE POUR LA CARTE :
-    	(os.path.join('share', package_name, 'maps'), glob('maps/*')),
+        ('share/ament_index/resource_index/packages',
+            ['resource/' + package_name]),
+        ('share/' + package_name, ['package.xml']),
+        # Installation des fichiers Launch
+        (os.path.join('share', package_name, 'launch'), glob('launch/*.launch.py')),
+        # Installation des fichiers de Configuration (YAML)
+        (os.path.join('share', package_name, 'config'), glob('config/*.yaml')),
+        # Installation des fichiers de Carte (Maps)
+        (os.path.join('share', package_name, 'maps'), glob('maps/*')),
     ],
     install_requires=['setuptools'],
     zip_safe=True,
     maintainer='spinetti',
     maintainer_email='spinetti@todo.todo',
-    description='TODO: Package description',
+    description='Package pour le contrôle du châssis TT-02 via STM32 et Manette PS3',
     license='TODO: License declaration',
     tests_require=['pytest'],
     entry_points={
         'console_scripts': [
+            # Commande = package.nom_du_fichier:fonction_main
             'stm32_bridge = stm32_bot.stm32_bridge:main',
             'stm32_teleop = stm32_bot.stm32_teleop:main',
+            'ps3_mapper = stm32_bot.ps3_mapper:main',
         ],
     },
 )

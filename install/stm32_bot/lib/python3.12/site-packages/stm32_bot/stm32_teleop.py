@@ -4,30 +4,26 @@ from rclpy.node import Node
 from geometry_msgs.msg import Twist
 import sys, select, termios, tty, time
 
-# --- RÉGLAGES PHYSIQUES ---
-MAX_SPEED = 3.0       # m/s
-MAX_TURN  = 1.0       # rad/s
-ACCEL_RATE = 0.01     # Plus nerveux à l'accélération
-DECEL_RATE = 0.01     # Frein moteur
-TURN_RATE  = 0.01     # Vitesse de braquage
-RETURN_RATE = 0.01    # Retour au centre rapide
+# --- RÉGLAGES INCRÉMENTAUX ---
+STEP_SPEED = 0.5      # +0.4 m/s par appui (Bond rapide)
+MAX_SPEED  = 3.0      # Vitesse max
+
+STEP_TURN  = 0.25     # Braquage vif (4 coups pour max)
+MAX_TURN   = 1.0      # Max braquage
 
 LOOP_HZ = 50          
-KEY_TIMEOUT = 0.6     # Pour la détection de touche enfoncée
-STOP_TIMEOUT = 3.0    # Temps avant décélération automatique (inactivité totale)
 
 msg = """
 -----------------------------------------
-PILOTAGE ARCADE FIXÉ (Mode Régulateur)
+PILOTAGE INCRÉMENTAL (ANTI-LAG)
 -----------------------------------------
-   Maintenir HAUT   : Accélérer
-   Maintenir BAS    : Reculer / Freiner
-   Maintenir GAUCHE : Braquer GAUCHE
-   Maintenir DROITE : Braquer DROITE
+   HAUT   : Vitesse +0.4 m/s
+   BAS    : Vitesse -0.4 m/s
+   GAUCHE : Braquage +0.25
+   DROITE : Braquage -0.25
 
-   LÂCHER TOUT      : Maintient la vitesse pendant 3s
-   ESPACE           : STOP D'URGENCE (Vitesse -> 0)
-   CTRL-C           : Quitter
+   ESPACE : STOP D'URGENCE (Tout à 0)
+   CTRL-C : Quitter
 -----------------------------------------
 """
 
@@ -38,28 +34,6 @@ class TrackmaniaTeleop(Node):
         self.current_speed = 0.0
         self.current_turn = 0.0
         self.settings = termios.tcgetattr(sys.stdin)
-        self.last_key_time = time.time()
-        self.active_key = None
-
-    def getKey(self):
-        key = None
-        while True:
-            rlist, _, _ = select.select([sys.stdin], [], [], 0.0)
-            if rlist:
-                s = sys.stdin.read(1)
-                if s == '\x1b':
-                    s += sys.stdin.read(2)
-                key = s
-            else:
-                break
-        return key
-
-    def approach(self, current, target, rate):
-        if current < target:
-            return min(current + rate, target)
-        elif current > target:
-            return max(current - rate, target)
-        return target
 
     def run(self):
         print(msg)
@@ -67,57 +41,55 @@ class TrackmaniaTeleop(Node):
             tty.setraw(sys.stdin.fileno())
             
             while rclpy.ok():
-                key = self.getKey()
-                now = time.time()
+                # --- SECTION ANTI-LAG (VIDANGE DU BUFFER) ---
+                # On lit TOUTES les touches accumulées depuis la dernière boucle
+                # au lieu d'une seule. Ça empêche l'overflow.
+                while True:
+                    rlist, _, _ = select.select([sys.stdin], [], [], 0.0)
+                    if not rlist: 
+                        break # Buffer vide, on sort
+                    
+                    key = sys.stdin.read(1)
+                    if key == '\x1b': # Gestion flèches
+                        key += sys.stdin.read(2)
 
-                if key:
-                    if key == '\x03': break 
-                    self.active_key = key
-                    self.last_key_time = now # On réinitialise le chrono à chaque appui
-                
-                # Touche active (enjambe la latence clavier)
-                is_pressed = (now - self.last_key_time) < KEY_TIMEOUT
-                key_to_process = self.active_key if is_pressed else None
-
-                # --- GESTION VITESSE (LOGIQUE MODIFIÉE) ---
-                if key_to_process == '\x1b[A':   # HAUT
-                    self.current_speed = self.approach(self.current_speed, MAX_SPEED, ACCEL_RATE)
-                elif key_to_process == '\x1b[B': # BAS
-                    self.current_speed = self.approach(self.current_speed, -MAX_SPEED, ACCEL_RATE)
-                else:
-                    # Si aucune touche n'est pressée, on vérifie le délai d'inactivité totale
-                    if (now - self.last_key_time) > STOP_TIMEOUT:
-                        # Plus de 3s sans rien toucher : on décélère vers 0
-                        self.current_speed = self.approach(self.current_speed, 0.0, DECEL_RATE)
-                    else:
-                        # Entre 0.6s et 3s : on maintient la vitesse actuelle
-                        pass
-
-                # --- GESTION DIRECTION (CONSERVÉE) ---
-                if key_to_process == '\x1b[D':   # GAUCHE
-                    self.current_turn = self.approach(self.current_turn, -MAX_TURN, TURN_RATE)
-                elif key_to_process == '\x1b[C': # DROITE
-                    self.current_turn = self.approach(self.current_turn, +MAX_TURN, TURN_RATE)
-                else:
-                    # La direction revient toujours au centre quand on lâche
-                    self.current_turn = self.approach(self.current_turn, 0.0, RETURN_RATE)
-
-                # --- SÉCURITÉ ESPACE ---
-                if key == ' ':
-                    self.current_speed = 0.0
-                    self.current_turn = 0.0
+                    # --- LOGIQUE INCRÉMENTALE ---
+                    # Appliquée immédiatement pour chaque touche trouvée dans le buffer
+                    
+                    # VITESSE
+                    if key == '\x1b[A':   # HAUT
+                        self.current_speed = min(self.current_speed + STEP_SPEED, MAX_SPEED)
+                    elif key == '\x1b[B': # BAS
+                        self.current_speed = max(self.current_speed - STEP_SPEED, -MAX_SPEED)
+                    
+                    # DIRECTION
+                    elif key == '\x1b[C': # GAUCHE
+                        self.current_turn = min(self.current_turn + STEP_TURN, MAX_TURN)
+                    elif key == '\x1b[D': # DROITE
+                        self.current_turn = max(self.current_turn - STEP_TURN, -MAX_TURN)
+                    
+                    # STOP
+                    elif key == ' ':
+                        self.current_speed = 0.0
+                        self.current_turn = 0.0
+                    
+                    elif key == '\x03': # CTRL-C
+                        raise KeyboardInterrupt
 
                 # --- PUBLICATION ---
+                # On publie la dernière valeur connue (résultat de tous les appuis)
                 twist = Twist()
                 twist.linear.x = float(self.current_speed)
                 twist.angular.z = float(self.current_turn)
                 self.pub.publish(twist)
 
-                sys.stdout.write(f"\rVitesse: {self.current_speed:+0.2f} | Direction: {self.current_turn:+0.2f}   ")
+                sys.stdout.write(f"\rVitesse: {self.current_speed:+0.1f} | Direction: {self.current_turn:+0.2f}   ")
                 sys.stdout.flush()
 
                 time.sleep(1/LOOP_HZ)
 
+        except KeyboardInterrupt:
+            pass
         except Exception as e:
             print(f"\nErreur: {e}")
         finally:

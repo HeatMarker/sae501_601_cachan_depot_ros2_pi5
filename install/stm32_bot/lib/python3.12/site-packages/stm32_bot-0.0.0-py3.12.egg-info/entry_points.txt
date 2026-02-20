@@ -1,3 +1,4 @@
 [console_scripts]
+ps3_mapper = stm32_bot.ps3_mapper:main
 stm32_bridge = stm32_bot.stm32_bridge:main
 stm32_teleop = stm32_bot.stm32_teleop:main

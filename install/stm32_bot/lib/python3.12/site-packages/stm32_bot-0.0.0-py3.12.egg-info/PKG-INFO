@@ -1,7 +1,7 @@
 Metadata-Version: 2.1
 Name: stm32-bot
 Version: 0.0.0
-Summary: TODO: Package description
+Summary: Package pour le contrôle du châssis TT-02 via STM32 et Manette PS3
 Maintainer: spinetti
 Maintainer-email: spinetti@todo.todo
 License: TODO: License declaration

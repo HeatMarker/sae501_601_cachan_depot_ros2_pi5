@@ -1,42 +1,42 @@
 ekf_filter_node:
   ros__parameters:
-    frequency: 30.0
+    frequency: 30.0   
     two_d_mode: true
     publish_tf: true
     
-    # Paramètres temporels pour éviter l'erreur "Extrapolation"
     transform_time_offset: 0.1 
-    transform_timeout: 0.1
+    transform_timeout: 0.2
 
     map_frame: map
     odom_frame: odom
     base_link_frame: base_link
     world_frame: odom
 
-    # --- SOURCE 1 : ROUES (VITESSE SEULEMENT) ---
+    # --- SOURCE 1 : ROUES (VITESSE LINÉAIRE UNIQUEMENT) ---
     odom0: /wheel/odom
     
-    # Matrice Config : [x, y, z, roll, pitch, yaw, vx, vy, vz, vroll, vpitch, vyaw, ax, ay, az]
-    # On met TRUE uniquement sur vx (index 6)
+    # [x, y, z, roll, pitch, yaw, vx, vy, vz, vroll, vpitch, vyaw, ax, ay, az]
+    # Seul VX (index 6) est à true. VYAW (index 11) est FALSE.
     odom0_config: [false, false, false,
                    false, false, false,
-                   true,  false, false,  # VX = TRUE
-                   false, false, false,  # VYAW = FALSE (On ignore la rotation des roues)
+                   true,  false, false,  
+                   false, false, false,  
                    false, false, false]
+    
     odom0_differential: false
     odom0_queue_size: 10
 
-    # --- SOURCE 2 : IMU (ROTATION SEULEMENT) ---
-    imu0: /imu_data # Vérifie ton topic !
+    # --- SOURCE 2 : IMU (ROTATION PURE) ---
+    imu0: /imu_data 
     
-    # On prend la vitesse de rotation (Vyaw)
+    # YAW (Index 5) et VYAW (Index 11) sont à true. AX est bien resté à false.
     imu0_config: [false, false, false,
-                  false, false, true,  # Yaw (Orientation) : Utile si magnétomètre, sinon false
+                  false, false, true,  
                   false, false, false,
-                  false, false, true,  # Vyaw (Vitesse Angulaire) : TRUE (C'est ça qu'on veut !)
-                  false, false, true]  # Az (Accélération) : Parfois utile, sinon false
+                  false, false, true,  
+                  false, false, false] 
                   
     imu0_differential: false
-    imu0_relative: true # Important pour démarrer à 0
+    imu0_relative: true  
     imu0_queue_size: 10
     imu0_remove_gravitational_acceleration: true
