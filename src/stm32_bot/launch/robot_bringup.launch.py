@@ -26,8 +26,10 @@ def generate_launch_description():
             package='stm32_bot',
             executable='stm32_bridge',
             name='stm32_bridge',
-            # ID du STLink (Moteurs)
-            parameters=[{'port': '/dev/serial/by-id/usb-STMicroelectronics_STM32_STLink_066FFF505075894967183959-if02'}]
+            parameters=[
+                {'port': '/dev/serial/by-id/usb-STMicroelectronics_STM32_STLink_066FFF505075894967183959-if02'},
+                {'debug_pid': False} # Mets True ici quand tu veux utiliser ton PC pour régler
+            ]
         ),
 
         # --- IMU ---

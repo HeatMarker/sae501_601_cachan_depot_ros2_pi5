@@ -2,7 +2,7 @@
 import rclpy
 from rclpy.node import Node
 from rclpy.qos import QoSProfile, ReliabilityPolicy, HistoryPolicy
-from geometry_msgs.msg import Twist
+from geometry_msgs.msg import Twist, Vector3
 from nav_msgs.msg import Odometry
 import serial
 import struct
@@ -13,45 +13,60 @@ import time
 WHEELBASE = 0.25  
 MAX_STEER_ANGLE_RAD = 0.35 
 
-# FACTEUR DE CORRECTION LINEAIRE (Pour le test du mur)
-# 1.0 = Pas de changement
-# > 1.0 = Augmente la vitesse odométrique (si RViz est trop lent par rapport au réel)
-# < 1.0 = Diminue la vitesse odométrique (si RViz est trop rapide)
+# FACTEUR DE CORRECTION LINEAIRE
 LINEAR_CORRECTION_FACTOR = 1.0 
 
 # --- CONFIGURATION SÉRIE ---
 REG_SERVO  = 0x00
 REG_MOTOR  = 0x01
-FRAME_SIZE_RX = 13 
+REG_PID_KP = 0x03
+REG_PID_KI = 0x04
+REG_PID_KD = 0x05
+
+# TAILLES DE TRAMES
+FRAME_SIZE_NORMAL = 13 # 5 (Header) + 4 (Time) + 3 (1 Float: speed) + 1 (CRC)
+FRAME_SIZE_DEBUG  = 21 # 5 (Header) + 4 (Time) + 12 (3 Floats) + 1 (CRC)
 
 class STM32Bridge(Node):
     def __init__(self):
         super().__init__('stm32_bridge')
 
+        # --- PARAMÈTRES ---
         self.declare_parameter('port', '/dev/serial/by-id/usb-STMicroelectronics_STM32_Virtual_ComPort_3170365A3334-if00')
         self.declare_parameter('baudrate', 115200)
+        self.declare_parameter('debug_pid', False)
 
         port = self.get_parameter('port').get_parameter_value().string_value
         baud = self.get_parameter('baudrate').get_parameter_value().integer_value
+        self.debug_mode = self.get_parameter('debug_pid').get_parameter_value().bool_value
+
+        self.frame_size_rx = FRAME_SIZE_DEBUG if self.debug_mode else FRAME_SIZE_NORMAL
 
         self.ser = None
         try:
             self.ser = serial.Serial(port, baud, timeout=0)
-            self.get_logger().info(f"Connecté sur {port} (Mode Calibration Odom + Zero-Crossing)")
+            mode_str = "Debug PID + Wi-Fi Tuning" if self.debug_mode else "Production (Odom via Horloge ROS)"
+            self.get_logger().info(f"Connecté sur {port} - Mode: {mode_str}")
         except Exception as e:
             self.get_logger().error(f"Erreur Serial: {e}")
 
+        # --- SUBSCRIBERS ---
         qos = QoSProfile(reliability=ReliabilityPolicy.BEST_EFFORT, history=HistoryPolicy.KEEP_LAST, depth=1)
         self.create_subscription(Twist, 'cmd_vel', self.cmd_vel_callback, qos)
+        
+        if self.debug_mode:
+            self.create_subscription(Vector3, '/pid_gains', self.pid_gains_callback, 10)
+            self.pub_pid = self.create_publisher(Vector3, '/pid_debug', 10)
+        
+        # --- PUBLISHERS ---
         self.pub_odom = self.create_publisher(Odometry, '/wheel/odom', 10)
 
-        self.last_time = self.get_clock().now()
         self.rx_buffer = bytearray()
         self.current_steering_angle = 0.0  
         
-        # --- LOGIQUE DE PASSAGE PAR ZÉRO ---
-        self.target_direction = 1.0          # Ce que demande la manette
-        self.current_physical_direction = 1.0  # Le vrai sens physique actuel
+        # Logique de passage par zéro
+        self.target_direction = 1.0          
+        self.current_physical_direction = 1.0  
         
         self.create_timer(1.0 / 30.0, self.read_serial_loop)
 
@@ -74,15 +89,22 @@ class STM32Bridge(Node):
         try: self.ser.write(frame)
         except: pass
 
+    def pid_gains_callback(self, msg: Vector3):
+        if not self.debug_mode: return
+        self.send_command(REG_PID_KP, int(msg.x * 100.0))
+        time.sleep(0.01) 
+        self.send_command(REG_PID_KI, int(msg.y * 100.0))
+        time.sleep(0.01)
+        self.send_command(REG_PID_KD, int(msg.z * 100.0))
+        self.get_logger().info(f"Nouveaux PID appliqués -> P:{msg.x}, I:{msg.y}, D:{msg.z}")
+
     def cmd_vel_callback(self, msg: Twist):
         speed_mms = msg.linear.x * 1000.0
         
-        # --- MISE À JOUR DE LA CONSIGNE ---
         if speed_mms > 0:
             self.target_direction = 1.0
         elif speed_mms < 0:
             self.target_direction = -1.0
-        # Si speed_mms == 0, on garde la dernière direction voulue en mémoire
         
         if speed_mms > 3000: speed_mms = 3000
         if speed_mms < -3000: speed_mms = -3000
@@ -104,18 +126,18 @@ class STM32Bridge(Node):
             if self.ser.in_waiting > 0:
                 self.rx_buffer.extend(self.ser.read(self.ser.in_waiting))
 
-            if len(self.rx_buffer) > 2 * FRAME_SIZE_RX:
-                 self.rx_buffer = self.rx_buffer[-(2 * FRAME_SIZE_RX):]
+            if len(self.rx_buffer) > 2 * self.frame_size_rx:
+                 self.rx_buffer = self.rx_buffer[-(2 * self.frame_size_rx):]
 
-            while len(self.rx_buffer) >= FRAME_SIZE_RX:
+            while len(self.rx_buffer) >= self.frame_size_rx:
                 if self.rx_buffer[0] != 0xAA or self.rx_buffer[1] != 0x55:
                     del self.rx_buffer[0]
                     continue
                 
-                packet = self.rx_buffer[:FRAME_SIZE_RX]
+                packet = self.rx_buffer[:self.frame_size_rx]
                 if self.crc8_atm(packet[:-1]) == packet[-1]:
                     self.decode_telemetry(packet)
-                    self.rx_buffer = self.rx_buffer[FRAME_SIZE_RX:]
+                    self.rx_buffer = self.rx_buffer[self.frame_size_rx:]
                 else:
                     del self.rx_buffer[0]
 
@@ -124,41 +146,58 @@ class STM32Bridge(Node):
 
     def decode_telemetry(self, packet):
         try:
-            unpacked = struct.unpack('<BBBBIfB', packet)
-            raw_speed_ms = unpacked[5] 
+            target_ms = 0.0
+            error_ms = 0.0
 
-            # --- APPLICATION DU PASSAGE PAR ZÉRO ---
-            if abs(raw_speed_ms) <= 0.01:
-                # La voiture est physiquement arrêtée. 
-                # On l'autorise à changer de sens si la manette le demande.
-                self.current_physical_direction = self.target_direction
-                actual_speed_ms = 0.0  # On force un beau zéro bien propre
+            if self.debug_mode:
+                unpacked = struct.unpack('<BBBBIfffB', packet)
+                # On lit le hw_time_ms mais on ne l'utilise plus pour ROS
+                hw_time_ms = unpacked[4]
+                target_ms = unpacked[5]
+                actual_ms = unpacked[6] 
+                error_ms  = unpacked[7]
             else:
-                # La voiture roule encore (inertie), on garde le signe de son mouvement actuel
-                actual_speed_ms = abs(raw_speed_ms) * self.current_physical_direction
+                unpacked = struct.unpack('<BBBBIfB', packet)
+                hw_time_ms = unpacked[4]
+                actual_ms = unpacked[5]
 
-            if abs(actual_speed_ms) > 10.0 or not math.isfinite(actual_speed_ms):
+            # --- HORLOGE UNIQUE ROS 2 ---
+            # On utilise directement l'horloge de la Pi pour éviter la dérive avec le Lidar
+            odom_time = self.get_clock().now()
+
+            # --- PUBLICATION DEBUG (Si activé) ---
+            if self.debug_mode:
+                pid_msg = Vector3()
+                pid_msg.x = target_ms
+                pid_msg.y = actual_ms
+                pid_msg.z = error_ms
+                self.pub_pid.publish(pid_msg)
+
+            # --- TRAITEMENT DE L'ODOMÉTRIE (Zero-Crossing) ---
+            if abs(actual_ms) <= 0.01:
+                self.current_physical_direction = self.target_direction
+                odom_speed_ms = 0.0 
+            else:
+                odom_speed_ms = abs(actual_ms) * self.current_physical_direction
+
+            if abs(odom_speed_ms) > 10.0 or not math.isfinite(odom_speed_ms):
                 return
-
-            current_time = self.get_clock().now()
             
             odom = Odometry()
-            odom.header.stamp = current_time.to_msg()
+            odom.header.stamp = odom_time.to_msg() 
             odom.header.frame_id = "odom"
             odom.child_frame_id = "base_link"
 
-            # 1. Vitesse Linéaire AVEC FACTEUR DE CORRECTION ET ZERO-CROSSING
-            odom.twist.twist.linear.x = actual_speed_ms * LINEAR_CORRECTION_FACTOR
+            odom.twist.twist.linear.x = odom_speed_ms * LINEAR_CORRECTION_FACTOR
 
-            # 2. Vitesse Angulaire (Calcul Ackermann - Conservé mais ignoré par l'EKF)
             if abs(WHEELBASE) > 0.001:
-                angular_vel = (actual_speed_ms / WHEELBASE) * math.tan(self.current_steering_angle)
+                angular_vel = (odom_speed_ms / WHEELBASE) * math.tan(self.current_steering_angle)
                 odom.twist.twist.angular.z = angular_vel
             else:
                 odom.twist.twist.angular.z = 0.0
 
             odom.twist.covariance = [0.0] * 36
-            if abs(actual_speed_ms) < 0.01:
+            if abs(odom_speed_ms) < 0.01:
                 odom.twist.covariance[0] = 0.001 
                 odom.twist.covariance[35] = 0.001 
             else:
@@ -166,7 +205,6 @@ class STM32Bridge(Node):
                 odom.twist.covariance[35] = 100.0 
 
             self.pub_odom.publish(odom)
-            self.last_time = current_time
 
         except struct.error:
             pass
