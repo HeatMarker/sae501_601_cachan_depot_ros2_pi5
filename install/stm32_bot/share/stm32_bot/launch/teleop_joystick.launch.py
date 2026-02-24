@@ -1,26 +1,39 @@
 from launch import LaunchDescription
 from launch_ros.actions import Node
+from launch.actions import DeclareLaunchArgument
+from launch.substitutions import LaunchConfiguration
 
 def generate_launch_description():
-    return LaunchDescription([
-        # 1. Lecture de la manette PS3 (Port js1)
-        Node(
-            package='joy',
-            executable='joy_node',
-            name='joy_node',
-            parameters=[{
-                'dev': '/dev/input/js0',
-                'deadzone': 0.05,
-                'autorepeat_rate': 20.0
-            }]
-        ),
+    # 1. Déclaration de l'argument (3.0 m/s par défaut)
+    max_speed_arg = DeclareLaunchArgument(
+        'max_speed',
+        default_value='3.0',
+        description='Vitesse max en m/s'
+    )
 
-        # 2. Ton Mapper personnalisé (Logique : Croix + L2/R2 + Direction Inversée)
-        # Ce nœud transforme les axes de la manette en message /cmd_vel
-        Node(
-            package='stm32_bot',
-            executable='ps3_mapper',
-            name='ps3_mapper',
-            output='screen'
-        ),
+    # 2. LE PILOTE MATÉRIEL (Il lit le Bluetooth/USB de la manette)
+    joy_node = Node(
+        package='joy',
+        executable='joy_node',
+        name='joy_node',
+        parameters=[{
+            'deadzone': 0.05,
+            'autorepeat_rate': 20.0,
+        }]
+    )
+
+    # 3. TON SCRIPT (Il traduit les boutons en vitesses)
+    teleop_node = Node(
+        package='stm32_bot',
+        executable='ps3_mapper',
+        name='ps3_mapper',
+        parameters=[{
+            'max_speed': LaunchConfiguration('max_speed')
+        }]
+    )
+
+    return LaunchDescription([
+        max_speed_arg,
+        joy_node,       # <- C'est lui qui manquait !
+        teleop_node
     ])

@@ -1,35 +1,22 @@
 import os
 from launch import LaunchDescription
-from launch.actions import DeclareLaunchArgument
-from launch.substitutions import LaunchConfiguration
-from launch_ros.actions import Node
-from ament_index_python.packages import get_package_share_directory
+from launch.actions import IncludeLaunchDescription
+from launch.launch_description_sources import PythonLaunchDescriptionSource
+from launch_ros.substitutions import FindPackageShare
 
 def generate_launch_description():
-    use_sim_time = LaunchConfiguration('use_sim_time', default='false')
+    # 1. Chemin vers ton fichier YAML de paramètres
+    pkg_stm32 = FindPackageShare('stm32_bot').find('stm32_bot')
+    slam_params_file = os.path.join(pkg_stm32, 'config', 'mapper_params_online_async.yaml')
 
-    # On pointe vers TON fichier de config créé à l'étape 1
-    slam_config = os.path.join(
-        get_package_share_directory('stm32_bot'),
-        'config',
-        'mapper_params_online_async.yaml'
-    )
+    # 2. Chemin vers le launch file officiel de slam_toolbox (qui gère l'activation)
+    pkg_slam_toolbox = FindPackageShare('slam_toolbox').find('slam_toolbox')
+    slam_launch_file = os.path.join(pkg_slam_toolbox, 'launch', 'online_async_launch.py')
 
     return LaunchDescription([
-        DeclareLaunchArgument(
-            'use_sim_time',
-            default_value='false',
-            description='Use simulation/Gazebo clock'),
-
-        Node(
-            package='slam_toolbox',
-            executable='async_slam_toolbox_node',
-            name='slam_toolbox',
-            output='screen',
-            parameters=[
-              slam_config,
-              {'use_sim_time': use_sim_time}
-            ],
+        # On inclut le launch officiel en lui passant tes paramètres
+        IncludeLaunchDescription(
+            PythonLaunchDescriptionSource(slam_launch_file),
+            launch_arguments={'slam_params_file': slam_params_file}.items()
         )
     ])
-

@@ -63,9 +63,9 @@ class TrackmaniaTeleop(Node):
                         self.current_speed = max(self.current_speed - STEP_SPEED, -MAX_SPEED)
                     
                     # DIRECTION
-                    elif key == '\x1b[C': # GAUCHE
+                    elif key == '\x1b[D': # GAUCHE
                         self.current_turn = min(self.current_turn + STEP_TURN, MAX_TURN)
-                    elif key == '\x1b[D': # DROITE
+                    elif key == '\x1b[C': # DROITE
                         self.current_turn = max(self.current_turn - STEP_TURN, -MAX_TURN)
                     
                     # STOP

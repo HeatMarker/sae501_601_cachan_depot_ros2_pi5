@@ -110,7 +110,7 @@ class STM32Bridge(Node):
         if speed_mms < -3000: speed_mms = -3000
         
         cmd_steering = msg.angular.z
-        servo_value = cmd_steering * 20.0 
+        servo_value = -cmd_steering * 20.0 
         
         if servo_value > 20: servo_value = 20
         if servo_value < -20: servo_value = -20
