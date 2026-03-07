@@ -67,6 +67,9 @@ class STM32Bridge(Node):
         # Logique de passage par zéro
         self.target_direction = 1.0          
         self.current_physical_direction = 1.0  
+
+        self.last_speed_mms = None
+        self.last_servo_value = None
         
         self.create_timer(1.0 / 30.0, self.read_serial_loop)
 
@@ -116,6 +119,17 @@ class STM32Bridge(Node):
         if servo_value < -20: servo_value = -20
 
         self.current_steering_angle = cmd_steering * MAX_STEER_ANGLE_RAD
+
+        speed_mms = round(speed_mms)
+        servo_value = round(servo_value)
+
+        if speed_mms != self.last_speed_mms or servo_value != self.last_servo_value:
+            self.send_command(REG_MOTOR, speed_mms)
+            time.sleep(0.005)
+            self.send_command(REG_SERVO, servo_value)
+            
+            self.last_speed_mms = speed_mms
+            self.last_servo_value = servo_value
 
         self.send_command(REG_MOTOR, speed_mms)
         self.send_command(REG_SERVO, servo_value)
