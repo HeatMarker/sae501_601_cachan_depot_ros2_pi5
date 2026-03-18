@@ -1,0 +1,63 @@
+[0.000000] (-) TimerEvent: {}
+[0.000151] (-) JobUnselected: {'identifier': 'ldlidar_stl_ros2'}
+[0.000591] (-) JobUnselected: {'identifier': 'tm_imu'}
+[0.001002] (stm32_bot) JobQueued: {'identifier': 'stm32_bot', 'dependencies': OrderedDict()}
+[0.001073] (stm32_bot) JobStarted: {'identifier': 'stm32_bot'}
+[0.099666] (-) TimerEvent: {}
+[0.199875] (-) TimerEvent: {}
+[0.300077] (-) TimerEvent: {}
+[0.401489] (-) TimerEvent: {}
+[0.501739] (-) TimerEvent: {}
+[0.601975] (-) TimerEvent: {}
+[0.702212] (-) TimerEvent: {}
+[0.802476] (-) TimerEvent: {}
+[0.902774] (-) TimerEvent: {}
+[1.004549] (-) TimerEvent: {}
+[1.104853] (-) TimerEvent: {}
+[1.205243] (-) TimerEvent: {}
+[1.306696] (-) TimerEvent: {}
+[1.409566] (-) TimerEvent: {}
+[1.510291] (-) TimerEvent: {}
+[1.612970] (-) TimerEvent: {}
+[1.715441] (-) TimerEvent: {}
+[1.815928] (-) TimerEvent: {}
+[1.916315] (-) TimerEvent: {}
+[1.981970] (stm32_bot) Command: {'cmd': ['/usr/bin/python3', '-W', 'ignore:setup.py install is deprecated', '-W', 'ignore:easy_install command is deprecated', 'setup.py', 'egg_info', '--egg-base', '../../build/stm32_bot', 'build', '--build-base', '/home/spinetti/ros2_ws/build/stm32_bot/build', 'install', '--record', '/home/spinetti/ros2_ws/build/stm32_bot/install.log', '--single-version-externally-managed', 'install_data'], 'cwd': '/home/spinetti/ros2_ws/src/stm32_bot', 'env': {'GJS_DEBUG_TOPICS': 'JS ERROR;JS LOG', 'LESSOPEN': '| /usr/bin/lesspipe %s', 'VSCODE_CWD': '/home/spinetti', 'VSCODE_ESM_ENTRYPOINT': 'vs/workbench/api/node/extensionHostProcess', 'USER': 'spinetti', 'CLAUDE_CODE_ENTRYPOINT': 'claude-vscode', 'VSCODE_NLS_CONFIG': '{"userLocale":"en-us","osLocale":"en-us","resolvedLanguage":"en","defaultMessagesFile":"/usr/share/code/resources/app/out/nls.messages.json","locale":"en-us","availableLanguages":{}}', 'GZ_CONFIG_PATH': '/opt/ros/jazzy/opt/gz_sim_vendor/share/gz:/opt/ros/jazzy/opt/sdformat_vendor/share/gz:/opt/ros/jazzy/opt/gz_gui_vendor/share/gz:/opt/ros/jazzy/opt/gz_transport_vendor/share/gz:/opt/ros/jazzy/opt/gz_rendering_vendor/share/gz:/opt/ros/jazzy/opt/gz_plugin_vendor/share/gz:/opt/ros/jazzy/opt/gz_fuel_tools_vendor/share/gz:/opt/ros/jazzy/opt/gz_msgs_vendor/share/gz:/opt/ros/jazzy/opt/gz_common_vendor/share/gz', 'GIT_EDITOR': 'true', 'VSCODE_HANDLES_UNCAUGHT_ERRORS': 'true', 'XDG_SESSION_TYPE': 'wayland', 'CLAUDE_AGENT_SDK_VERSION': '0.2.78', 'CLUTTER_DISABLE_MIPMAPPED_TEXT': '1', 'SHLVL': '1', 'LD_LIBRARY_PATH': '/opt/ros/jazzy/opt/gz_sim_vendor/lib:/opt/ros/jazzy/opt/gz_sensors_vendor/lib:/opt/ros/jazzy/opt/gz_physics_vendor/lib:/opt/ros/jazzy/opt/sdformat_vendor/lib:/opt/ros/jazzy/opt/rviz_ogre_vendor/lib:/opt/ros/jazzy/lib/aarch64-linux-gnu:/opt/ros/jazzy/opt/gz_gui_vendor/lib:/opt/ros/jazzy/opt/gz_transport_vendor/lib:/opt/ros/jazzy/opt/gz_rendering_vendor/lib:/opt/ros/jazzy/opt/gz_plugin_vendor/lib:/opt/ros/jazzy/opt/gz_fuel_tools_vendor/lib:/opt/ros/jazzy/opt/gz_msgs_vendor/lib:/opt/ros/jazzy/opt/gz_common_vendor/lib:/opt/ros/jazzy/opt/gz_math_vendor/lib:/opt/ros/jazzy/opt/gz_utils_vendor/lib:/opt/ros/jazzy/opt/gz_tools_vendor/lib:/opt/ros/jazzy/opt/gz_ogre_next_vendor/lib:/opt/ros/jazzy/opt/gz_dartsim_vendor/lib:/opt/ros/jazzy/opt/gz_cmake_vendor/lib:/opt/ros/jazzy/lib', 'HOME': '/home/spinetti', 'CHROME_DESKTOP': 'code.desktop', 'DESKTOP_SESSION': 'ubuntu', 'VSCODE_IPC_HOOK': '/run/user/1000/vscode-6564bfc8-1.10-main.sock', 'GIO_LAUNCHED_DESKTOP_FILE': '/usr/share/applications/code.desktop', 'ROS_PYTHON_VERSION': '3', 'GNOME_SHELL_SESSION_MODE': 'ubuntu', 'GTK_MODULES': 'gail:atk-bridge', 'MANAGERPID': '1502', 'SYSTEMD_EXEC_PID': '1716', 'IM_CONFIG_CHECK_ENV': '1', 'GSM_SKIP_SSH_AGENT_WORKAROUND': 'true', 'DBUS_SESSION_BUS_ADDRESS': 'unix:path=/run/user/1000/bus', 'GIO_LAUNCHED_DESKTOP_FILE_PID': '3486', 'VSCODE_CRASH_REPORTER_PROCESS_TYPE': 'extensionHost', 'DEBUGINFOD_URLS': 'https://debuginfod.ubuntu.com', 'IM_CONFIG_PHASE': '1', 'WAYLAND_DISPLAY': 'wayland-0', 'VSCODE_L10N_BUNDLE_LOCATION': '', 'COLCON_PREFIX_PATH': '/home/spinetti/ros2_ws/install:/home/spinetti/install', 'APPLICATION_INSIGHTS_NO_STATSBEAT': 'true', 'ROS_DISTRO': 'jazzy', 'LOGNAME': 'spinetti', 'JOURNAL_STREAM': '8:15938', '_': '/usr/bin/colcon', 'ROS_VERSION': '2', 'MEMORY_PRESSURE_WATCH': '/sys/fs/cgroup/user.slice/user-1000.slice/user@1000.service/session.slice/org.gnome.Shell@wayland.service/memory.pressure', 'XDG_SESSION_CLASS': 'user', 'USERNAME': 'spinetti', 'OTEL_EXPORTER_OTLP_METRICS_TEMPORALITY_PREFERENCE': 'delta', 'GNOME_DESKTOP_SESSION_ID': 'this-is-deprecated', 'FC_FONTATIONS': '1', 'MCP_CONNECTION_NONBLOCKING': 'true', 'PATH': '/usr/bin:/opt/ros/jazzy/opt/gz_msgs_vendor/bin:/opt/ros/jazzy/opt/gz_tools_vendor/bin:/opt/ros/jazzy/opt/gz_ogre_next_vendor/bin:/opt/ros/jazzy/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/snap/bin', 'SESSION_MANAGER': 'local/spinetti-desktop:@/tmp/.ICE-unix/1681,unix/spinetti-desktop:/tmp/.ICE-unix/1681', 'INVOCATION_ID': '123919b627b147acbe63c8cc07e6202c', 'COREPACK_ENABLE_AUTO_PIN': '0', 'XDG_MENU_PREFIX': 'gnome-', 'GNOME_SETUP_DISPLAY': ':1', 'XDG_RUNTIME_DIR': '/run/user/1000', 'GDK_BACKEND': 'wayland', 'DISPLAY': ':0', 'NoDefaultCurrentDirectoryInExePath': '1', 'LANG': 'en_US.UTF-8', 'XDG_CURRENT_DESKTOP': 'ubuntu:GNOME', 'XMODIFIERS': '@im=ibus', 'XDG_SESSION_DESKTOP': 'ubuntu', 'XAUTHORITY': '/run/user/1000/.mutter-Xwaylandauth.PNOCL3', 'SSH_AUTH_SOCK': '/run/user/1000/keyring/ssh', 'AMENT_PREFIX_PATH': '/home/spinetti/ros2_ws/install/tm_imu:/home/spinetti/ros2_ws/install/stm32_bot:/home/spinetti/ros2_ws/install/spinetti_bringup:/home/spinetti/ros2_ws/install/rf2o_laser_odometry:/home/spinetti/ros2_ws/install/ldlidar_stl_ros2:/home/spinetti/install/stm32_bot:/opt/ros/jazzy', 'SHELL': '/bin/bash', 'QT_ACCESSIBILITY': '1', 'ELECTRON_RUN_AS_NODE': '1', 'GDMSESSION': 'ubuntu', 'CLAUDE_CODE_ENABLE_SDK_FILE_CHECKPOINTING': 'true', 'LESSCLOSE': '/usr/bin/lesspipe %s %s', 'CLAUDECODE': '1', 'GJS_DEBUG_OUTPUT': 'stderr', 'VIRTUAL_ENV': '/usr', 'ROS_AUTOMATIC_DISCOVERY_RANGE': 'SUBNET', 'QT_IM_MODULE': 'ibus', 'PWD': '/home/spinetti/ros2_ws/build/stm32_bot', 'LC_ALL': 'en_US.UTF-8', 'XDG_CONFIG_DIRS': '/etc/xdg/xdg-ubuntu:/etc/xdg', 'VSCODE_CODE_CACHE_PATH': '/home/spinetti/.config/Code/CachedData/c3a26841a84f20dfe0850d0a5a9bd01da4f003ea', 'XDG_DATA_DIRS': '/usr/share/ubuntu:/usr/share/gnome:/usr/local/share/:/usr/share/:/var/lib/snapd/desktop', 'PYTHONPATH': '/home/spinetti/ros2_ws/build/stm32_bot/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/spinetti/ros2_ws/install/stm32_bot/lib/python3.12/site-packages:/home/spinetti/ros2_ws/install/stm32_bot/lib/python3.12/site-packages:/home/spinetti/ros2_ws/install/spinetti_bringup/lib/python3.12/site-packages:/home/spinetti/install/stm32_bot/lib/python3.12/site-packages:/opt/ros/jazzy/lib/python3.12/site-packages', 'COLCON': '1', 'MEMORY_PRESSURE_WRITE': 'c29tZSAyMDAwMDAgMjAwMDAwMAA=', 'CMAKE_PREFIX_PATH': '/home/spinetti/ros2_ws/install/tm_imu:/home/spinetti/ros2_ws/install/rf2o_laser_odometry:/home/spinetti/ros2_ws/install/ldlidar_stl_ros2:/opt/ros/jazzy/opt/gz_sim_vendor:/opt/ros/jazzy/opt/gz_sensors_vendor:/opt/ros/jazzy/opt/gz_physics_vendor:/opt/ros/jazzy/opt/sdformat_vendor:/opt/ros/jazzy/opt/gz_gui_vendor:/opt/ros/jazzy/opt/gz_transport_vendor:/opt/ros/jazzy/opt/gz_rendering_vendor:/opt/ros/jazzy/opt/gz_plugin_vendor:/opt/ros/jazzy/opt/gz_fuel_tools_vendor:/opt/ros/jazzy/opt/gz_msgs_vendor:/opt/ros/jazzy/opt/gz_common_vendor:/opt/ros/jazzy/opt/gz_math_vendor:/opt/ros/jazzy/opt/gz_utils_vendor:/opt/ros/jazzy/opt/gz_tools_vendor:/opt/ros/jazzy/opt/gz_ogre_next_vendor:/opt/ros/jazzy/opt/gz_dartsim_vendor:/opt/ros/jazzy/opt/gz_cmake_vendor', 'VSCODE_PID': '3486'}, 'shell': False}
+[2.016452] (-) TimerEvent: {}
+[2.116753] (-) TimerEvent: {}
+[2.217059] (-) TimerEvent: {}
+[2.317373] (-) TimerEvent: {}
+[2.417648] (-) TimerEvent: {}
+[2.513921] (stm32_bot) StdoutLine: {'line': b'running egg_info\n'}
+[2.518169] (-) TimerEvent: {}
+[2.553209] (stm32_bot) StdoutLine: {'line': b'writing ../../build/stm32_bot/stm32_bot.egg-info/PKG-INFO\n'}
+[2.553740] (stm32_bot) StdoutLine: {'line': b'writing dependency_links to ../../build/stm32_bot/stm32_bot.egg-info/dependency_links.txt\n'}
+[2.554826] (stm32_bot) StdoutLine: {'line': b'writing entry points to ../../build/stm32_bot/stm32_bot.egg-info/entry_points.txt\n'}
+[2.555092] (stm32_bot) StdoutLine: {'line': b'writing requirements to ../../build/stm32_bot/stm32_bot.egg-info/requires.txt\n'}
+[2.558478] (stm32_bot) StdoutLine: {'line': b'writing top-level names to ../../build/stm32_bot/stm32_bot.egg-info/top_level.txt\n'}
+[2.619542] (-) TimerEvent: {}
+[2.638624] (stm32_bot) StdoutLine: {'line': b"reading manifest file '../../build/stm32_bot/stm32_bot.egg-info/SOURCES.txt'\n"}
+[2.640153] (stm32_bot) StdoutLine: {'line': b"writing manifest file '../../build/stm32_bot/stm32_bot.egg-info/SOURCES.txt'\n"}
+[2.640499] (stm32_bot) StdoutLine: {'line': b'running build\n'}
+[2.640660] (stm32_bot) StdoutLine: {'line': b'running build_py\n'}
+[2.641147] (stm32_bot) StdoutLine: {'line': b'running install\n'}
+[2.652924] (stm32_bot) StdoutLine: {'line': b'running install_lib\n'}
+[2.697527] (stm32_bot) StdoutLine: {'line': b'running install_data\n'}
+[2.698004] (stm32_bot) StdoutLine: {'line': b'copying config/ekf_config.yaml -> /home/spinetti/ros2_ws/install/stm32_bot/share/stm32_bot/config\n'}
+[2.698151] (stm32_bot) StdoutLine: {'line': b'running install_egg_info\n'}
+[2.719696] (-) TimerEvent: {}
+[2.741656] (stm32_bot) StdoutLine: {'line': b"removing '/home/spinetti/ros2_ws/install/stm32_bot/lib/python3.12/site-packages/stm32_bot-0.0.0-py3.12.egg-info' (and everything under it)\n"}
+[2.742243] (stm32_bot) StdoutLine: {'line': b'Copying ../../build/stm32_bot/stm32_bot.egg-info to /home/spinetti/ros2_ws/install/stm32_bot/lib/python3.12/site-packages/stm32_bot-0.0.0-py3.12.egg-info\n'}
+[2.744060] (stm32_bot) StdoutLine: {'line': b'running install_scripts\n'}
+[2.820275] (-) TimerEvent: {}
+[2.920632] (-) TimerEvent: {}
+[3.020939] (-) TimerEvent: {}
+[3.025591] (stm32_bot) StdoutLine: {'line': b'Installing imu_visualizer script to /home/spinetti/ros2_ws/install/stm32_bot/lib/stm32_bot\n'}
+[3.027112] (stm32_bot) StdoutLine: {'line': b'Installing ps3_mapper script to /home/spinetti/ros2_ws/install/stm32_bot/lib/stm32_bot\n'}
+[3.027610] (stm32_bot) StdoutLine: {'line': b'Installing stm32_bridge script to /home/spinetti/ros2_ws/install/stm32_bot/lib/stm32_bot\n'}
+[3.027788] (stm32_bot) StdoutLine: {'line': b'Installing stm32_teleop script to /home/spinetti/ros2_ws/install/stm32_bot/lib/stm32_bot\n'}
+[3.027924] (stm32_bot) StdoutLine: {'line': b"writing list of installed files to '/home/spinetti/ros2_ws/build/stm32_bot/install.log'\n"}
+[3.121086] (-) TimerEvent: {}
+[3.197077] (stm32_bot) CommandEnded: {'returncode': 0}
+[3.218139] (stm32_bot) JobEnded: {'identifier': 'stm32_bot', 'rc': 0}
+[3.219118] (-) EventReactorShutdown: {}

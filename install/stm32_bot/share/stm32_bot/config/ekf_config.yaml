@@ -29,12 +29,15 @@ ekf_filter_node:
     # --- SOURCE 2 : IMU (ROTATION PURE) ---
     imu0: /imu_data 
     
-    # YAW (Index 5) et VYAW (Index 11) sont à true. AX est bien resté à false.
+    # IMU monté tilté : l'AHRS interne donne un quaternion faux (suppose Z vers le haut).
+    # On désactive yaw (index 5) pour ne pas fusionner cette orientation corrompue.
+    # On garde seulement vyaw (index 11) = vitesse angulaire brute du gyro,
+    # qui est fiable peu importe l'orientation physique (le TF fait la correction d'axe).
     imu0_config: [false, false, false,
-                  false, false, true,  
+                  false, false, false,   # yaw → désactivé
                   false, false, false,
-                  false, false, true,  
-                  false, false, false] 
+                  false, false, true,    # vyaw → seul le gyro brut
+                  false, false, false]
                   
     imu0_differential: false
     imu0_relative: true  

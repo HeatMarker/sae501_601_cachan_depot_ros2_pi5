@@ -1,0 +1,11 @@
+../Core/Src/driver_ins.c:26:15:bmi088_spi_read	576	static
+../Core/Src/driver_ins.c:90:15:bmi088_spi_write	40	static
+../Core/Src/driver_ins.c:110:13:bmi088_delay_us	24	static
+../Core/Src/driver_ins.c:119:8:BMI088_Init	40	static
+../Core/Src/driver_ins.c:188:8:BMI088_Read_Accel_Raw	16	static
+../Core/Src/driver_ins.c:196:8:BMI088_Read_Gyro_Raw	16	static
+../Core/Src/driver_ins.c:204:8:BMI088_Read_All	40	static
+../Core/Src/driver_ins.c:236:6:BMI088_Convert_Accel	24	static
+../Core/Src/driver_ins.c:246:6:BMI088_Convert_Gyro	24	static
+../Core/Src/driver_ins.c:256:9:BMI088_Test_Communication	24	static
+../Core/Src/driver_ins.c:275:8:BMI088_Soft_Reset	24	static

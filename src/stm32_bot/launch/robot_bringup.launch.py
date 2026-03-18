@@ -52,26 +52,25 @@ def generate_launch_description():
 
         # --- STATIC TRANSFORMS (GEOMETRIE) ---
         
-        # IMU: 4.5cm de haut, Tourné de 90° (1.57 rad) pour avoir X devant
-        # NOUVELLE SYNTAXE ROS 2
+        # IMU DDD TM210 : X(rouge)=haut(+robot_Z), Y(vert)=gauche(+robot_Y), Z(bleu)=arrière(-robot_X)
+        # R = Ry(-90°)  =>  pitch=-1.57, roll=0, yaw=0
         Node(
             package='tf2_ros',
             executable='static_transform_publisher',
             arguments=[
-                '--x', '0', '--y', '0', '--z', '0.045', 
-                '--yaw', '-1.57', '--pitch', '0', '--roll', '0', 
+                '--x', '0', '--y', '0', '--z', '0.08',
+                '--yaw', '0', '--pitch', '-1.57', '--roll', '0',
                 '--frame-id', 'base_link', '--child-frame-id', 'imu'
             ]
         ),
 
-        # LIDAR: 18cm devant, 9.5cm de haut (45mm + 50mm)
-        # NOUVELLE SYNTAXE ROS 2
+        # LIDAR: 28.5cm devant (essieu arrière), 13.5cm de haut (sol)
         Node(
             package='tf2_ros',
             executable='static_transform_publisher',
             arguments=[
-                '--x', '0.18', '--y', '0', '--z', '0.095', 
-                '--yaw', '-1.57', '--pitch', '0', '--roll', '0', 
+                '--x', '0.285', '--y', '0', '--z', '0.135',
+                '--yaw', '-1.57', '--pitch', '0', '--roll', '0',
                 '--frame-id', 'base_link', '--child-frame-id', 'base_laser'
             ]
         ),

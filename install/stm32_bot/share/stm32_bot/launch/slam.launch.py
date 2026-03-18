@@ -1,6 +1,6 @@
 import os
 from launch import LaunchDescription
-from launch.actions import IncludeLaunchDescription
+from launch.actions import IncludeLaunchDescription, TimerAction
 from launch.launch_description_sources import PythonLaunchDescriptionSource
 from launch_ros.substitutions import FindPackageShare
 
@@ -14,9 +14,15 @@ def generate_launch_description():
     slam_launch_file = os.path.join(pkg_slam_toolbox, 'launch', 'online_async_launch.py')
 
     return LaunchDescription([
-        # On inclut le launch officiel en lui passant tes paramètres
-        IncludeLaunchDescription(
-            PythonLaunchDescriptionSource(slam_launch_file),
-            launch_arguments={'slam_params_file': slam_params_file}.items()
+        # Délai de 3s pour laisser l'EKF publier ses premiers TF avant que SLAM
+        # ne tente son premier lookup — corrige le bug de la frame odom manquante
+        TimerAction(
+            period=3.0,
+            actions=[
+                IncludeLaunchDescription(
+                    PythonLaunchDescriptionSource(slam_launch_file),
+                    launch_arguments={'slam_params_file': slam_params_file}.items()
+                )
+            ]
         )
     ])

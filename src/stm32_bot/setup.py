@@ -14,8 +14,8 @@ setup(
         ('share/' + package_name, ['package.xml']),
         # Installation des fichiers Launch
         (os.path.join('share', package_name, 'launch'), glob('launch/*.launch.py')),
-        # Installation des fichiers de Configuration (YAML)
-        (os.path.join('share', package_name, 'config'), glob('config/*.yaml')),
+        # Installation des fichiers de Configuration (YAML + RViz2)
+        (os.path.join('share', package_name, 'config'), glob('config/*.yaml') + glob('config/*.rviz')),
         # Installation des fichiers de Carte (Maps)
         (os.path.join('share', package_name, 'maps'), glob('maps/*')),
     ],
@@ -32,6 +32,7 @@ setup(
             'stm32_bridge = stm32_bot.stm32_bridge:main',
             'stm32_teleop = stm32_bot.stm32_teleop:main',
             'ps3_mapper = stm32_bot.ps3_mapper:main',
+            'imu_visualizer = stm32_bot.imu_visualizer:main',
         ],
     },
 )

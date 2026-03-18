@@ -1,0 +1,8 @@
+../Core/Inc/serial.h:41:19:proto_send_data16	16	static
+../Core/Src/serial_cmd.c:25:24:to_u16	16	static
+../Core/Src/serial_cmd.c:26:23:to_i16	16	static
+../Core/Src/serial_cmd.c:28:16:read_reg16	16	static
+../Core/Src/serial_cmd.c:37:13:handle_frame	48	static
+../Core/Src/serial_cmd.c:76:13:parse_byte	32	static
+../Core/Src/serial_cmd.c:92:6:serial_cmd_reader	80	static
+../Core/Src/serial_cmd.c:101:6:serial_send_imu_frame	40	static

@@ -1,0 +1,31 @@
+INTERNET
+ssh spinetti@10.42.0.1
+export RMW_IMPLEMENTATION=rmw_cyclonedds_cpp
+
+echo "export RMW_IMPLEMENTATION=rmw_cyclonedds_cpp" >> ~/.bashrc
+source ~/.bashrc
+
+BRINGUP
+ros2 launch stm32_bot robot_bringup.launch.py
+
+TELEOP
+ros2 launch stm32_bot teleop_joystick.launch.py max_speed:=3.0
+ros2 run stm32_bot stm32_teleop
+
+SLAM
+ros2 launch stm32_bot slam.launch.py
+/home/spinetti/ros2_ws/src/stm32_bot/maps/maps
+
+NAV2
+ros2 launch stm32_bot nav2.launch.py
+
+CHRONY
+chronyc tracking
+ros2 lifecycle set /slam_toolbox configure
+ros2 lifecycle set /slam_toolbox activate
+
+UART
+ros2 run stm32_bot stm32_bridge
+
+LIDAR
+ros2 launch ldlidar_stl_ros2 ld06.launch.py

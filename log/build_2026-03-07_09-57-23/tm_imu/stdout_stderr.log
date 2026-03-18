@@ -1,0 +1,25 @@
+[100%] Built target transducer_m_imu
+-- Install configuration: ""
+-- Installing: /home/spinetti/ros2_ws/install/tm_imu/lib/tm_imu/transducer_m_imu
+-- Set non-toolchain portion of runtime path of "/home/spinetti/ros2_ws/install/tm_imu/lib/tm_imu/transducer_m_imu" to ""
+-- Up-to-date: /home/spinetti/ros2_ws/install/tm_imu/share/tm_imu//launch
+-- Installing: /home/spinetti/ros2_ws/install/tm_imu/share/tm_imu//launch/imu.launch.py
+-- Up-to-date: /home/spinetti/ros2_ws/install/tm_imu/share/tm_imu//launch/__pycache__
+-- Installing: /home/spinetti/ros2_ws/install/tm_imu/share/tm_imu//launch/__pycache__/imu.launch.cpython-312.pyc
+-- Up-to-date: /home/spinetti/ros2_ws/install/tm_imu/share/tm_imu//config
+-- Installing: /home/spinetti/ros2_ws/install/tm_imu/share/tm_imu//config/params.yaml
+-- Installing: /home/spinetti/ros2_ws/install/tm_imu/share/ament_index/resource_index/package_run_dependencies/tm_imu
+-- Installing: /home/spinetti/ros2_ws/install/tm_imu/share/ament_index/resource_index/parent_prefix_path/tm_imu
+-- Installing: /home/spinetti/ros2_ws/install/tm_imu/share/tm_imu/environment/ament_prefix_path.sh
+-- Installing: /home/spinetti/ros2_ws/install/tm_imu/share/tm_imu/environment/ament_prefix_path.dsv
+-- Installing: /home/spinetti/ros2_ws/install/tm_imu/share/tm_imu/environment/path.sh
+-- Installing: /home/spinetti/ros2_ws/install/tm_imu/share/tm_imu/environment/path.dsv
+-- Installing: /home/spinetti/ros2_ws/install/tm_imu/share/tm_imu/local_setup.bash
+-- Installing: /home/spinetti/ros2_ws/install/tm_imu/share/tm_imu/local_setup.sh
+-- Installing: /home/spinetti/ros2_ws/install/tm_imu/share/tm_imu/local_setup.zsh
+-- Installing: /home/spinetti/ros2_ws/install/tm_imu/share/tm_imu/local_setup.dsv
+-- Installing: /home/spinetti/ros2_ws/install/tm_imu/share/tm_imu/package.dsv
+-- Installing: /home/spinetti/ros2_ws/install/tm_imu/share/ament_index/resource_index/packages/tm_imu
+-- Installing: /home/spinetti/ros2_ws/install/tm_imu/share/tm_imu/cmake/tm_imuConfig.cmake
+-- Installing: /home/spinetti/ros2_ws/install/tm_imu/share/tm_imu/cmake/tm_imuConfig-version.cmake
+-- Installing: /home/spinetti/ros2_ws/install/tm_imu/share/tm_imu/package.xml

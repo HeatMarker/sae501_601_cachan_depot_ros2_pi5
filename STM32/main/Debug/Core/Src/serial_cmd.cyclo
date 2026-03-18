@@ -1,0 +1,8 @@
+../Core/Inc/serial.h:41:19:proto_send_data16	1
+../Core/Src/serial_cmd.c:25:24:to_u16	1
+../Core/Src/serial_cmd.c:26:23:to_i16	1
+../Core/Src/serial_cmd.c:28:16:read_reg16	5
+../Core/Src/serial_cmd.c:37:13:handle_frame	7
+../Core/Src/serial_cmd.c:76:13:parse_byte	8
+../Core/Src/serial_cmd.c:92:6:serial_cmd_reader	3
+../Core/Src/serial_cmd.c:101:6:serial_send_imu_frame	2
