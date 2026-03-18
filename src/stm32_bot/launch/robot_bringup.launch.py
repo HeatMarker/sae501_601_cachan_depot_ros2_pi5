@@ -28,7 +28,7 @@ def generate_launch_description():
             name='stm32_bridge',
             parameters=[
                 {'port': '/dev/serial/by-id/usb-STMicroelectronics_STM32_STLink_066FFF505075894967183959-if02'},
-                {'debug_pid': False} # Mets True ici quand tu veux utiliser ton PC pour régler
+                {'debug_pid': False}
             ]
         ),
 

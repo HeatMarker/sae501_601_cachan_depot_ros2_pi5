@@ -13,7 +13,7 @@
 ../Core/Src/serial.c:144:8:serial_read_until	48	static
 ../Core/Src/serial.c:165:6:HAL_UART_TxCpltCallback	24	static
 ../Core/Src/serial.c:173:6:HAL_UARTEx_RxEventCallback	32	static
-../Core/Src/serial.c:199:9:serial_crc8_atm	24	static
-../Core/Src/serial.c:210:12:proto_send_frame3	32	static
-../Core/Src/serial.c:219:5:proto_send_write16	24	static
-../Core/Src/serial.c:225:5:proto_send_read_burst	32	static
+../Core/Src/serial.c:200:9:serial_crc8_atm	24	static
+../Core/Src/serial.c:211:12:proto_send_frame3	32	static
+../Core/Src/serial.c:220:5:proto_send_write16	24	static
+../Core/Src/serial.c:226:5:proto_send_read_burst	32	static

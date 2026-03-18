@@ -10,7 +10,8 @@
 #define SERVO_CLAMP_MIN       -20
 #define SERVO_CLAMP_MAX       20
 
-static inline void pwm_pulse(Servo_Handle_t *hservo, uint16_t value);
+//static inline void pwm_pulse(Servo_Handle_t *hservo, uint16_t value);
+static int32_t map(int32_t x, int32_t in_min, int32_t in_max, int32_t out_min, int32_t out_max);
 
 /**
  * @brief  Modifie le rapport cyclique (Duty Cycle) du signal PWM.

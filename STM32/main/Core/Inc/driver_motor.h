@@ -41,7 +41,7 @@ void motor_init(Motor_Handle_t *hmotor);
 void motor_pwm_percent(Motor_Handle_t *hmotor, uint8_t percent);
 void motor_set_speed_mms(Motor_Handle_t *hmotor, int16_t speed_mms);
 void motor_process_1ms(Motor_Handle_t *hmotor, uint32_t now_ms);
-void app_config(void);
+void motor_set_power(Motor_Handle_t *hmotor, int16_t power);
 
 #endif
 

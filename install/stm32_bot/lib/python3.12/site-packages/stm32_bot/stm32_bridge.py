@@ -62,15 +62,14 @@ class STM32Bridge(Node):
         self.pub_odom = self.create_publisher(Odometry, '/wheel/odom', 10)
 
         self.rx_buffer = bytearray()
-        self.current_steering_angle = 0.0  
-        
-        # Logique de passage par zéro
-        self.target_direction = 1.0          
-        self.current_physical_direction = 1.0  
+        self.current_steering_angle = 0.0
 
         self.last_speed_mms = None
         self.last_servo_value = None
-        
+
+        # Dernière vitesse mesurée par l'encodeur STM32 (en m/s)
+        self.last_measured_vx_mps = 0.0
+
         self.create_timer(1.0 / 30.0, self.read_serial_loop)
 
     def crc8_atm(self, data):
@@ -103,18 +102,13 @@ class STM32Bridge(Node):
 
     def cmd_vel_callback(self, msg: Twist):
         speed_mms = msg.linear.x * 1000.0
-        
-        if speed_mms > 0:
-            self.target_direction = 1.0
-        elif speed_mms < 0:
-            self.target_direction = -1.0
-        
+
         if speed_mms > 3000: speed_mms = 3000
         if speed_mms < -3000: speed_mms = -3000
-        
+
         cmd_steering = msg.angular.z
-        servo_value = -cmd_steering * 20.0 
-        
+        servo_value = -cmd_steering * 20.0
+
         if servo_value > 20: servo_value = 20
         if servo_value < -20: servo_value = -20
 
@@ -127,7 +121,6 @@ class STM32Bridge(Node):
             self.send_command(REG_MOTOR, speed_mms)
             time.sleep(0.005)
             self.send_command(REG_SERVO, servo_value)
-            
             self.last_speed_mms = speed_mms
             self.last_servo_value = servo_value
 
@@ -135,93 +128,57 @@ class STM32Bridge(Node):
         self.send_command(REG_SERVO, servo_value)
 
     def read_serial_loop(self):
-        if not self.ser or not self.ser.is_open: return
-        try:
-            if self.ser.in_waiting > 0:
-                self.rx_buffer.extend(self.ser.read(self.ser.in_waiting))
+        # Lire les octets disponibles dans le buffer série
+        if self.ser and self.ser.is_open:
+            try:
+                if self.ser.in_waiting > 0:
+                    self.rx_buffer.extend(self.ser.read(self.ser.in_waiting))
+            except Exception as e:
+                self.get_logger().warn(f"Serial Error: {e}", throttle_duration_sec=5.0)
 
-            if len(self.rx_buffer) > 2 * self.frame_size_rx:
-                 self.rx_buffer = self.rx_buffer[-(2 * self.frame_size_rx):]
+        # Éviter la croissance infinie du buffer
+        if len(self.rx_buffer) > 6 * FRAME_SIZE_NORMAL:
+            self.rx_buffer = self.rx_buffer[-(6 * FRAME_SIZE_NORMAL):]
 
-            while len(self.rx_buffer) >= self.frame_size_rx:
-                if self.rx_buffer[0] != 0xAA or self.rx_buffer[1] != 0x55:
-                    del self.rx_buffer[0]
-                    continue
-                
-                packet = self.rx_buffer[:self.frame_size_rx]
-                if self.crc8_atm(packet[:-1]) == packet[-1]:
-                    self.decode_telemetry(packet)
-                    self.rx_buffer = self.rx_buffer[self.frame_size_rx:]
-                else:
-                    del self.rx_buffer[0]
+        # Parser toutes les trames complètes disponibles
+        while len(self.rx_buffer) >= FRAME_SIZE_NORMAL:
+            if self.rx_buffer[0] != 0xAA or self.rx_buffer[1] != 0x55:
+                del self.rx_buffer[0]
+                continue
 
-        except Exception as e:
-            self.get_logger().warn(f"Serial Error: {e}")
-
-    def decode_telemetry(self, packet):
-        try:
-            target_ms = 0.0
-            error_ms = 0.0
-
-            if self.debug_mode:
-                unpacked = struct.unpack('<BBBBIfffB', packet)
-                # On lit le hw_time_ms mais on ne l'utilise plus pour ROS
-                hw_time_ms = unpacked[4]
-                target_ms = unpacked[5]
-                actual_ms = unpacked[6] 
-                error_ms  = unpacked[7]
+            frame = bytes(self.rx_buffer[:FRAME_SIZE_NORMAL])
+            if self.crc8_atm(frame[:-1]) == frame[-1]:
+                _, _, ftype, _, _ts, speed = struct.unpack('<BBBBIf', frame[:-1])
+                if ftype == 0x02 and math.isfinite(speed) and abs(speed) <= 10.0:
+                    self.last_measured_vx_mps = speed
+                self.rx_buffer = self.rx_buffer[FRAME_SIZE_NORMAL:]
             else:
-                unpacked = struct.unpack('<BBBBIfB', packet)
-                hw_time_ms = unpacked[4]
-                actual_ms = unpacked[5]
+                del self.rx_buffer[0]
 
-            # --- HORLOGE UNIQUE ROS 2 ---
-            # On utilise directement l'horloge de la Pi pour éviter la dérive avec le Lidar
-            odom_time = self.get_clock().now()
+        # Publier l'odométrie avec la vitesse réelle encodeur (m/s)
+        vx = self.last_measured_vx_mps
 
-            # --- PUBLICATION DEBUG (Si activé) ---
-            if self.debug_mode:
-                pid_msg = Vector3()
-                pid_msg.x = target_ms
-                pid_msg.y = actual_ms
-                pid_msg.z = error_ms
-                self.pub_pid.publish(pid_msg)
+        odom = Odometry()
+        odom.header.stamp = self.get_clock().now().to_msg()
+        odom.header.frame_id = "odom"
+        odom.child_frame_id = "base_link"
 
-            # --- TRAITEMENT DE L'ODOMÉTRIE (Zero-Crossing) ---
-            if abs(actual_ms) <= 0.01:
-                self.current_physical_direction = self.target_direction
-                odom_speed_ms = 0.0 
-            else:
-                odom_speed_ms = abs(actual_ms) * self.current_physical_direction
+        odom.twist.twist.linear.x = vx * LINEAR_CORRECTION_FACTOR
 
-            if abs(odom_speed_ms) > 10.0 or not math.isfinite(odom_speed_ms):
-                return
-            
-            odom = Odometry()
-            odom.header.stamp = odom_time.to_msg() 
-            odom.header.frame_id = "odom"
-            odom.child_frame_id = "base_link"
+        if abs(WHEELBASE) > 0.001:
+            odom.twist.twist.angular.z = (vx / WHEELBASE) * math.tan(self.current_steering_angle)
+        else:
+            odom.twist.twist.angular.z = 0.0
 
-            odom.twist.twist.linear.x = odom_speed_ms * LINEAR_CORRECTION_FACTOR
+        odom.twist.covariance = [0.0] * 36
+        if abs(vx) < 0.001:
+            odom.twist.covariance[0]  = 0.001
+            odom.twist.covariance[35] = 0.001
+        else:
+            odom.twist.covariance[0]  = 0.1
+            odom.twist.covariance[35] = 100.0
 
-            if abs(WHEELBASE) > 0.001:
-                angular_vel = (odom_speed_ms / WHEELBASE) * math.tan(self.current_steering_angle)
-                odom.twist.twist.angular.z = angular_vel
-            else:
-                odom.twist.twist.angular.z = 0.0
-
-            odom.twist.covariance = [0.0] * 36
-            if abs(odom_speed_ms) < 0.01:
-                odom.twist.covariance[0] = 0.001 
-                odom.twist.covariance[35] = 0.001 
-            else:
-                odom.twist.covariance[0] = 0.1  
-                odom.twist.covariance[35] = 100.0 
-
-            self.pub_odom.publish(odom)
-
-        except struct.error:
-            pass
+        self.pub_odom.publish(odom)
 
 def main(args=None):
     rclpy.init(args=args)

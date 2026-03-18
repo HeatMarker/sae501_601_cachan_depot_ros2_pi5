@@ -62,7 +62,7 @@ main-build: main_frame_cachan.elf secondary-outputs
 
 # Tool invocations
 main_frame_cachan.elf main_frame_cachan.map: $(OBJS) $(USER_OBJS) /home/heat/Documents/sae_cachan/SAE_501-601_CACHAN/driver_v2/main/STM32G0B1RETX_FLASH.ld makefile objects.list $(OPTIONAL_TOOL_DEPS)
-	arm-none-eabi-gcc -o "main_frame_cachan.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m0plus -T"/home/heat/Documents/sae_cachan/SAE_501-601_CACHAN/driver_v2/main/STM32G0B1RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="main_frame_cachan.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+	arm-none-eabi-gcc -o "main_frame_cachan.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m0plus -T"/home/heat/Documents/sae_cachan/SAE_501-601_CACHAN/driver_v2/main/STM32G0B1RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="main_frame_cachan.map" -Wl,--gc-sections -static -u_printf_float --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
 	@echo 'Finished building target: $@'
 	@echo ' '
 

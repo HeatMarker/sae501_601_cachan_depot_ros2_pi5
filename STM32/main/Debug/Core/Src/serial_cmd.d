@@ -46,7 +46,9 @@ Core/Src/serial_cmd.o: ../Core/Src/serial_cmd.c ../Core/Inc/serial_cmd.h \
  ../Core/Inc/driver_servo.h ../Core/Inc/driver_ins.h \
  ../Drivers/Bosch/BMI088/bmi08_defs.h ../Drivers/Bosch/BMI088/bmi08.h \
  ../Drivers/Bosch/BMI088/bmi08_defs.h ../Drivers/Bosch/BMI088/bmi08x.h \
- ../Drivers/Bosch/BMI088/bmi08.h ../Core/Inc/app_main.h
+ ../Drivers/Bosch/BMI088/bmi08.h ../Core/Inc/app_main.h \
+ ../Core/Inc/driver_pid_motor.h ../Core/Inc/driver_motor.h \
+ ../Core/Inc/driver_speedometer.h
 ../Core/Inc/serial_cmd.h:
 ../Core/Inc/serial.h:
 ../Core/Inc/driver_motor.h:
@@ -103,3 +105,6 @@ Core/Src/serial_cmd.o: ../Core/Src/serial_cmd.c ../Core/Inc/serial_cmd.h \
 ../Drivers/Bosch/BMI088/bmi08x.h:
 ../Drivers/Bosch/BMI088/bmi08.h:
 ../Core/Inc/app_main.h:
+../Core/Inc/driver_pid_motor.h:
+../Core/Inc/driver_motor.h:
+../Core/Inc/driver_speedometer.h:

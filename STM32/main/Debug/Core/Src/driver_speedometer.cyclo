@@ -1,0 +1,2 @@
+../Core/Src/driver_speedometer.c:13:6:speedometer_init	1
+../Core/Src/driver_speedometer.c:30:7:speedometer_solve_speed	2

@@ -19,6 +19,8 @@
 /** @brief Valeur de pourcentage PWM pour le freinage en marche avant. */
 #define PWM_BRAKE_FWD       60u
 
+static uint8_t motor_speed_mms_to_pwm_percent(Motor_Handle_t *hmotor, int16_t value);
+
 /**
  * @brief  Applique la valeur brute au registre de comparaison du timer.
  * @note   Fonction interne statique.
@@ -260,5 +262,41 @@ void motor_process_1ms(Motor_Handle_t *hmotor, uint32_t now_ms){
                 hmotor->state = MOTOR_STATE_FORWARD_HOLD;
             }
             break;
+    }
+}
+
+/**
+ * @brief  Commande l'effort du moteur en pourcentage (-100 à +100).
+ * @note   Remplace motor_set_speed_mms. Respecte la machine à états.
+ * @param  hmotor Pointeur moteur
+ * @param  power  Puissance : -100 (Arrière Max) à +100 (Avant Max).
+ */
+void motor_set_power(Motor_Handle_t *hmotor, int16_t power) {
+    if (!hmotor) return;
+
+    // 1. Saturation de sécurité (-100 à +100)
+    if (power > 100) power = 100;
+    if (power < -100) power = -100;
+
+    // 2. Gestion du Neutre (Arrêt)
+    if (power == 0) {
+        // La machine à états surveille "target_speed_mms == 0" pour savoir si on veut s'arrêter
+        hmotor->ctx.target_speed_mms = 0;
+        hmotor->ctx.target_pwm = 50;      // 50% = PWM Neutre standard
+    }
+    // 3. Gestion du Mouvement
+    else {
+        // On trompe la machine à états : on lui dit "on roule" (vitesse != 0)
+        // pour qu'elle accepte de quitter l'état NEUTRAL.
+        hmotor->ctx.target_speed_mms = (power > 0) ? 1 : -1;
+
+        // Calcul du PWM (Mapping : -100..100 -> 0..100 sur une base de 50)
+        // 0   -> 50
+        // 100 -> 100
+        // -100 -> 0
+        hmotor->ctx.target_pwm = (uint8_t)(50 + (power / 2));
+
+        // Indication du sens pour que la machine à états gère le freinage si on inverse
+        hmotor->ctx.target_forward = (power > 0);
     }
 }

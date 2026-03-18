@@ -22,6 +22,7 @@
 #include "stm32g0xx_it.h"
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
+#include "app_main.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -178,7 +179,10 @@ void DMA1_Channel2_3_IRQHandler(void)
 void TIM3_TIM4_IRQHandler(void)
 {
   /* USER CODE BEGIN TIM3_TIM4_IRQn 0 */
-
+  if(LL_TIM_IsActiveFlag_UPDATE(TIM3)){
+		LL_TIM_ClearFlag_UPDATE(TIM3);
+		tim3_overflow_cnt++;
+  }
   /* USER CODE END TIM3_TIM4_IRQn 0 */
   HAL_TIM_IRQHandler(&htim4);
   /* USER CODE BEGIN TIM3_TIM4_IRQn 1 */
