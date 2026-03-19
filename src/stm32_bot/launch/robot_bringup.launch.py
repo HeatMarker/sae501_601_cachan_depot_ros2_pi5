@@ -6,20 +6,26 @@ from launch_ros.actions import Node
 from ament_index_python.packages import get_package_share_directory
 
 def generate_launch_description():
-    
+
     # 1. Inclusion LIDAR
     lidar_pkg_dir = get_package_share_directory('ldlidar_stl_ros2')
     lidar_launch = IncludeLaunchDescription(
         PythonLaunchDescriptionSource(os.path.join(lidar_pkg_dir, 'launch', 'ld06.launch.py'))
     )
 
-    # 2. Config EKF (Attention au nom du fichier ici !)
+    # 2. Config EKF et filtre laser
     pkg_stm32 = get_package_share_directory('stm32_bot')
-    # Assure-toi que ton fichier s'appelle bien ekf_config.yaml ou ekf.yaml
     ekf_config = os.path.join(pkg_stm32, 'config', 'ekf_config.yaml')
 
     return LaunchDescription([
         lidar_launch,
+
+        # --- FILTRE LASER (180° avant uniquement) ---
+        Node(
+            package='stm32_bot',
+            executable='scan_filter',
+            name='scan_filter',
+        ),
 
         # --- STM32 BRIDGE ---
         Node(

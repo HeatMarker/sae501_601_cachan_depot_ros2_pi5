@@ -3,11 +3,13 @@
 /home/spinetti/ros2_ws/install/stm32_bot/lib/python3.12/site-packages/stm32_bot/ps3_mapper.py
 /home/spinetti/ros2_ws/install/stm32_bot/lib/python3.12/site-packages/stm32_bot/imu_visualizer.py
 /home/spinetti/ros2_ws/install/stm32_bot/lib/python3.12/site-packages/stm32_bot/stm32_teleop.py
+/home/spinetti/ros2_ws/install/stm32_bot/lib/python3.12/site-packages/stm32_bot/scan_filter.py
 /home/spinetti/ros2_ws/install/stm32_bot/lib/python3.12/site-packages/stm32_bot/__pycache__/__init__.cpython-312.pyc
 /home/spinetti/ros2_ws/install/stm32_bot/lib/python3.12/site-packages/stm32_bot/__pycache__/stm32_bridge.cpython-312.pyc
 /home/spinetti/ros2_ws/install/stm32_bot/lib/python3.12/site-packages/stm32_bot/__pycache__/ps3_mapper.cpython-312.pyc
 /home/spinetti/ros2_ws/install/stm32_bot/lib/python3.12/site-packages/stm32_bot/__pycache__/imu_visualizer.cpython-312.pyc
 /home/spinetti/ros2_ws/install/stm32_bot/lib/python3.12/site-packages/stm32_bot/__pycache__/stm32_teleop.cpython-312.pyc
+/home/spinetti/ros2_ws/install/stm32_bot/lib/python3.12/site-packages/stm32_bot/__pycache__/scan_filter.cpython-312.pyc
 /home/spinetti/ros2_ws/install/stm32_bot/share/ament_index/resource_index/packages/stm32_bot
 /home/spinetti/ros2_ws/install/stm32_bot/share/stm32_bot/package.xml
 /home/spinetti/ros2_ws/install/stm32_bot/share/stm32_bot/launch/localization.launch.py
@@ -16,6 +18,7 @@
 /home/spinetti/ros2_ws/install/stm32_bot/share/stm32_bot/launch/slam.launch.py
 /home/spinetti/ros2_ws/install/stm32_bot/share/stm32_bot/launch/nav2.launch.py
 /home/spinetti/ros2_ws/install/stm32_bot/share/stm32_bot/launch/imu_debug.launch.py
+/home/spinetti/ros2_ws/install/stm32_bot/share/stm32_bot/config/laser_filter.yaml
 /home/spinetti/ros2_ws/install/stm32_bot/share/stm32_bot/config/ekf_config.yaml
 /home/spinetti/ros2_ws/install/stm32_bot/share/stm32_bot/config/nav2_params.yaml
 /home/spinetti/ros2_ws/install/stm32_bot/share/stm32_bot/config/mapper_params_online_async.yaml
@@ -31,5 +34,6 @@
 /home/spinetti/ros2_ws/install/stm32_bot/lib/python3.12/site-packages/stm32_bot-0.0.0-py3.12.egg-info/dependency_links.txt
 /home/spinetti/ros2_ws/install/stm32_bot/lib/stm32_bot/imu_visualizer
 /home/spinetti/ros2_ws/install/stm32_bot/lib/stm32_bot/ps3_mapper
+/home/spinetti/ros2_ws/install/stm32_bot/lib/stm32_bot/scan_filter
 /home/spinetti/ros2_ws/install/stm32_bot/lib/stm32_bot/stm32_bridge
 /home/spinetti/ros2_ws/install/stm32_bot/lib/stm32_bot/stm32_teleop

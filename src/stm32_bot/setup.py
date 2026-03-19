@@ -33,6 +33,7 @@ setup(
             'stm32_teleop = stm32_bot.stm32_teleop:main',
             'ps3_mapper = stm32_bot.ps3_mapper:main',
             'imu_visualizer = stm32_bot.imu_visualizer:main',
+            'scan_filter = stm32_bot.scan_filter:main',
         ],
     },
 )

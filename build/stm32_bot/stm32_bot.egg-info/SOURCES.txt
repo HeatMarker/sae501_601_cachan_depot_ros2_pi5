@@ -10,6 +10,7 @@ setup.py
 ../../build/stm32_bot/stm32_bot.egg-info/zip-safe
 config/ekf_config.yaml
 config/imu_debug.rviz
+config/laser_filter.yaml
 config/mapper_params_online_async.yaml
 config/nav2_params.yaml
 launch/imu_debug.launch.py
@@ -24,6 +25,7 @@ resource/stm32_bot
 stm32_bot/__init__.py
 stm32_bot/imu_visualizer.py
 stm32_bot/ps3_mapper.py
+stm32_bot/scan_filter.py
 stm32_bot/stm32_bridge.py
 stm32_bot/stm32_teleop.py
 test/test_copyright.py
