@@ -10,7 +10,7 @@ import math
 import time
 
 # --- CONFIGURATION PHYSIQUE ---
-WHEELBASE = 0.25  
+WHEELBASE = 0.257  # TT-02 standard (à affiner si besoin)
 MAX_STEER_ANGLE_RAD = 0.35 
 
 # FACTEUR DE CORRECTION LINEAIRE
@@ -106,13 +106,15 @@ class STM32Bridge(Node):
         if speed_mms > 3000: speed_mms = 3000
         if speed_mms < -3000: speed_mms = -3000
 
-        cmd_steering = msg.angular.z
-        servo_value = -cmd_steering * 20.0
+        vx_ref = max(abs(msg.linear.x), 0.05)
+        steering_rad = math.atan(WHEELBASE * msg.angular.z / vx_ref)
+        steering_rad = max(min(steering_rad, MAX_STEER_ANGLE_RAD), -MAX_STEER_ANGLE_RAD)
+        servo_value = -math.degrees(steering_rad)
 
         if servo_value > 20: servo_value = 20
         if servo_value < -20: servo_value = -20
 
-        self.current_steering_angle = cmd_steering * MAX_STEER_ANGLE_RAD
+        self.current_steering_angle = steering_rad
 
         speed_mms = round(speed_mms)
         servo_value = round(servo_value)

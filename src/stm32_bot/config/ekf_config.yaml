@@ -1,11 +1,11 @@
 ekf_filter_node:
   ros__parameters:
-    frequency: 30.0   
+    frequency: 30.0
     two_d_mode: true
     publish_tf: true
-    
-    transform_time_offset: 0.1 
-    transform_timeout: 0.2
+
+    transform_time_offset: 0.0
+    transform_timeout: 0.3
 
     map_frame: map
     odom_frame: odom

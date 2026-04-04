@@ -16,6 +16,7 @@ config/nav2_params.yaml
 launch/imu_debug.launch.py
 launch/localization.launch.py
 launch/nav2.launch.py
+launch/race.launch.py
 launch/robot_bringup.launch.py
 launch/slam.launch.py
 launch/teleop_joystick.launch.py
@@ -24,7 +25,9 @@ maps/maps.yaml
 resource/stm32_bot
 stm32_bot/__init__.py
 stm32_bot/imu_visualizer.py
+stm32_bot/path_recorder.py
 stm32_bot/ps3_mapper.py
+stm32_bot/race_controller.py
 stm32_bot/scan_filter.py
 stm32_bot/stm32_bridge.py
 stm32_bot/stm32_teleop.py

@@ -1,2 +1,1 @@
-source;share/tm_imu/environment/ament_prefix_path.sh
-source;share/tm_imu/environment/path.sh
+/home/spinetti/ros2_ws/build/tm_imu/ament_cmake_environment_hooks/local_setup.dsv

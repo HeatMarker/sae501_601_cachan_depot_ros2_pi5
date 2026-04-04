@@ -11,7 +11,7 @@ def generate_launch_description():
     pkg_nav2_bringup = FindPackageShare('nav2_bringup').find('nav2_bringup')
 
     # Chemin exact vers le fichier YAML de ta carte
-    map_file = os.path.join(pkg_stm32, 'maps', 'maps.yaml')
+    map_file = os.path.expanduser('~/ros2_ws/src/stm32_bot/maps/maps.yaml')
 
     return LaunchDescription([
         # RUSTINE : On crée le repère "base_footprint" réclamé par Nav2 et on le colle à "base_link"

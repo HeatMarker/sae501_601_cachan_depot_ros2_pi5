@@ -1,8 +1,1 @@
-tm_imu:
-  ros__parameters:
-    imu_baudrate : 115200
-    imu_port: "/dev/serial/by-id/usb-STMicroelectronics_STM32_Virtual_ComPort_3170365A3334-if00"
-    imu_frame_id : 'imu'
-    parent_frame_id : 'base_link'
-    timer_period : 5
-    transform : [0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+/home/spinetti/ros2_ws/src/tm210_driver/config/params.yaml

@@ -3,6 +3,8 @@ import rclpy
 from rclpy.node import Node
 from sensor_msgs.msg import LaserScan
 import math
+import rclpy.duration
+import rclpy.time
 
 # 180° avant du robot (en frame laser, avec TF yaw=-1.57 sur base_laser)
 # Ajuste si les mauvais points sont filtrés : essaie -3.14159 / 0.0
@@ -24,6 +26,9 @@ class ScanFilter(Node):
 
         out = LaserScan()
         out.header = msg.header
+        # Léger décalage arrière pour laisser le temps à la TF d'être disponible
+        t = rclpy.time.Time.from_msg(msg.header.stamp) - rclpy.duration.Duration(nanoseconds=50_000_000)
+        out.header.stamp = t.to_msg()
         out.angle_min = msg.angle_min
         out.angle_max = msg.angle_max
         out.angle_increment = msg.angle_increment
