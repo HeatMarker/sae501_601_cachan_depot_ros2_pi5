@@ -8,7 +8,7 @@ Enregistre la trajectoire pendant la téléopération.
 """
 import rclpy
 from rclpy.node import Node
-from nav_msgs.msg import Path
+from nav_msgs.msg import Path, Odometry
 from geometry_msgs.msg import PoseStamped
 import tf2_ros
 import yaml
@@ -35,11 +35,14 @@ class PathRecorder(Node):
         self.last_x      = None
         self.last_y      = None
         self.loop_closed = False
+        self.current_speed = 0.0
 
         self.tf_buffer   = tf2_ros.Buffer()
         self.tf_listener = tf2_ros.TransformListener(self.tf_buffer, self)
 
         self.pub = self.create_publisher(Path, '/race/recorded_path', 1)
+
+        self.create_subscription(Odometry, '/wheel/odom', self._odom_cb, 10)
 
         # Enregistrement à 5 Hz
         self.create_timer(0.2, self.record_tick)
@@ -53,8 +56,14 @@ class PathRecorder(Node):
         self.get_logger().info('Dans RViz2 : Add → Path → topic /race/recorded_path')
         self.get_logger().info('Conduire un tour → sauvegarde auto à la fermeture de boucle (ou Ctrl+C)')
 
+    def _odom_cb(self, msg: Odometry):
+        self.current_speed = abs(msg.twist.twist.linear.x)
+
     # ──────────────────────────────────────────────────
     def record_tick(self):
+        if self.current_speed < 0.05:
+            return
+
         try:
             t = self.tf_buffer.lookup_transform('map', 'base_link', rclpy.time.Time())
         except Exception:
