@@ -11,6 +11,7 @@ setup.py
 config/ekf_config.yaml
 config/imu_debug.rviz
 config/laser_filter.yaml
+config/mapper_params_localization.yaml
 config/mapper_params_online_async.yaml
 config/nav2_params.yaml
 launch/imu_debug.launch.py
@@ -25,6 +26,7 @@ maps/maps.yaml
 resource/stm32_bot
 stm32_bot/__init__.py
 stm32_bot/imu_visualizer.py
+stm32_bot/lidar_deskewer.py
 stm32_bot/path_recorder.py
 stm32_bot/ps3_mapper.py
 stm32_bot/race_controller.py

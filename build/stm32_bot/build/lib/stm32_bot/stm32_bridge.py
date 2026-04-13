@@ -35,6 +35,7 @@ class STM32Bridge(Node):
         self.declare_parameter('port', '/dev/serial/by-id/usb-STMicroelectronics_STM32_Virtual_ComPort_3170365A3334-if00')
         self.declare_parameter('baudrate', 115200)
         self.declare_parameter('debug_pid', False)
+        self.declare_parameter('ackermann_mode', False)
 
         port = self.get_parameter('port').get_parameter_value().string_value
         baud = self.get_parameter('baudrate').get_parameter_value().integer_value
@@ -106,10 +107,14 @@ class STM32Bridge(Node):
         if speed_mms > 3000: speed_mms = 3000
         if speed_mms < -3000: speed_mms = -3000
 
-        vx_ref = max(abs(msg.linear.x), 0.05)
-        steering_rad = math.atan(WHEELBASE * msg.angular.z / vx_ref)
-        steering_rad = max(min(steering_rad, MAX_STEER_ANGLE_RAD), -MAX_STEER_ANGLE_RAD)
-        servo_value = -math.degrees(steering_rad)
+        if self.get_parameter('ackermann_mode').value:
+            vx_ref = max(abs(msg.linear.x), 0.05)
+            steering_rad = math.atan(WHEELBASE * msg.angular.z / vx_ref)
+            steering_rad = max(min(steering_rad, MAX_STEER_ANGLE_RAD), -MAX_STEER_ANGLE_RAD)
+            servo_value = -math.degrees(steering_rad)
+        else:
+            servo_value = -msg.angular.z * 20.0
+            steering_rad = math.radians(-servo_value)
 
         if servo_value > 20: servo_value = 20
         if servo_value < -20: servo_value = -20

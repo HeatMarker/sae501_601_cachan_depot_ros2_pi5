@@ -1,7 +1,8 @@
 import os
 from launch import LaunchDescription
-from launch.actions import IncludeLaunchDescription
+from launch.actions import IncludeLaunchDescription, DeclareLaunchArgument
 from launch.launch_description_sources import PythonLaunchDescriptionSource
+from launch.substitutions import LaunchConfiguration
 from launch_ros.actions import Node
 from ament_index_python.packages import get_package_share_directory
 
@@ -17,14 +18,29 @@ def generate_launch_description():
     pkg_stm32 = get_package_share_directory('stm32_bot')
     ekf_config = os.path.join(pkg_stm32, 'config', 'ekf_config.yaml')
 
+    ackermann_mode = LaunchConfiguration('ackermann_mode')
+
     return LaunchDescription([
+        DeclareLaunchArgument(
+            'ackermann_mode',
+            default_value='false',
+            description='true = conversion Ackermann (navigation autonome) | false = direct (téléop)'
+        ),
+
         lidar_launch,
 
-        # --- FILTRE LASER (180° avant uniquement) ---
+        # --- FILTRE LASER (180° avant) → /scan_filtered pour obstacle detection ---
         Node(
             package='stm32_bot',
             executable='scan_filter',
             name='scan_filter',
+        ),
+
+        # --- DESKEWING LIDAR → /scan_deskewed pour SLAM Toolbox ---
+        Node(
+            package='stm32_bot',
+            executable='lidar_deskewer',
+            name='lidar_deskewer',
         ),
 
         # --- STM32 BRIDGE ---
@@ -34,7 +50,8 @@ def generate_launch_description():
             name='stm32_bridge',
             parameters=[
                 {'port': '/dev/serial/by-id/usb-STMicroelectronics_STM32_STLink_066FFF505075894967183959-if02'},
-                {'debug_pid': False}
+                {'debug_pid': False},
+                {'ackermann_mode': ackermann_mode},
             ]
         ),
 

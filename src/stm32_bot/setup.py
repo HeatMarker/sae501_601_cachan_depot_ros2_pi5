@@ -34,6 +34,7 @@ setup(
             'ps3_mapper = stm32_bot.ps3_mapper:main',
             'imu_visualizer = stm32_bot.imu_visualizer:main',
             'scan_filter = stm32_bot.scan_filter:main',
+            'lidar_deskewer = stm32_bot.lidar_deskewer:main',
             'path_recorder = stm32_bot.path_recorder:main',
             'race_controller = stm32_bot.race_controller:main',
         ],

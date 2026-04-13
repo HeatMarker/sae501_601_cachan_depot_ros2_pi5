@@ -7,11 +7,9 @@ from geometry_msgs.msg import Twist
 class PS3Mapper(Node):
     def __init__(self):
         super().__init__('ps3_mapper')
-        
-        # --- DÉCLARATION DU PARAMÈTRE ---
-        # Si on ne donne pas d'argument au lancement, la vitesse sera de 3.0 m/s par défaut
+
         self.declare_parameter('max_speed', 3.0)
-        
+
         self.pub = self.create_publisher(Twist, '/cmd_vel', 10)
         self.sub = self.create_subscription(Joy, '/joy', self.joy_callback, 10)
         self.get_logger().info("Mapper PS3 'Trackmania' lancé (X = Deadman, R2 = Gaz, L2 = Frein)")
@@ -34,7 +32,6 @@ class PS3Mapper(Node):
             twist.linear.x = float((r2_val - l2_val) * current_max_speed)
 
             # --- DIRECTION (Joystick Gauche Horizontal - Axe 0) ---
-            # Inversion du sens : on met un signe '-' pour que Gauche = Gauche
             twist.angular.z = msg.axes[0] * 1.0
         else:
             # Si on lâche la Croix, on stop tout

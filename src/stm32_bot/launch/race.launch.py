@@ -8,12 +8,14 @@ from launch_ros.actions import Node
 from ament_index_python.packages import get_package_share_directory
 
 def generate_launch_description():
-    pkg_stm32      = get_package_share_directory('stm32_bot')
-    pkg_nav2       = get_package_share_directory('nav2_bringup')
-    map_file       = os.path.expanduser('~/ros2_ws/src/stm32_bot/maps/maps.yaml')
-    path_file      = os.path.expanduser('~/ros2_ws/src/stm32_bot/paths/track.yaml')
+    pkg_stm32  = get_package_share_directory('stm32_bot')
+    pkg_nav2   = get_package_share_directory('nav2_bringup')
+    map_file   = os.path.expanduser('~/ros2_ws/src/stm32_bot/maps/maps.yaml')
+    path_file  = os.path.expanduser('~/ros2_ws/src/stm32_bot/paths/track.yaml')
+    slam_loc_params = os.path.join(pkg_stm32, 'config', 'mapper_params_localization.yaml')
 
-    record_mode = LaunchConfiguration('record_mode')
+    record_mode  = LaunchConfiguration('record_mode')
+    use_slam_loc = LaunchConfiguration('slam_localization')
 
     return LaunchDescription([
         DeclareLaunchArgument(
@@ -21,20 +23,27 @@ def generate_launch_description():
             default_value='false',
             description='true = enregistrement chemin | false = course autonome'
         ),
+        DeclareLaunchArgument(
+            'slam_localization',
+            default_value='false',
+            description='true = SLAM Toolbox localization (nécessite .posegraph) | false = AMCL'
+        ),
 
-        # ── Capteurs + EKF ──────────────────────────────
+        # ── Capteurs + EKF + deskewer ────────────────────
         IncludeLaunchDescription(
             PythonLaunchDescriptionSource(
                 os.path.join(pkg_stm32, 'launch', 'robot_bringup.launch.py')
-            )
+            ),
+            launch_arguments={'ackermann_mode': 'true'}.items()
         ),
 
-        # ── Localisation AMCL (carte sauvegardée) ───────
+        # ── Localisation AMCL (mode par défaut) ─────────
         Node(
             package='tf2_ros',
             executable='static_transform_publisher',
             name='link_to_footprint',
-            arguments=['0', '0', '0', '0', '0', '0', 'base_link', 'base_footprint']
+            arguments=['0', '0', '0', '0', '0', '0', 'base_link', 'base_footprint'],
+            condition=UnlessCondition(use_slam_loc),
         ),
         IncludeLaunchDescription(
             PythonLaunchDescriptionSource(
@@ -43,7 +52,18 @@ def generate_launch_description():
             launch_arguments={
                 'map':          map_file,
                 'use_sim_time': 'false',
-            }.items()
+            }.items(),
+            condition=UnlessCondition(use_slam_loc),
+        ),
+
+        # ── Localisation SLAM Toolbox (haute vitesse) ────
+        Node(
+            package='slam_toolbox',
+            executable='localization_slam_toolbox_node',
+            name='slam_toolbox',
+            output='screen',
+            parameters=[slam_loc_params],
+            condition=IfCondition(use_slam_loc),
         ),
 
         # ── Mode ENREGISTREMENT ──────────────────────────
