@@ -57,12 +57,38 @@ def generate_launch_description():
         ),
 
         # ── Localisation SLAM Toolbox (haute vitesse) ────
+        IncludeLaunchDescription(
+            PythonLaunchDescriptionSource(
+                os.path.join(
+                    get_package_share_directory('slam_toolbox'),
+                    'launch', 'localization_launch.py'
+                )
+            ),
+            launch_arguments={'slam_params_file': slam_loc_params}.items(),
+            condition=IfCondition(use_slam_loc),
+        ),
+        # map_server pour visualiser la carte dans RViz2 (SLAM Toolbox ne publie pas /map)
         Node(
-            package='slam_toolbox',
-            executable='localization_slam_toolbox_node',
-            name='slam_toolbox',
+            package='nav2_map_server',
+            executable='map_server',
+            name='map_server',
             output='screen',
-            parameters=[slam_loc_params],
+            parameters=[{
+                'yaml_filename': map_file,
+                'use_sim_time': False,
+            }],
+            condition=IfCondition(use_slam_loc),
+        ),
+        Node(
+            package='nav2_lifecycle_manager',
+            executable='lifecycle_manager',
+            name='lifecycle_manager_map',
+            output='screen',
+            parameters=[{
+                'autostart': True,
+                'node_names': ['map_server'],
+                'use_sim_time': False,
+            }],
             condition=IfCondition(use_slam_loc),
         ),
 

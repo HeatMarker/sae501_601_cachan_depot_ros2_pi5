@@ -21,7 +21,9 @@ launch/race.launch.py
 launch/robot_bringup.launch.py
 launch/slam.launch.py
 launch/teleop_joystick.launch.py
+maps/maps.data
 maps/maps.pgm
+maps/maps.posegraph
 maps/maps.yaml
 resource/stm32_bot
 stm32_bot/__init__.py
