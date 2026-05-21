@@ -11,31 +11,32 @@ slam_toolbox:
     map_start_at_dock: false
 
     # Timing
-    minimum_time_interval:   0.1
-    transform_publish_period: 0.04   # 25 Hz
-    tf_buffer_duration:      5.0
-    transform_timeout:       0.3
+    minimum_time_interval:    0.05   # traiter jusqu'à 20 scans/s (LiDAR 10Hz → chaque scan)
+    transform_publish_period: 0.02   # 50 Hz — TF fluide pour Pure Pursuit rapide
+    tf_buffer_duration:       5.0
+    transform_timeout:        0.3
 
-    # Fréquence de mise à jour (en localisation, pas besoin d'updater la carte souvent)
-    map_update_interval: 60.0
+    # CRITIQUE : ne JAMAIS re-publier /map pendant la course
+    # → évite l'écrasement du map_server + pas de mise à jour de carte
+    map_update_interval: 9999.0
     resolution:          0.05
     max_laser_range:     12.0
 
-    # Seuils de déclenchement d'une mise à jour de pose
-    minimum_travel_distance: 0.05   # 5 cm — mise à jour très fréquente
-    minimum_travel_heading:  0.05   # ~3°
+    # Seuils de déclenchement — très fréquent pour corriger tôt la dérive
+    minimum_travel_distance: 0.02   # correction tous les 2 cm
+    minimum_travel_heading:  0.02   # correction tous les ~1°
 
-    # Scan matching — paramètres pour lidar 10 Hz basse résolution
-    scan_buffer_size:                       10
+    # Scan matching — zone de recherche élargie pour rattraper la dérive odométrie
+    scan_buffer_size:                       15
     scan_buffer_maximum_scan_distance:      10.0
-    link_match_minimum_response_fine:       0.4
-    link_scan_maximum_distance:             2.0
+    link_match_minimum_response_fine:       0.3    # moins strict → moins de "pas de match"
+    link_scan_maximum_distance:             3.0    # cherche plus loin dans le graphe
 
     # Loop closure désactivée en localisation
     do_loop_closing: false
 
-    # Paramètres de corrélation
-    correlation_search_space_dimension:    0.5
+    # Corrélation — espace de recherche élargi (rattrape jusqu'à ~40cm de dérive)
+    correlation_search_space_dimension:    0.8    # était 0.5
     correlation_search_space_resolution:   0.01
     correlation_search_space_smear_deviation: 0.1
 
