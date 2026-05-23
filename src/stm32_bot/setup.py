@@ -37,6 +37,7 @@ setup(
             'lidar_deskewer = stm32_bot.lidar_deskewer:main',
             'path_recorder = stm32_bot.path_recorder:main',
             'race_controller = stm32_bot.race_controller:main',
+            'blind_nav = stm32_bot.blind_nav:main',
         ],
     },
 )

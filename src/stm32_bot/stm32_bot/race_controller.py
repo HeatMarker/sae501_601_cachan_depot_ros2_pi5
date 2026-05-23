@@ -192,13 +192,6 @@ class RaceController(Node):
             return
         rx, ry, ryaw = pose
 
-        min_front, _, _ = self._analyze_scan()
-        if min_front < self.stop_dist:
-            self.pub_cmd.publish(Twist())
-            self.get_logger().warn(
-                f'ARRÊT URGENCE — obstacle à {min_front:.2f}m', throttle_duration_sec=1.0)
-            return
-
         # Lookahead
         lx, ly = self._find_lookahead(rx, ry, 0.0)
 

@@ -1,4 +1,5 @@
 [console_scripts]
+blind_nav = stm32_bot.blind_nav:main
 imu_visualizer = stm32_bot.imu_visualizer:main
 lidar_deskewer = stm32_bot.lidar_deskewer:main
 path_recorder = stm32_bot.path_recorder:main

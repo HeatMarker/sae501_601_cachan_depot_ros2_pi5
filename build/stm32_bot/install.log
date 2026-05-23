@@ -1,4 +1,5 @@
 /home/spinetti/ros2_ws/install/stm32_bot/lib/python3.12/site-packages/stm32_bot/__init__.py
+/home/spinetti/ros2_ws/install/stm32_bot/lib/python3.12/site-packages/stm32_bot/blind_nav.py
 /home/spinetti/ros2_ws/install/stm32_bot/lib/python3.12/site-packages/stm32_bot/lidar_deskewer.py
 /home/spinetti/ros2_ws/install/stm32_bot/lib/python3.12/site-packages/stm32_bot/stm32_bridge.py
 /home/spinetti/ros2_ws/install/stm32_bot/lib/python3.12/site-packages/stm32_bot/path_recorder.py
@@ -8,6 +9,7 @@
 /home/spinetti/ros2_ws/install/stm32_bot/lib/python3.12/site-packages/stm32_bot/stm32_teleop.py
 /home/spinetti/ros2_ws/install/stm32_bot/lib/python3.12/site-packages/stm32_bot/scan_filter.py
 /home/spinetti/ros2_ws/install/stm32_bot/lib/python3.12/site-packages/stm32_bot/__pycache__/__init__.cpython-312.pyc
+/home/spinetti/ros2_ws/install/stm32_bot/lib/python3.12/site-packages/stm32_bot/__pycache__/blind_nav.cpython-312.pyc
 /home/spinetti/ros2_ws/install/stm32_bot/lib/python3.12/site-packages/stm32_bot/__pycache__/lidar_deskewer.cpython-312.pyc
 /home/spinetti/ros2_ws/install/stm32_bot/lib/python3.12/site-packages/stm32_bot/__pycache__/stm32_bridge.cpython-312.pyc
 /home/spinetti/ros2_ws/install/stm32_bot/lib/python3.12/site-packages/stm32_bot/__pycache__/path_recorder.cpython-312.pyc
@@ -22,6 +24,7 @@
 /home/spinetti/ros2_ws/install/stm32_bot/share/stm32_bot/launch/robot_bringup.launch.py
 /home/spinetti/ros2_ws/install/stm32_bot/share/stm32_bot/launch/teleop_joystick.launch.py
 /home/spinetti/ros2_ws/install/stm32_bot/share/stm32_bot/launch/slam.launch.py
+/home/spinetti/ros2_ws/install/stm32_bot/share/stm32_bot/launch/blind_nav.launch.py
 /home/spinetti/ros2_ws/install/stm32_bot/share/stm32_bot/launch/nav2.launch.py
 /home/spinetti/ros2_ws/install/stm32_bot/share/stm32_bot/launch/race.launch.py
 /home/spinetti/ros2_ws/install/stm32_bot/share/stm32_bot/launch/imu_debug.launch.py
@@ -42,6 +45,7 @@
 /home/spinetti/ros2_ws/install/stm32_bot/lib/python3.12/site-packages/stm32_bot-0.0.0-py3.12.egg-info/entry_points.txt
 /home/spinetti/ros2_ws/install/stm32_bot/lib/python3.12/site-packages/stm32_bot-0.0.0-py3.12.egg-info/top_level.txt
 /home/spinetti/ros2_ws/install/stm32_bot/lib/python3.12/site-packages/stm32_bot-0.0.0-py3.12.egg-info/dependency_links.txt
+/home/spinetti/ros2_ws/install/stm32_bot/lib/stm32_bot/blind_nav
 /home/spinetti/ros2_ws/install/stm32_bot/lib/stm32_bot/imu_visualizer
 /home/spinetti/ros2_ws/install/stm32_bot/lib/stm32_bot/lidar_deskewer
 /home/spinetti/ros2_ws/install/stm32_bot/lib/stm32_bot/path_recorder

@@ -116,8 +116,8 @@ def generate_launch_description():
             parameters=[{
                 'path_file':            path_file,
                 'lookahead_dist':       0.3,
-                'max_speed':            0.75,  # vitesse max ligne droite
-                'min_speed':            0.3,   # vitesse min virage serré
+                'max_speed':            1.25,  # vitesse max ligne droite
+                'min_speed':            0.5,   # vitesse min virage serré
                 'speed_curvature_gain': 1.0,   # ↑ = ralentit plus tôt dans les virages
                 'obstacle_threshold':   1.5,
                 'emergency_stop_dist':  0.25,
